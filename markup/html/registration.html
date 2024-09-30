@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="../css/registration.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Регистрация</h1>
+        <form action="/submit" method="post">
+            <label for="firstName">Имя:</label>
+            <input type="text" class="names" id="firstName" name="firstName" pattern="^[А-Яа-яЁё]+$" required>
+
+            <label for="lastName">Фамилия:</label>
+            <input type="text" class="names" id="lastName" name="lastName" pattern="^[А-Яа-яЁё]+$" required>
+
+            <label for="patronymic">Отчество:</label>
+            <input type="text" class="names" id="patronymic" name="patronymic" pattern="^[А-Яа-яЁё]+$" required>
+
+            <label for="gender">Пол:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+            </select>
+
+            <label for="group">Академическая группа:</label>
+            <input type="text" id="group" name="group" pattern="[А-Яа-я]{2}-\d{6}" required>
+
+            <label for="link">Ссылка на ВК:</label>
+            <input type="url" id="link" name="link" pattern="https://vk\.com/.*" required>
+
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+    
+    <script src="../js/registration.js"></script>
+</body>
+
+</html>
