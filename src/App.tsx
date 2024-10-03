@@ -1,15 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import RegistrationPage from "./pages/Registration/Registration-page"
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-
-    </>
+      <RegistrationPage />
   )
 }
 
