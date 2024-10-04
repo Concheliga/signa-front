@@ -1,7 +1,9 @@
-import Select from "./Select";
+import { Fragment } from "react/jsx-runtime";
+import Select from "../../../components/Select";
 import Button from "../../../ui/Button";
 import Label from "../../../ui/Label";
 import Input from "../../../ui/Input";
+import {stringPasswordPattern, stringNamePattern, stringGroupPattern, stringLinkPattern} from "../constants/patterns";
 
 const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props }) => {
     const names: { name: string; value: string }[] = [
@@ -14,18 +16,20 @@ const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props })
         <form {...props}>
             {names.map((name, index) => {
                 return(
-                <div key={index}>
-                    <Label htmlFor={name.name} key={index}>{name.value}</Label>
-                    <Input type="text" className="names" id={name.name} name={name.name} pattern="^[А-Яа-яЁё]+$" required />
-                </div>
+                <Fragment key={index}>
+                    <Label htmlFor={name.name} >{name.value}</Label>
+                    <Input type="text" className="names" id={name.name} name={name.name} pattern={stringNamePattern} required />
+                </Fragment>
                 )   
             })}
             <Label htmlFor="gender">Пол:</Label>
             <Select options={[{value:"male", label:"Мужской"}, {value:"female", label:"Женский"}]} id="gender" name="gender" required />
             <Label htmlFor="group">Академическая группа:</Label>
-            <Input type="text" id="group" name="group" pattern="[А-Яа-я]{2}-\d{6}" required />
+            <Input type="text" id="group" name="group" pattern={stringGroupPattern} required />
             <Label htmlFor="link">Ссылка на ВК:</Label>
-            <Input type="url" id="link" name="link" pattern="https://vk\.com/.*" required />
+            <Input type="url" id="link" name="link" pattern={stringLinkPattern} required />
+            <Label htmlFor="password">Пароль:</Label>
+            <Input type="password" id="password" name="password" pattern={stringPasswordPattern} required />
             <Button type="submit">Зарегистрироваться</Button>
         </form>
     );
