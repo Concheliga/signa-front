@@ -4,6 +4,7 @@ import Button from "../../../ui/Button";
 import Label from "../../../ui/Label";
 import Input from "../../../ui/Input";
 import { addErrorMessage } from "../../../utils/error-message";
+import { getFormData } from "../utils/registration-utils";
 import {
     namePattern, groupPattern, linkPattern, passwordPattern,
     nameErrorMessage, linkErrorMessage, groupErrorMessage, passwordErrorMessage,
@@ -18,7 +19,7 @@ const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props })
     ];
 
     return (
-        <form {...props}>
+        <form onSubmit={getFormData} {...props}>
             {names.map((name, index) => {
                 return(
                 <Fragment key={index}>
