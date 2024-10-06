@@ -1,4 +1,4 @@
-import Option from "../../../ui/Option";
+import Option from "../ui/Option";
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   options: { value: string; label: string }[];

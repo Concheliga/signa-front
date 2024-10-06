@@ -1,7 +1,6 @@
 import "./registration-styles/registration.css";
 import Form from "./components/Form.tsx";
 
-
 const RegistrationModule: React.FC = () => {
     return(
         <div className="container">
