@@ -1,0 +1,95 @@
+@import "reset.css";
+
+:root{
+    --white-color: #F9FAFF;
+    --light-blue-color: #00BEFF;
+    --red-color: #FF5E59;
+    --black-color: #232323;
+    --blue-color: #008FC0;
+}
+
+body{
+    font-family: "Roboto", system-ui;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.logo{
+    display: flex;
+    margin-left: 22px;
+}
+
+.logo__text{
+    width: 120px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.nav-main-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 66px;
+}
+
+.navigation-menu{
+    width: 100px;
+    margin-top: 62px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.navigation-list__item:not(:first-child){
+    margin-top: 60px;
+}
+
+.main{
+    width: 1500px;
+}
+
+.page-name{
+    text-align: center;
+    font-size: 32px;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.form{
+    display: flex;
+    justify-content: space-between;
+    margin: 60px 50px 0 50px;
+}
+
+.left-fields, .right-fields{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.field{
+    margin-bottom: 60px;
+}
+
+.field:nth-child(3n){
+    margin-bottom: 0;
+}
+
+.field__input{
+    width: 460px;
+    border: 1px, solid, #232323;
+    border-radius: 4px;
+    padding: 10px;
+    margin-left: 22px;
+}
+
+.footer__list{
+    display: flex;
+    max-width: 780px;
+    justify-content: space-between;
+    margin: 240px auto 0 auto;
+}

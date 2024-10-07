@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/profile.css">
+</head>
+
+<body>
+    <header class="logo">
+        <img class="logo__img" src="../img/logoSportUrfu.png" alt="Логотип Спорт УрФУ">
+        <p class="logo__text">СПОРТ УРФУ</p>
+    </header>
+
+    <div class="nav-main-container">
+        <aside class="navigation-menu">
+            <nav class="navigation">
+                <ul class="navigation-list">
+                    <li class="navigation-list__item">
+                        <img class="navigation-list__item__img" src="../img/home-page-icon.svg" alt="Главная">
+                        <p class="navigation-list__item__text">Главная</p>
+                    </li>
+                    <li class="navigation-list__item">
+                        <img class="navigation-list__item__img" src="../img/tournaments-icon.svg" alt="Турниры">
+                        <p class="navigation-list__item__text">Турниры</p>
+                    </li>
+                    <li class="navigation-list__item">
+                        <img class="navigation-list__item__img" src="../img/statistic-icon.svg" alt="Статистика">
+                        <p class="navigation-list__item__text">Статистика</p>
+                    </li>
+                    <li class="navigation-list__item">
+                        <img class="navigation-list__item__img" src="../img/profile-icon.svg" alt="Мой профиль">
+                        <p class="navigation-list__item__text">Мой<br> профиль</p>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <h1 class="page-name">Профиль участника</h1>
+            <div class="user">
+                <img src="../img/avatar.svg" alt="Аватарка" class="user__avatar">
+                <p class="user__full-name">Иван Иванович Иванов</p>
+            </div>
+            <form class="form">
+                <ul class="left-fields">
+                    <li class="field">
+                        <label for="first-name">Имя</label>
+                        <input class="field__input" type="text" name="first-name" id="first-name" value="Иван" disabled>
+                    </li>
+                    <li class="field">
+                        <label for="patronymic">Отчество</label>
+                        <input class="field__input" type="text" name="patronymic" id="patronymic" value="Иванович" disabled>
+                    </li>
+                    <li class="field">
+                        <label for="past-name">Фамилия</label>
+                        <input class="field__input" type="text" name="past-name" id="past-name" value="Иванов" disabled>
+                    </li>
+                </ul>
+                <ul class="right-fields">
+                    <li class="field">
+                        <label for="gender">Пол</label>
+                        <input class="field__input" type="text" name="gender" id="gender" value="Мужской" disabled>
+                    </li>
+                    <li class="field">
+                        <label for="group">Группа</label>
+                        <input class="field__input" type="text" name="group" id="group" value="РИ-320940" disabled>
+                    </li>
+                    <li class="field">
+                        <label for="link">Ссылка на ВК</label>
+                        <input class="field__input" type="url" name="link" id="link" value="vk.com/545455" disabled>
+                    </li>
+                </ul>
+            </form>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <ul class="footer__list">
+            <li class="footer__list__element">Главная</li>
+            <li class="footer__list__element">Турниры</li>
+            <li class="footer__list__element">Статистика</li>
+            <li class="footer__list__element">Написать в поддержку </li>
+        </ul>
+    </footer>
+</body>
