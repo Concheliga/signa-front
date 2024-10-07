@@ -1,0 +1,10 @@
+.navigation-menu{
+    width: 100px;
+    margin-top: 62px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.navigation-list__item:not(:first-child){
+    margin-top: 60px;
+}
