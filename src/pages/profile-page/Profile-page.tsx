@@ -6,14 +6,15 @@ import "./css/profile-page.css"
 
 const ProfilePage: React.FC = () => {
     return (
-        <div>
+        <body>
             <Logo />
             <div className="nav-main-container">
                 <LeftSidebar />
                 <ProfileModule />
+                <div className="helper"></div>
             </div>
             <Footer />
-        </div>
+        </body>
     );
 };
 

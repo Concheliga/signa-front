@@ -1,5 +1,6 @@
 .main{
     width: 1500px;
+    background-color: #F9FAFF;
 }
 
 .page-name{
@@ -11,6 +12,10 @@
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+.user__full-name{
+    font-size: 24px;
 }
 
 .form{
@@ -31,6 +36,10 @@
 
 .field:nth-child(3n){
     margin-bottom: 0;
+}
+
+label{
+    font-weight: 500;
 }
 
 .field__input{

@@ -12,3 +12,7 @@
     justify-content: space-between;
     margin: 0 auto;
 }
+
+.footer__list__element{
+    font-weight: 500;
+}

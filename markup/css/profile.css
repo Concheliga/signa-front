@@ -46,6 +46,7 @@ body{
 
 .main{
     width: 1500px;
+    background-color: #F9FAFF;
 }
 
 .page-name{
@@ -57,6 +58,10 @@ body{
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+.user__full-name{
+    font-size: 24px;
 }
 
 .form{
@@ -77,6 +82,10 @@ body{
 
 .field:nth-child(3n){
     margin-bottom: 0;
+}
+
+label{
+    font-weight: 500;
 }
 
 .field__input{
@@ -100,4 +109,8 @@ body{
     max-width: 780px;
     justify-content: space-between;
     margin: 0 auto;
+}
+
+.footer__list__element{
+    font-weight: 500;
 }
