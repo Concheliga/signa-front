@@ -72,6 +72,10 @@ body{
     margin-left: auto;
 }
 
+.tournament-form__input{
+    color: #FFFFFF;
+}
+
 table {
     width: 100%;
 }
@@ -95,11 +99,6 @@ select{
 
 option{
     background-color: #808080;
-}
-
-option:hover{ 
-    color: #EDF0FF;
-    background-color: #000000;
 }
 
 tr td button{
