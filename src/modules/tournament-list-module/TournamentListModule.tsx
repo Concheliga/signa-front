@@ -1,15 +1,55 @@
 import searchIcon from "./img/search-icon.svg";
 import "./css/tournamentListModule.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import dayjs from "dayjs";
+
+interface TournamentData {
+    title: string;
+    location: string;
+    sportType: string;
+    gender: string;
+    startedAt: string;
+    state: string;
+}
 
 const TournamentListModule: React.FC = () => {
+    const [tournamentsData, setTournamentsData] = useState<TournamentData[] | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                //после tournament/ должен быть id tournamenta
+                const response = await axios.get<TournamentData[]>('https://localhost:7127/tournament');
+                setTournamentsData(response.data);
+                setLoading(false);
+            } catch (err) {
+                setError('Ошибка при загрузке данных пользователя.');
+                setLoading(false);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
+    if (loading) {
+        return <p>Загрузка данных...</p>;
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
     return (
         <main className="main">
             <h1 className="page-name">Список всех турниров</h1>
             <form className="tournament-form" id="tournament-form">
                 <input type="text" className="tournament-form__input" id="tournament-form__input" placeholder="Искать"
-                    required/>
+                    required />
                 <button className="tournament-form__btn" id="tournament-form__btn">
-                    <img src={searchIcon} alt="Поиск"/>
+                    <img src={searchIcon} alt="Поиск" />
                 </button>
             </form>
             <table>
@@ -31,32 +71,19 @@ const TournamentListModule: React.FC = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Волейбол</td>
-                        <td>Турнир "Лучшая подача в УрФУ" среди женщин</td>
-                        <td>02.11.2024</td>
-                        <td>ФОК</td>
-                        <td>Женцины</td>
-                        <td>Идет регистрация</td>
-                        <td><button>Регистрация</button></td>
-                    </tr>
-                    <tr>
-                        <td>Футбол</td>
-                        <td>Любительская игра для начинающих и продвинутых</td>
-                        <td>20.10.2024</td>
-                        <td>Фонвизина 8</td>
-                        <td>Смешанный</td>
-                        <td>Завершен</td>
-                    </tr>
-                    <tr>
-                        <td>Баскетбол</td>
-                        <td>Чемпионат Свердловской области среди мужских команд</td>
-                        <td>25.10.2024 - 30.10.2024</td>
-                        <td>Стадион</td>
-                        <td>Мужчины</td>
-                        <td>Идет регистрация</td>
-                        <td><button>Регистрация</button></td>
-                    </tr>
+                    {tournamentsData?.map((tournamentData, id) => {
+                        return (
+                            <tr key={id}>
+                                <td>{tournamentData.sportType}</td>
+                                <td>{tournamentData.title}</td>
+                                <td>{dayjs(tournamentData.startedAt).format('DD.MM.YYYY')}</td>
+                                <td>{tournamentData.location}</td>
+                                <td>{tournamentData.gender}</td>
+                                <td>{tournamentData.state}</td>
+                                {tournamentData.state === 'Идет регистрация'? <td><button>Регистрация</button></td>: null}
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </main>
