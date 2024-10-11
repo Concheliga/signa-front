@@ -1,0 +1,125 @@
+@import "reset.css";
+
+:root{
+    --white-color: #F9FAFF;
+    --light-blue-color: #00BEFF;
+    --red-color: #FF5E59;
+    --black-color: #232323;
+    --blue-color: #008FC0;
+}
+
+body{
+    font-family: "Roboto", system-ui;
+    font-size: 16px;
+    font-weight: normal;
+    background-color: #F9FAFF;
+}
+
+.logo{
+    display: flex;
+    margin-left: 22px;
+}
+
+.logo__text{
+    width: 120px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.nav-main-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    gap: 60px;
+}
+
+.navigation-menu{
+    width: 100px;
+    margin-top: 78px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.navigation-list__item:not(:first-child){
+    margin-top: 60px;
+}
+
+.main{
+    width: 100%;
+    max-width: 2000px;
+    height: calc(100vh - 250px);
+    padding-top: 16px;
+    background-color: #FFFFFF;
+}
+
+.page-name{
+    text-align: center;
+    font-size: 32px;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user__full-name{
+    font-size: 24px;
+}
+
+.form{
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 50px 0 50px;
+}
+
+.left-fields, .right-fields{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.field{
+    margin-bottom: 60px;
+}
+
+.field:nth-child(3n){
+    margin-bottom: 0;
+}
+
+label{
+    font-weight: 500;
+}
+
+.field__input{
+    width: 460px;
+    border: 1px, solid, #232323;
+    border-radius: 4px;
+    padding: 10px;
+    margin-left: 22px;
+}
+
+.helper{
+    width: 100px;
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 35px;
+}
+
+.footer__list{
+    display: flex;
+    max-width: 780px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.footer__list__element{
+    font-weight: 500;
+}
