@@ -1,0 +1,61 @@
+.main{
+    width: 100%;
+    max-width: 2000px;
+    height: calc(100vh - 250px);
+    padding-top: 16px;
+    padding-left: 100px;
+    background-color: #FFFFFF;
+}
+
+.page-name{
+    text-align: center;
+    font-size: 32px;
+}
+
+.tournament-form{
+    background-color: #000000;
+    opacity: 0.5;
+    padding: 5px 0 5px 30px;
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 50px;
+    height: 34px;
+    margin-left: auto;
+}
+
+.tournament-form__input{
+    color: #FFFFFF;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    border: 0;
+    padding: 40px;
+    text-align: center;
+}
+
+tr td:nth-child(3){
+    width: 200px;
+    text-align: left;
+    padding-left: 60px;
+}
+
+select{
+    font-weight: 500;
+    text-align: center;
+}
+
+option{
+    background-color: #808080;
+}
+
+tr td button{
+    border-radius: 50px;
+    background-color: #232323;
+    color: #FFFFFF;
+    padding: 15px 23px;
+}
