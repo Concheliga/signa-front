@@ -1,4 +1,5 @@
 import "./css/tournament-bracket-module.css";
+//посмотреть js библиотеки для отрисовки турнирной таблицы
 
 const TournamentBracketModule: React.FC = () => {
     return (
