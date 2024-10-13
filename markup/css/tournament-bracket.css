@@ -1,0 +1,302 @@
+@import "reset.css";
+
+body {
+    font-family: "Roboto", system-ui;
+    font-size: 16px;
+    font-weight: normal;
+    background-color: #F9FAFF;
+}
+
+.logo {
+    display: flex;
+    margin-left: 22px;
+}
+
+.logo__text {
+    width: 120px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.nav-main-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    gap: 60px;
+}
+
+.navigation-menu {
+    width: 100px;
+    margin-top: 78px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.navigation-list__item:not(:first-child) {
+    margin-top: 60px;
+}
+
+.main {
+    width: 100%;
+    max-width: 2000px;
+    padding-top: 16px;
+    background-color: #FFFFFF;
+    padding-bottom: 110px;
+}
+
+.page-name {
+    text-align: center;
+    font-size: 32px;
+}
+
+.tabs {
+    margin: 66px auto;
+    display: flex;
+    max-width: 1140px;
+    justify-content: space-between;
+}
+
+.tabs>.active {
+    text-decoration: underline solid #00A7E0;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+    font-weight: 500;
+}
+
+.table-container {
+    justify-content: center;
+    display: flex;
+    gap: 100px;
+    margin-bottom: 90px;
+}
+
+.table {
+    width: 200px;
+    background-color: #f0f4ff;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-row .team {
+    flex-grow: 1;
+}
+
+.table-row .score {
+    font-weight: bold;
+}
+
+@media screen and (min-width: 700px) {
+    .round-table {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .round {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: row-reverse;
+        -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: relative;
+        -webkit-flex: 4 0 auto;
+        -ms-flex: 4 0 auto;
+        flex: 4 0 auto;
+        -webkit-order: 3;
+        -ms-flex-order: 3;
+        order: 3;
+    }
+
+    .round-table ul {
+        margin: 0;
+        padding: 0;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        list-style: none;
+        -webkit-flex: 8 0 auto;
+        -ms-flex: 8 0 auto;
+        flex: 8 0 auto;
+        -webkit-order: 4;
+        -ms-flex-order: 4;
+        order: 4;
+    }
+
+    .round::before {
+        content: '';
+        display: inline-block;
+        width: 10px;
+        border-top: 1px solid;
+        -webkit-order: 2;
+        -ms-flex-order: 2;
+        order: 2;
+        -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+    }
+
+    .round::after {
+        content: '';
+        display: inline-block;
+        width: 10px;
+        -webkit-align-self: stretch;
+        -ms-flex-item-align: stretch;
+        align-self: stretch;
+        -webkit-order: 3;
+        -ms-flex-order: 3;
+        order: 3;
+        -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+        background-image: linear-gradient(#000, #000), linear-gradient(#000, #000), linear-gradient(#000, #000);
+        background-size: 100% 1px, 100% 1px, 1px 50%;
+        background-position: 0 25%, 0 75%, 100% 50%;
+        background-repeat: no-repeat;
+    }
+
+    .round-table p {
+        border: 1px solid;
+        margin: .5em 0;
+        padding: 1em;
+        background: #eee;
+        -webkit-flex: 3 0 auto;
+        -ms-flex: 3 0 auto;
+        flex: 3 0 auto;
+        -webkit-order: 1;
+        -ms-flex-order: 1;
+        order: 1;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .round-table {
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .round-table>ul {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-self: stretch;
+        -ms-flex-item-align: stretch;
+        align-self: stretch;
+        background: linear-gradient(#000, #000) 50% 0 no-repeat;
+        background-size: 1px 50%;
+    }
+
+    .round-table>ul>.round:first-child {
+        -webkit-order: 1;
+        -ms-flex-order: 1;
+        order: 1;
+    }
+
+    .round-table>ul>.round:last-child,
+    .round-table>ul>.round:last-child li {
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-order: 3;
+        -ms-flex-order: 3;
+        order: 3;
+    }
+
+    .round-table>ul>.round:last-child::after,
+    .round-table>ul>.round:last-child .round::after {
+        background-position: 0 25%, 0 75%, 0% 50%;
+    }
+
+    .round-table::before,
+    .round-table::after {
+        content: none;
+    }
+
+    .round-table>ul::after {
+        content: '';
+        display: inline-block;
+        width: 30px;
+        border-top: 1px solid;
+        background: blue;
+        -webkit-order: 1;
+        -ms-flex-order: 1;
+        order: 1;
+        -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+        -webkit-align-self: center;
+        -ms-flex-item-align: center;
+        align-self: center;
+    }
+
+    .round-table>p {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .round-table li {
+        margin-left: -20px;
+    }
+
+    .round-table {
+        margin-left: 80px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .round-table p {
+        max-width: 100px;
+        border: 1px solid;
+        margin: .5em 0;
+        background: #eee;
+    }
+}
+
+.helper {
+    width: 100px;
+}
+
+.footer{
+    padding: 38px 0;
+}
+
+.footer__list {
+    display: flex;
+    max-width: 780px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.footer__list__element {
+    font-weight: 500;
+}
