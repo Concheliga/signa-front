@@ -21,7 +21,6 @@ const TournamentListModule: React.FC = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                //после tournament/ должен быть id tournamenta
                 const response = await axios.get<TournamentData[]>('https://localhost:7127/tournament');
                 setTournamentsData(response.data);
                 setLoading(false);
