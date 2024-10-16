@@ -1,13 +1,12 @@
-import "./ui/css/reset.css"
-import ProfilePage from "./pages/profile-page/Profile-page";
+import "./ui/css/reset.css";
+import TournamentPage from "./pages/tournament-page/TournamentPage";
 
 function App() {
 
   return (
     <>
-      <ProfilePage/>
+      <TournamentPage/>
     </>
-      
   )
 }
 

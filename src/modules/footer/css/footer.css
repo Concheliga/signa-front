@@ -1,9 +1,12 @@
 .footer {
+    padding: 38px 0;
     position: absolute;
-    left: 0;
     bottom: 0;
+    left: 0;
     width: 100%;
-    height: 35px;
+    height: 100px;
+    text-align: center;
+    line-height: 60px;
 }
 
 .footer__list{
