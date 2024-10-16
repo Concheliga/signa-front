@@ -1,10 +1,127 @@
 import "./css/tournament-bracket-module.css";
-//посмотреть js библиотеки для отрисовки турнирной таблицы
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { TreeGenerator } from 'tournament-bracket-tree';
+import 'tournament-bracket-tree/dist/index.css';
+import { buildTree } from "./helpers/buildTree";
+import { mapTournamentToNode } from "./helpers/mapTournamentToNode";
+
+interface UserData {
+    firstName: string;
+    lastName: string;
+    patronymic: string;
+    gender: string;
+    groupNumber: string;
+    vkLink: string;
+}
+
+interface MatchData {
+    id: string;
+    nextMatchId: string;
+    teams: TeamData[];
+}
+
+interface TeamData {
+    score: number,
+    id: string,
+    title: string;
+    captain: UserData;
+    members: UserData[];
+}
+
+interface TournamentData {
+    title: string;
+    location: string;
+    sportType: string;
+    gender: string;
+    startedAt: string;
+    state: string;
+    maxTeamsCount: string;
+    regulationLink: string;
+    chatLink: string;
+    teams: TeamData[];
+    matches: MatchData[];
+    organizers: UserData[];
+    currentMembersCount: number;
+}
+
+interface Game {
+    teamOne: string;
+    scoreTeamOne: number;
+    teamTwo: string;
+    scoreTeamTwo: number;
+}
+
+interface Tree<Game> {
+    data: Game;
+    left?: Tree<Game> | undefined;
+    right?: Tree<Game> | undefined;
+}
 
 const TournamentBracketModule: React.FC = () => {
+    const [tournamentData, setTournamentData] = useState<TournamentData | null>(null);
+    const [matchesData, setMatchesData] = useState<MatchData[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+    const [tree, setTree] = useState<Tree<Game>>(
+        {
+            data: {
+                teamOne: "Loading...",
+                scoreTeamOne: 0,
+                teamTwo: "Loading...",
+                scoreTeamTwo: 0
+            },
+            left: undefined,
+            right: undefined,
+        });
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                //после tournament/ должен быть id tournamenta
+                const tournamentResponse = await axios.get<TournamentData>('https://localhost:7127/tournament/49815da3-6eb5-4bfe-be3f-3c3ff34090a1');
+                const matchesResponse = await axios.get<MatchData[]>('https://localhost:7127/tournament/49815da3-6eb5-4bfe-be3f-3c3ff34090a1/matches');
+                setTournamentData(tournamentResponse.data);
+                setMatchesData(matchesResponse.data);;
+                console.log(matchesResponse.data);
+                setLoading(false);
+            } catch (err) {
+                setError('Ошибка при загрузке данных пользователя.');
+                setLoading(false);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
+    useEffect(() => {
+        if (matchesData.length > 0) {
+            const builtTree = buildTree(matchesData);
+            setTree(builtTree ?? {
+                data: {
+                    teamOne: '',
+                    scoreTeamOne: 0,
+                    teamTwo: '',
+                    scoreTeamTwo: 0
+                },
+                left: undefined,
+                right: undefined
+            });
+            console.log(builtTree);
+        }
+    }, [matchesData]);
+
+    if (loading) {
+        return <p>Загрузка данных...</p>;
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
     return (
         <main className="main">
-            <h1 className="page-name">Название турнира</h1>
+            <h1 className="page-name">{tournamentData?.title || ''}</h1>
             <ul className="tabs">
                 <li className="tab"><a href="#" className="tab-link">Основная информация</a></li>
                 <li className="tab"><a href="#" className="tab-link">Участники</a></li>
@@ -32,7 +149,7 @@ const TournamentBracketModule: React.FC = () => {
                         <div className="score">1</div>
                     </div>
                 </div>
-            
+
                 <div className="table">
                     <h3 className="group-name-title">Группа Б</h3>
                     <div className="table-row">
@@ -93,65 +210,15 @@ const TournamentBracketModule: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="round-table round">
-                <ul>
-                    <li className="round">
-                        <ul>
-                            <li className="round">
-                                <ul>
-                                    <li>
-                                        <p>team 1.1</p>
-                                    </li>
-                                    <li>
-                                        <p>team 1.2</p>
-                                    </li>
-                                </ul>
-                                <p>winner1</p>
-                            </li>
-                            <li className="round">
-                                <ul>
-                                    <li>
-                                        <p>team 2.1</p>
-                                    </li>
-                                    <li>
-                                        <p>team 2.2</p>
-                                    </li>
-                                </ul>
-                                <p>winner 2</p>
-                            </li>
-                        </ul>
-                        <p>winner 1-2</p>
-                    </li>
-                    <li className="round">
-                        <ul>
-                            <li className="round">
-                                <ul>
-                                    <li>
-                                        <p>team 3.1</p>
-                                    </li>
-                                    <li>
-                                        <p>team 3.2</p>
-                                    </li>
-                                </ul>
-                                <p>winner 3</p>
-                            </li>
-                            <li className="round">
-                                <ul>
-                                    <li>
-                                        <p>team 4.1</p>
-                                    </li>
-                                    <li>
-                                        <p>team 4.2</p>
-                                    </li>
-                                </ul>
-                                <p>winner 4</p>
-                            </li>
-                        </ul>
-                        <p>winner 3-4</p>
-                    </li>
-                </ul>
-                <p>final winner</p>
-            </div>
+            <TreeGenerator
+                root={"right"}
+                mapDataToNode={mapTournamentToNode}
+                tree={tree}
+                lineThickness={1}
+                lineColor="black"
+                lineStyle="solid"
+                lineLength={40}
+            />
         </main>
     );
 };

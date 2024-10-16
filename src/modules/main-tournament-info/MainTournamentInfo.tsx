@@ -50,8 +50,10 @@ const MainTournamentInfo: React.FC = () => {
         const fetchUserData = async () => {
             try {
                 //после tournament/ должен быть id tournamenta
-                const response = await axios.get<TournamentData>('https://localhost:7127/tournament/2d51eaf2-81a5-4240-aabb-c823131b1368');
+                const response = await axios.get<TournamentData>('https://localhost:7127/tournament/d867bc9b-552b-4862-9136-5330b0b413fe');
+                const response2 = await axios.get<TournamentData>('https://localhost:7127/tournament/d867bc9b-552b-4862-9136-5330b0b413fe/matches');
                 setTournamentData(response.data);
+                console.log(response2.data)
                 setLoading(false);
             } catch (err) {
                 setError('Ошибка при загрузке данных пользователя.');
