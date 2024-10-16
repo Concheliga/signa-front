@@ -1,5 +1,3 @@
-import User from "../../user/user";
-
 function getFormData(e: React.FormEvent<HTMLFormElement>): void{
     e.preventDefault();
 
@@ -10,8 +8,6 @@ function getFormData(e: React.FormEvent<HTMLFormElement>): void{
     formData.forEach((value, key) => {
         resultData[key] = value.toString();
     });
-    const user = new User(resultData);
-    console.log(user); 
 }
 
 export {getFormData};
