@@ -1,4 +1,4 @@
-import "./ui/css/reset.css"
+import "./ui/css/reset.css";
 import ProfilePage from "./pages/profile-page/Profile-page";
 
 function App() {
@@ -7,7 +7,6 @@ function App() {
     <>
       <ProfilePage/>
     </>
-      
   )
 }
 

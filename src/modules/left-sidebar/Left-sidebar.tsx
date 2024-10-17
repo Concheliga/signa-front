@@ -10,22 +10,30 @@ const LeftSidebar: React.FC = () => {
             <nav className="navigation">
                 <ul className="navigation-list">
                     <li className="navigation-list__item">
-                        <img className="navigation-list__item__img" src={homePageIcon} alt="Главная" />
-                        <p className="navigation-list__item__text">Главная</p>
+                        <a href='#'>
+                            <img className="navigation-list__item__img" src={homePageIcon} alt="Главная" />
+                            <p className="navigation-list__item__text">Главная</p>
+                        </a>
                     </li>
                     <li className="navigation-list__item">
-                        <img className="navigation-list__item__img" src={TournamentsIcon} alt="Турниры" />
-                        <p className="navigation-list__item__text">Турниры</p>
+                        <a href='#'>
+                            <img className="navigation-list__item__img" src={TournamentsIcon} alt="Турниры" />
+                            <p className="navigation-list__item__text">Турниры</p>
+                        </a>
                     </li>
                     <li className="navigation-list__item">
-                        <img className="navigation-list__item__img" src={StatisticIcon} alt="Статистика" />
-                        <p className="navigation-list__item__text">Статистика</p>
+                        <a href='#'>
+                            <img className="navigation-list__item__img" src={StatisticIcon} alt="Статистика" />
+                            <p className="navigation-list__item__text">Статистика</p>
+                        </a>
                     </li>
                     <li className="navigation-list__item">
-                        <img className="navigation-list__item__img" src={ProfileIcon} alt="Мой профиль" />
-                        <p className="navigation-list__item__text">
-                            Мой<br /> профиль
-                        </p>
+                        <a href='#'>
+                            <img className="navigation-list__item__img" src={ProfileIcon} alt="Мой профиль" />
+                            <p className="navigation-list__item__text">
+                                Мой<br /> профиль
+                            </p>
+                        </a>
                     </li>
                 </ul>
             </nav>

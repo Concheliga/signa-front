@@ -1,23 +1,24 @@
 import axios from "axios";
 import { baseURL } from "../../../constants/constants";
 
-interface UserData {
-    firstName: string;
-    lastName: string;
-    patronymic: string;
+interface TournamentData {
+    title: string;
+    location: string;
+    sportType: string;
     gender: string;
-    groupNumber: string;
+    startedAt: string;
+    state: string;
 }
 
 const fetchUserData = async (
-    setUserData: React.Dispatch<React.SetStateAction<UserData | null>>,
+    setTournamentsData: React.Dispatch<React.SetStateAction<TournamentData[] | null>>,
     setLoading: React.Dispatch<React.SetStateAction<boolean>>,
     setError: React.Dispatch<React.SetStateAction<string | null>>
-    ) => {
+) => {
     try {
-        //после user/ должен быть id usera
-        const response = await axios.get<UserData>(`${baseURL}/user/67ec6509-8ed2-4040-a70b-e0d5ba1085c6`);
-        setUserData(response.data);
+        const response = await axios.get<TournamentData[]>(`${baseURL}/tournament`);
+        
+        setTournamentsData(response.data);
         setLoading(false);
     } catch (err) {
         setError('Ошибка при загрузке данных пользователя.');
