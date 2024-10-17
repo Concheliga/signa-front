@@ -1,16 +1,17 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import Select from "../../../components/Select";
 import Button from "../../../ui/Button";
 import Label from "../../../ui/Label";
 import Input from "../../../ui/Input";
 import { addErrorMessage } from "../../../utils/error-message";
 import {
-    namePattern, groupPattern, linkPattern, passwordPattern,
-    nameErrorMessage, linkErrorMessage, groupErrorMessage, passwordErrorMessage,
-    stringPasswordPattern, stringNamePattern, stringGroupPattern, stringLinkPattern,
+    groupPattern, linkPattern, passwordPattern, linkErrorMessage, groupErrorMessage, 
+    passwordErrorMessage, stringPasswordPattern, stringGroupPattern, stringLinkPattern,
     emailPattern, emailErrorMessage, stringEmailPattern
 } from "../constants/patterns";
-import axios from "axios";
+import { onInputChange, onSelectChange } from "../utils/registration-utils";
+import { onFormSubmit } from "../api/registration-api";
+import Names from "./Names";
 
 interface FormData {
     firstName: string;
@@ -27,7 +28,7 @@ const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props })
         firstName: "",
         lastName: "",
         patronymic: "",
-        gender: "",
+        gender: "male",
         groupNumber: "",
         link: '',
         password: "",
@@ -38,74 +39,35 @@ const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props })
         { name: "patronymic", value: "Отчество:" }
     ];
 
-    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
-
-    const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setFormData(prevState => ({
-            ...prevState,
-            gender: e.target.value
-        }));
-    };
-
-    const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        try {
-            const response = await axios.post("https://localhost:7127/user", formData);
-            console.log("Ответ сервера:", response);
-            console.log("Ответ сервера:", response.data);
-        } catch (error) {
-            console.error("Ошибка при отправке формы:", error);
-            alert("Произошла ошибка при отправке формы.");
-        }
-    };
-
     return (
-        <form onSubmit={onFormSubmit} {...props}>
+        <form onSubmit={(e) => onFormSubmit(e, formData)} {...props}>
             <Label htmlFor="email">Электронная почта:</Label>
             <Input onChange={(e) => {
                 addErrorMessage(e, emailPattern, emailErrorMessage);
-                onInputChange(e);
+                onInputChange(e, setFormData);
             }}
                 type="email" id="email" name="email" pattern={stringEmailPattern} required />
-            {names.map((name, index) => {
-                return (
-                    <Fragment key={index}>
-                        <Label htmlFor={name.name} >{name.value}</Label>
-                        <Input onChange={(e) => {
-                            addErrorMessage(e, namePattern, nameErrorMessage);
-                            onInputChange(e);
-                        }}
-                            type="text" className="names" id={name.name} name={name.name} pattern={stringNamePattern} required />
-                    </Fragment>
-                )
-            })}
+            <Names names={names} setFormData={setFormData} type="text" className="names" />
             <Label htmlFor="gender">Пол:</Label>
             <Select onChange={(e) => {
-                onSelectChange(e);
+                onSelectChange(e, setFormData);
             }} options={[{ value: "male", label: "Мужской" }, { value: "female", label: "Женский" }]} id="gender" name="gender" required />
-            <Label htmlFor="group">Академическая группа:</Label>
+            <Label htmlFor="groupNumber">Академическая группа:</Label>
             <Input onChange={(e) => {
                 addErrorMessage(e, groupPattern, groupErrorMessage);
-                onInputChange(e);
+                onInputChange(e, setFormData);
             }}
-                type="text" id="group" name="group" pattern={stringGroupPattern} required />
+                type="text" id="groupNumber" name="groupNumber" pattern={stringGroupPattern} required />
             <Label htmlFor="link">Ссылка на ВК:</Label>
             <Input onChange={(e) => {
                 addErrorMessage(e, linkPattern, linkErrorMessage);
-                onInputChange(e);
+                onInputChange(e, setFormData);
             }}
                 type="url" id="link" name="link" pattern={stringLinkPattern} required />
             <Label htmlFor="password">Пароль:</Label>
             <Input onChange={(e) => {
                 addErrorMessage(e, passwordPattern, passwordErrorMessage);
-                onInputChange(e);
+                onInputChange(e, setFormData);
             }}
                 type="password" id="password" name="password" pattern={stringPasswordPattern} required />
             <Button type="submit">Зарегистрироваться</Button>
