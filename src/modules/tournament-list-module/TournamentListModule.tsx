@@ -1,8 +1,8 @@
 import searchIcon from "./img/search-icon.svg";
 import "./css/tournamentListModule.css";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import dayjs from "dayjs";
+import { fetchUserData } from "./api/tournaments-api";
+import Tournaments from "./Components/Tournaments";
 
 interface TournamentData {
     title: string;
@@ -19,18 +19,7 @@ const TournamentListModule: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-                const response = await axios.get<TournamentData[]>('https://localhost:7127/tournament');
-                setTournamentsData(response.data);
-                setLoading(false);
-            } catch (err) {
-                setError('Ошибка при загрузке данных пользователя.');
-                setLoading(false);
-            }
-        };
-
-        fetchUserData();
+        fetchUserData(setTournamentsData, setLoading, setError);
     }, []);
 
     if (loading) {
@@ -70,19 +59,7 @@ const TournamentListModule: React.FC = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {tournamentsData?.map((tournamentData, id) => {
-                        return (
-                            <tr key={id}>
-                                <td>{tournamentData.sportType}</td>
-                                <td>{tournamentData.title}</td>
-                                <td>{dayjs(tournamentData.startedAt).format('DD.MM.YYYY')}</td>
-                                <td>{tournamentData.location}</td>
-                                <td>{tournamentData.gender}</td>
-                                <td>{tournamentData.state}</td>
-                                {tournamentData.state === 'Идет регистрация'? <td><button>Регистрация</button></td>: null}
-                            </tr>
-                        )
-                    })}
+                    <Tournaments tournamentsData={tournamentsData}/>
                 </tbody>
             </table>
         </main>

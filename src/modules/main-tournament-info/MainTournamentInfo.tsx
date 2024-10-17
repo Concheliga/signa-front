@@ -1,8 +1,8 @@
 import "./css/main-tournament-info.css";
-import orgAvatar from "./img/org-avatar.svg";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import dayjs from "dayjs";
+import { fetchUserData } from "./api/mainTournamentApi";
+import Organizers from "./Components/Organizers";
 
 interface UserData {
     firstName: string;
@@ -47,21 +47,7 @@ const MainTournamentInfo: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-                //после tournament/ должен быть id tournamenta
-                const response = await axios.get<TournamentData>('https://localhost:7127/tournament/d867bc9b-552b-4862-9136-5330b0b413fe');
-                const response2 = await axios.get<TournamentData>('https://localhost:7127/tournament/d867bc9b-552b-4862-9136-5330b0b413fe/matches');
-                setTournamentData(response.data);
-                console.log(response2.data)
-                setLoading(false);
-            } catch (err) {
-                setError('Ошибка при загрузке данных пользователя.');
-                setLoading(false);
-            }
-        };
-
-        fetchUserData();
+        fetchUserData(setTournamentData, setLoading, setError);
     }, []);
 
     if (loading) {
@@ -105,17 +91,7 @@ const MainTournamentInfo: React.FC = () => {
                         <label htmlFor="group">Место проведения</label>
                         <input className="field__input" type="text" name="group" id="group" value={tournamentData?.location || ''} disabled />
                     </li>
-                    {tournamentData?.organizers.map(organizer => {
-                        return (
-                            <li className="field org">
-                                <img src={orgAvatar} alt="Фото организатора" className="org_img" />
-                                <div className="org_info">
-                                    <p className="status">Организатор</p>
-                                    <p className="name">{organizer.lastName + ' ' + organizer.firstName + ' ' + organizer.patronymic}</p>
-                                </div>
-                            </li>
-                        )
-                    })}
+                    <Organizers organizers={tournamentData?.organizers} />
                 </ul>
             </form>
             <ul className="buttons">

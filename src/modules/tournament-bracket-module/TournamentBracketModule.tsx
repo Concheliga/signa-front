@@ -1,6 +1,6 @@
 import "./css/tournament-bracket-module.css";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { fetchUserData } from "./api/api-functions";
 import { TreeGenerator } from 'tournament-bracket-tree';
 import 'tournament-bracket-tree/dist/index.css';
 import { buildTree } from "./helpers/buildTree";
@@ -76,27 +76,13 @@ const TournamentBracketModule: React.FC = () => {
         });
 
     useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-                //после tournament/ должен быть id tournamenta
-                const tournamentResponse = await axios.get<TournamentData>('https://localhost:7127/tournament/49815da3-6eb5-4bfe-be3f-3c3ff34090a1');
-                const matchesResponse = await axios.get<MatchData[]>('https://localhost:7127/tournament/49815da3-6eb5-4bfe-be3f-3c3ff34090a1/matches');
-                setTournamentData(tournamentResponse.data);
-                setMatchesData(matchesResponse.data);;
-                console.log(matchesResponse.data);
-                setLoading(false);
-            } catch (err) {
-                setError('Ошибка при загрузке данных пользователя.');
-                setLoading(false);
-            }
-        };
-
-        fetchUserData();
+        fetchUserData(setTournamentData, setMatchesData, setLoading, setError);
     }, []);
 
     useEffect(() => {
         if (matchesData.length > 0) {
             const builtTree = buildTree(matchesData);
+            
             setTree(builtTree ?? {
                 data: {
                     teamOne: '',
@@ -107,7 +93,6 @@ const TournamentBracketModule: React.FC = () => {
                 left: undefined,
                 right: undefined
             });
-            console.log(builtTree);
         }
     }, [matchesData]);
 
