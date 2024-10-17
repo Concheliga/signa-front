@@ -1,11 +1,11 @@
 import "./ui/css/reset.css";
-import RegistrationPage from "./pages/Registration/Registration-page";
+import ProfilePage from "./pages/profile-page/Profile-page";
 
 function App() {
 
   return (
     <>
-      <RegistrationPage/>
+      <ProfilePage/>
     </>
   )
 }

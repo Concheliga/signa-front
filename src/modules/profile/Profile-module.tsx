@@ -1,7 +1,7 @@
 import avatar from "./img/avatar.svg";
 import "./css/profile-module.css";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { fetchUserData } from "./api/profile-api";
 
 interface UserData {
     firstName: string;
@@ -17,20 +17,7 @@ const ProfileModule: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-                //после user/ должен быть id usera
-                const response = await axios.get<UserData>('https://localhost:7127/user/67ec6509-8ed2-4040-a70b-e0d5ba1085c6');
-                console.log(response);
-                setUserData(response.data);
-                setLoading(false);
-            } catch (err) {
-                setError('Ошибка при загрузке данных пользователя.');
-                setLoading(false);
-            }
-        };
-
-        fetchUserData();
+        fetchUserData(setUserData, setLoading, setError);
     }, []);
 
     if (loading) {
@@ -46,7 +33,7 @@ const ProfileModule: React.FC = () => {
             <h1 className="page-name">Профиль участника</h1>
             <div className="user">
                 <img src={avatar} alt="Аватарка" className="user__avatar" />
-                <p className="user__full-name">{(userData?.firstName || '') + ' ' + (userData?.patronymic || '') + ' ' +  (userData?.lastName || '')}</p>
+                <p className="user__full-name">{`${userData?.firstName || ''} ${userData?.patronymic || ''} ${userData?.lastName || ''}`}</p>
             </div>
             <form className="form">
                 <ul className="left-fields">
