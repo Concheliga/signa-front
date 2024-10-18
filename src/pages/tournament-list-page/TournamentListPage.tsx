@@ -1,16 +1,16 @@
 import Logo from "../../modules/logo/Logo";
-import ProfileModule from "../../modules/profile/Profile-module";
+import TournamentListModule from "../../modules/tournament-list-module/TournamentListModule";
 import LeftSidebar from "../../modules/left-sidebar/Left-sidebar";
 import Footer from "../../modules/footer/Footer";
-import "../../ui/css/page.css"
+import "../../ui/css/page.css";
 
-const ProfilePage: React.FC = () => {
+const TournamentListPage: React.FC = () => {
     return (
         <div className="body">
             <Logo />
             <div className="nav-main-container">
                 <LeftSidebar />
-                <ProfileModule />
+                <TournamentListModule />
                 <div className="helper"></div>
             </div>
             <Footer />
@@ -18,4 +18,4 @@ const ProfilePage: React.FC = () => {
     );
 };
 
-export default ProfilePage;
+export default TournamentListPage;

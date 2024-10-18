@@ -13,9 +13,6 @@ body{
     font-size: 16px;
     font-weight: normal;
     background-color: #F9FAFF;
-    position: relative;
-    min-height: 100vh;
-    padding-bottom: 100px;
 }
 
 .logo{
@@ -52,7 +49,9 @@ body{
 .main{
     width: 100%;
     max-width: 2000px;
+    height: calc(100vh - 250px);
     padding-top: 16px;
+    padding-left: 100px;
     background-color: #FFFFFF;
 }
 
@@ -61,46 +60,52 @@ body{
     font-size: 32px;
 }
 
-.user{
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.user__full-name{
-    font-size: 24px;
-}
-
-.form{
+.tournament-form{
+    background-color: #000000;
+    opacity: 0.5;
+    padding: 5px 0 5px 30px;
+    width: 350px;
     display: flex;
     justify-content: space-between;
-    padding: 60px 50px 0 50px;
+    border-radius: 50px;
+    height: 34px;
+    margin-left: auto;
 }
 
-.left-fields, .right-fields{
-    display: flex;
-    flex-direction: column;
-    align-items: end;
+.tournament-form__input{
+    color: #FFFFFF;
 }
 
-.field{
-    margin-bottom: 60px;
+table {
+    width: 100%;
 }
 
-.field:nth-child(3n){
-    margin-bottom: 0;
+th, td {
+    border: 0;
+    padding: 40px;
+    text-align: center;
 }
 
-label{
+tr td:nth-child(3){
+    width: 200px;
+    text-align: left;
+    padding-left: 60px;
+}
+
+select{
     font-weight: 500;
+    text-align: center;
 }
 
-.field__input{
-    width: 460px;
-    border: 1px, solid, #232323;
-    border-radius: 4px;
-    padding: 10px;
-    margin-left: 22px;
+option{
+    background-color: #808080;
+}
+
+tr td button{
+    border-radius: 50px;
+    background-color: #232323;
+    color: #FFFFFF;
+    padding: 15px 23px;
 }
 
 .helper{
@@ -108,23 +113,20 @@ label{
 }
 
 .footer {
-    padding: 38px 0;
     position: absolute;
-    bottom: 0;
     left: 0;
+    bottom: 0;
     width: 100%;
-    height: 100px;
-    text-align: center;
-    line-height: 60px;
+    height: 35px;
 }
 
-.footer__list {
+.footer__list{
     display: flex;
     max-width: 780px;
     justify-content: space-between;
     margin: 0 auto;
 }
 
-.footer__list__element {
+.footer__list__element{
     font-weight: 500;
 }
