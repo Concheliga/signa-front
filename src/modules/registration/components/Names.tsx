@@ -1,9 +1,8 @@
 import { Fragment } from "react";
-import Label from "../../../ui/Label";
-import Input from "../../../ui/Input";
 import { onInputChange } from "../utils/registration-utils";
 import { addErrorMessage } from "../../../utils/error-message";
 import { namePattern, nameErrorMessage, stringNamePattern } from "../constants/patterns";
+import styles from "../registration-styles/registration.module.css"
 
 interface FormData {
     firstName: string;
@@ -27,8 +26,8 @@ const Names: React.FC<Names> = ({ names, setFormData, ...props }) => {
                 names.map((name, index) => {
                     return (
                         <Fragment key={index}>
-                            <Label htmlFor={name.name} >{name.value}</Label>
-                            <Input onChange={(e) => {
+                            <label className={styles.label} htmlFor={name.name} >{name.value}</label>
+                            <input onChange={(e) => {
                                 addErrorMessage(e, namePattern, nameErrorMessage);
                                 onInputChange(e, setFormData);
                             }}
