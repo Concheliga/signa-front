@@ -24,7 +24,7 @@ interface Member {
     data: UserData;
 }
 
-interface CreateTeamProps extends React.FC {
+interface CreateTeamProps {
     tournamentId: string;
     maxMembersCount: number;
 }

@@ -10,7 +10,7 @@ const CreateTeamPage: React.FC = () => {
             <Logo />
             <div className="nav-main-container">
                 <LeftSidebar />
-                <CreateTeam/>
+                <CreateTeam maxMembersCount={8} tournamentId="fb7ade12-684a-4c36-b1a0-aeb2b5c30cd8"/>
                 <div className="helper"></div>
             </div>
             <Footer />
