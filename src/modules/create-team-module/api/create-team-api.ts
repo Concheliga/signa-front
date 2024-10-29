@@ -1,20 +1,6 @@
 import axios from "axios";
 import { baseURL } from "../../../constants/constants";
-
-interface UserData {
-    firstName: string;
-    lastName: string;
-    patronymic: string;
-    gender: string;
-    groupNumber: string;
-}
-
-interface TeamData {
-    title: string;
-    tournamentId: string;
-    captainId: string;
-    membersId: string[];
-}
+import { UserData, TeamData } from "../../../interfaces/interfaces";
 
 const fetchUserData = async (
     setUserData: React.Dispatch<React.SetStateAction<UserData | null>>,

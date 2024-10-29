@@ -10,19 +10,10 @@ import { onInputChange, onSelectChange } from "../utils/registration-utils";
 import { onFormSubmit } from "../api/registration-api";
 import Names from "./Names";
 import styles from "../registration-styles/registration.module.css";
-
-interface FormData {
-    firstName: string;
-    lastName: string;
-    patronymic: string;
-    gender: string;
-    groupNumber: string;
-    link: string;
-    password: string;
-}
+import { FormValues } from "../../../interfaces/interfaces";
 
 const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props }) => {
-    const [formData, setFormData] = useState<FormData>({
+    const [formData, setFormData] = useState<FormValues>({
         firstName: "",
         lastName: "",
         patronymic: "",

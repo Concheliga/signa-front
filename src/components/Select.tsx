@@ -1,6 +1,4 @@
-interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  options: { value: string; label: string }[];
-}
+import { SelectProps } from "../interfaces/interfaces";
 
 const Select: React.FC<SelectProps> = ({ options, ...props }) => {
   return (

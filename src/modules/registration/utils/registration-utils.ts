@@ -1,12 +1,4 @@
-interface FormData {
-    firstName: string;
-    lastName: string;
-    patronymic: string;
-    gender: string;
-    groupNumber: string;
-    link: string;
-    password: string;
-}
+import { FormValues } from "../../../interfaces/interfaces";
 
 function getFormData(e: React.FormEvent<HTMLFormElement>): void{
     e.preventDefault();
@@ -20,7 +12,7 @@ function getFormData(e: React.FormEvent<HTMLFormElement>): void{
     });
 }
 
-const onInputChange = (e: React.ChangeEvent<HTMLInputElement>, setFormData: React.Dispatch<React.SetStateAction<FormData>>) => {
+const onInputChange = (e: React.ChangeEvent<HTMLInputElement>, setFormData: React.Dispatch<React.SetStateAction<FormValues>>) => {
     const { name, value } = e.target;
     
     setFormData(prevState => ({
@@ -29,7 +21,7 @@ const onInputChange = (e: React.ChangeEvent<HTMLInputElement>, setFormData: Reac
     }));
 };
 
-const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>, setFormData: React.Dispatch<React.SetStateAction<FormData>>) => {
+const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>, setFormData: React.Dispatch<React.SetStateAction<FormValues>>) => {
     setFormData(prevState => ({
         ...prevState,
         gender: e.target.value

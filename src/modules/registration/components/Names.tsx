@@ -3,23 +3,9 @@ import { onInputChange } from "../utils/registration-utils";
 import { addErrorMessage } from "../../../utils/error-message";
 import { namePattern, nameErrorMessage, stringNamePattern } from "../constants/patterns";
 import styles from "../registration-styles/registration.module.css"
+import { NamesProps } from "../../../interfaces/interfaces";
 
-interface FormData {
-    firstName: string;
-    lastName: string;
-    patronymic: string;
-    gender: string;
-    groupNumber: string;
-    link: string;
-    password: string;
-}
-
-interface Names extends React.InputHTMLAttributes<HTMLInputElement> {
-    names: { name: string; value: string }[];
-    setFormData: React.Dispatch<React.SetStateAction<FormData>>;
-}
-
-const Names: React.FC<Names> = ({ names, setFormData, ...props }) => {
+const Names: React.FC<NamesProps> = ({ names, setFormData, ...props }) => {
     return (
         <>
             {

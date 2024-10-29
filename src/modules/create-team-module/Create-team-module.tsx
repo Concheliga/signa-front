@@ -3,31 +3,7 @@ import { useState, useEffect } from "react";
 import { fetchUserData, postTeamData } from "./api/create-team-api";
 import photo from "./img/photo.svg";
 import trash from "./img/trash.svg";
-
-interface UserData {
-    firstName: string;
-    lastName: string;
-    patronymic: string;
-    gender: string;
-    groupNumber: string;
-}
-
-interface TeamData {
-    title: string;
-    tournamentId: string;
-    captainId: string;
-    membersId: string[];
-}
-
-interface Member {
-    id: number;
-    data: UserData;
-}
-
-interface CreateTeamProps {
-    tournamentId: string;
-    maxMembersCount: number;
-}
+import { TeamData, Member, CreateTeamProps, UserData } from "../../interfaces/interfaces";
 
 const CreateTeam: React.FC<CreateTeamProps> = ({ tournamentId, maxMembersCount }) => {
     tournamentId = 'fb7ade12-684a-4c36-b1a0-aeb2b5c30cd8';

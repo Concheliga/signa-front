@@ -1,12 +1,12 @@
-import "./css/logo.css";
+import styles from "./css/logo.module.css";
 import logo from './img/logoSportUrfu.png';
 
 const Logo: React.FC = () => {
     return (
-        <header className="logo">
+        <header className={styles.logo}>
             <a href="#">
-                <img className="logo__img" src={logo} alt="Логотип Спорт УрФУ" />
-                <p className="logo__text">СПОРТ УРФУ</p>
+                <img src={logo} alt="Логотип Спорт УрФУ" />
+                <p className={styles.logo__text}>СПОРТ УРФУ</p>
             </a>
         </header>
     );
