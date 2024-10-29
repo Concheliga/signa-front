@@ -1,0 +1,152 @@
+.main {
+    width: 100%;
+    max-width: 2000px;
+    padding-top: 16px;
+    background-color: #FFFFFF;
+    padding-left: 175px;
+    padding-right: 175px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.header-container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.team {
+    opacity: 30%;
+}
+
+.team-name {
+    font-weight: 600;
+    font-size: 32px;
+}
+
+.members-block {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    align-self: stretch;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.titles {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    padding: 16px 0px;
+    gap: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    align-self: stretch;
+}
+
+.id-title {
+    width: 42px;
+    text-align: center;
+    opacity: 50%;
+}
+
+.name-title {
+    width: 400px;
+    opacity: 50%;
+}
+
+.group-title {
+    width: 200px;
+    opacity: 50%;
+}
+
+.add-teammate {
+    width: 100%;
+    padding: 0 auto;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    font-weight: 500;
+    background-color: #F7F7F7;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.members {
+    width: 100%;
+}
+
+.member {
+    display: flex;
+    width: 100%;
+    padding: 16px 0;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.id {
+    opacity: 30%;
+    font-weight: 600;
+    width: 40px;
+    text-align: center;
+    margin-right: 24px;
+}
+
+.name {
+    width: 330px;
+    font-weight: 600;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.trash {
+    margin-left: auto;
+    margin-right: 32px;
+}
+
+.trash:hover, .photo:hover, .name:hover{
+    cursor: pointer;
+}
+
+.members-count {
+    display: flex;
+    padding: 22px 64px;
+    width: 100%;
+    height: 63px;
+    background: rgba(183, 231, 203, 0.4);
+    color: #1D6039;
+    font-weight: 500;
+}
+
+.max-members {
+    opacity: 50%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    height: 50px;
+}
+
+.cancel {
+    padding: 16px 24px;
+    position: relative;
+    background: #F3F3F3;
+    border-radius: 100px;
+    font-size: 14px;
+}
+
+.save {
+    padding: 16px 24px;
+    background: #232323;
+    border-radius: 100px;
+    color: #FFFFFF;
+    font-size: 14px;
+}

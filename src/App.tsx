@@ -1,11 +1,11 @@
 import "./ui/css/reset.css";
-import ProfilePage from "./pages/profile-page/Profile-page";
+import CreateTeamPage from "./pages/create-team-page/Create-team-page";
 
 function App() {
 
   return (
     <>
-      <ProfilePage/>
+      <CreateTeamPage/>
     </>
   )
 }
