@@ -3,6 +3,7 @@ import ProfileIcon from './img/profile-icon.svg';
 import StatisticIcon from './img/statistic-icon.svg';
 import TournamentsIcon from './img/tournaments-icon.svg';
 import styles from  "./css/left-sidebar.module.css";
+import { NavLink } from 'react-router-dom';
 
 const LeftSidebar: React.FC = () => {
     return (
@@ -10,30 +11,30 @@ const LeftSidebar: React.FC = () => {
             <nav className="navigation">
                 <ul>
                     <li className={styles['navigation-list__item']}>
-                        <a href='#'>
+                        <NavLink to='home'>
                             <img src={homePageIcon} alt="Главная" />
                             <p>Главная</p>
-                        </a>
+                        </NavLink>
                     </li>
                     <li className={styles['navigation-list__item']}>
-                        <a href='#'>
+                        <NavLink to='tournaments'>
                             <img src={TournamentsIcon} alt="Турниры" />
                             <p>Турниры</p>
-                        </a>
+                        </NavLink>
                     </li>
                     <li className={styles['navigation-list__item']}>
-                        <a href='#'>
+                        <NavLink to='statistic'>
                             <img src={StatisticIcon} alt="Статистика" />
                             <p>Статистика</p>
-                        </a>
+                        </NavLink>
                     </li>
                     <li className={styles['navigation-list__item']}>
-                        <a href='#'>
+                        <NavLink to='profile'>
                             <img src={ProfileIcon} alt="Мой профиль" />
                             <p>
                                 Мой<br /> профиль
                             </p>
-                        </a>
+                        </NavLink>
                     </li>
                 </ul>
             </nav>

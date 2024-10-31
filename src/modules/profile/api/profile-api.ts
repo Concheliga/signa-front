@@ -9,7 +9,7 @@ const fetchUserData = async (
     ) => {
     try {
         //после user/ должен быть id usera
-        const response = await axios.get<UserData>(`${baseURL}/user/67ec6509-8ed2-4040-a70b-e0d5ba1085c6`);
+        const response = await axios.get<UserData>(`${baseURL}/user/5c691513-3fa1-4f07-b37c-b3a86cbeecca`);
         setUserData(response.data);
         setLoading(false);
     } catch (err) {

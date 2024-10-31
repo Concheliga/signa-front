@@ -15,7 +15,7 @@ const fetchUserData = async (
 ) => {
     try {
         //после tournament/ должен быть id tournamenta
-        const matchesResponse = await axios.get<MatchData[]>(`${baseURL}/tournament/49815da3-6eb5-4bfe-be3f-3c3ff34090a1/matches`);
+        const matchesResponse = await axios.get<MatchData[]>(`${baseURL}/tournament/fb7ade12-684a-4c36-b1a0-aeb2b5c30cd8/matches`);
 
         setMatchesData(matchesResponse.data);
         setLoading(false);

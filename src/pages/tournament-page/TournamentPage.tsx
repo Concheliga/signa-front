@@ -1,12 +1,8 @@
-import Logo from "../../modules/logo/Logo";
-import LeftSidebar from "../../modules/left-sidebar/Left-sidebar";
-import Footer from "../../modules/footer/Footer";
-import TournamentBracketModule from "../../modules/tournament-bracket-module/TournamentBracketModule";
-import "../../ui/css/page.css";
 import { fetchUserData } from "./api/tournament-page-api";
 import { useState, useEffect } from "react";
 import { TournamentData } from "../../interfaces/interfaces";
 import style from "./css/tournament-page.module.css";
+import { NavLink, Outlet } from "react-router-dom";
 
 
 const TournamentPage: React.FC = () => {
@@ -20,55 +16,31 @@ const TournamentPage: React.FC = () => {
 
     if (loading) {
         return (
-            <div className="body">
-                <Logo />
-                <div className="nav-main-container">
-                    <LeftSidebar />
-                    <main className="main">
-                        <p className="loading">Загрузка данных...</p>
-                    </main>
-                    <div className="helper"></div>
-                </div>
-                <Footer />
-            </div >
+            <main className="main">
+                <p className="loading">Загрузка данных...</p>
+            </main>
         );
     }
 
     if (error) {
         return (
-            <div className="body">
-                <Logo />
-                <div className="nav-main-container">
-                    <LeftSidebar />
-                    <main className="main">
-                        <p className="error">{error}</p>
-                    </main>
-                    <div className="helper"></div>
-                </div>
-                <Footer />
-            </div >
+            <main className="main">
+                <p className="error">{error}</p>
+            </main>
         );
     }
 
     return (
-        <div className="body">
-            <Logo />
-            <div className="nav-main-container">
-                <LeftSidebar />
-                <main className={style.main}>
-                    <h1 className={style['page-name']}>{tournamentData?.title || ''}</h1>
-                    <ul className={style.tabs}>
-                        <li className={style.active}><a href="#">Основная информация</a></li>
-                        <li><a href="#">Участники</a></li>
-                        <li><a href="#">Турнирная сетка</a></li>
-                        <li><a href="#">Результаты турнира</a></li>
-                    </ul>
-                    <TournamentBracketModule />
-                </main>
-                <div className="helper"></div>
-            </div>
-            <Footer />
-        </div>
+        <main className={style.main}>
+            <h1 className={style['page-name']}>{tournamentData?.title || ''}</h1>
+            <ul className={style.tabs}>
+                <li><NavLink to={`/tournament/info`}>Основная информация</NavLink></li>
+                <li><NavLink to={`/tournament/members`}>Участники</NavLink></li>
+                <li><NavLink to={`/tournament/bracket`}>Турнирная сетка</NavLink></li>
+                <li><NavLink to={`/tournament/result`}>Результаты турнира</NavLink></li>
+            </ul>
+            <Outlet />
+        </main>
     );
 };
 

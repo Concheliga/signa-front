@@ -4,11 +4,13 @@ import dayjs from "dayjs";
 import { fetchUserData } from "./api/mainTournamentApi";
 import Organizers from "./Components/Organizers";
 import { TournamentData } from "../../interfaces/interfaces";
+import { useNavigate } from "react-router-dom";
 
 const MainTournamentInfo: React.FC = () => {
     const [tournamentData, setTournamentData] = useState<TournamentData | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchUserData(setTournamentData, setLoading, setError);
@@ -52,7 +54,7 @@ const MainTournamentInfo: React.FC = () => {
                 </ul>
             </form>
             <ul className={style.buttons}>
-                <li className={style.button}><button>Зарегистрироваться</button></li>
+                <li className={style.button}><button onClick={() => navigate('/tournament/create-team')}>Зарегистрироваться</button></li>
                 <li className={style.button}><button>Ссылка на беседу ВК</button></li>
                 <li className={style.button}><button>Связаться с организатором</button></li>
                 <li className={style.button}><button>Регламент</button></li>

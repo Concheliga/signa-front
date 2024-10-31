@@ -9,7 +9,7 @@ const fetchUserData = async (
     ) => {
     try {
         //после tournament/ должен быть id tournamenta
-        const response = await axios.get<TournamentData>(`${baseURL}/tournament/d867bc9b-552b-4862-9136-5330b0b413fe`);
+        const response = await axios.get<TournamentData>(`${baseURL}/tournament/fb7ade12-684a-4c36-b1a0-aeb2b5c30cd8`);
 
         setTournamentData(response.data);
         setLoading(false);

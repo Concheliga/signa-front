@@ -1,13 +1,14 @@
 import styles from "./css/logo.module.css";
 import logo from './img/logoSportUrfu.png';
+import { Link } from "react-router-dom";
 
 const Logo: React.FC = () => {
     return (
         <header className={styles.logo}>
-            <a href="#">
+            <Link to="">
                 <img src={logo} alt="Логотип Спорт УрФУ" />
                 <p className={styles.logo__text}>СПОРТ УРФУ</p>
-            </a>
+            </Link>
         </header>
     );
 };
