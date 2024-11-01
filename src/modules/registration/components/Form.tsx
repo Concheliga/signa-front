@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Select from "../../../components/Select";
 import { addErrorMessage } from "../../../utils/error-message";
 import {
@@ -11,6 +11,7 @@ import { onFormSubmit } from "../api/registration-api";
 import Names from "./Names";
 import styles from "../registration-styles/registration.module.css";
 import { FormValues } from "../../../interfaces/interfaces";
+import { Context } from "../../../main";
 
 const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props }) => {
     const [formData, setFormData] = useState<FormValues>({
@@ -21,15 +22,17 @@ const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props })
         groupNumber: "",
         link: '',
         password: "",
+        email: ""
     });
     const names: { name: string; value: string }[] = [
         { name: "firstName", value: "Имя:" },
         { name: "lastName", value: "Фамилия:" },
         { name: "patronymic", value: "Отчество:" }
     ];
+    const {store} = useContext(Context);
 
     return (
-        <form onSubmit={(e) => onFormSubmit(e, formData)} {...props}>
+        <form onSubmit={(e) => onFormSubmit(e, formData, store)} {...props}>
             <label className={styles.label} htmlFor="email">Электронная почта:</label>
             <input onChange={(e) => {
                 addErrorMessage(e, emailPattern, emailErrorMessage);

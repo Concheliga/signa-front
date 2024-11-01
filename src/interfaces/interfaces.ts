@@ -1,3 +1,5 @@
+import Store from "../store/store";
+
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
     options: { value: string; label: string }[];
 }
@@ -67,6 +69,7 @@ interface FormValues {
     groupNumber: string;
     link: string;
     password: string;
+    email: string;
 }
 
 interface NamesProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -99,7 +102,24 @@ interface TournamentsDataProps {
     tournamentsData: TournamentData[] | null;
 }
 
+interface IUser {
+    email: string;
+    isActivated: boolean;
+    id: string;
+}
+
+interface AuthorizationResponse {
+    accessToken: string;
+    refreshToken: string;
+    user: IUser;
+}
+
+interface State {
+    store: Store;
+}
+
 export type {
     TournamentData, SelectProps, UserData, MemberProps, TeamData, Member, CreateTeamProps,
-    Orgs, FormValues, NamesProps, MatchData, MatchTeamData, Game, Tree, TournamentsDataProps
+    Orgs, FormValues, NamesProps, MatchData, MatchTeamData, Game, Tree, TournamentsDataProps,
+    AuthorizationResponse, IUser, State
 }
