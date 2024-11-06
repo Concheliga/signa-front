@@ -1,28 +1,19 @@
 import style from "./css/main-tournament-info.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import dayjs from "dayjs";
-import { fetchUserData } from "./api/mainTournamentApi";
 import Organizers from "./Components/Organizers";
 import { TournamentData } from "../../interfaces/interfaces";
 import { useNavigate } from "react-router-dom";
+import { Context } from "../../main";
 
 const MainTournamentInfo: React.FC = () => {
     const [tournamentData, setTournamentData] = useState<TournamentData | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+    const { store } = useContext(Context);
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetchUserData(setTournamentData, setLoading, setError);
+        setTournamentData(store.tournament)
     }, []);
-
-    if (loading) {
-        return <p>Загрузка данных...</p>;
-    }
-
-    if (error) {
-        return <p>{error}</p>;
-    }
 
     return (
         <>

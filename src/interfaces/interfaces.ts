@@ -1,3 +1,4 @@
+import User from "../api/User";
 import Store from "../store/store";
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
@@ -19,10 +20,11 @@ interface MemberProps {
 }
 
 interface TeamData {
+    score: number;
     title: string;
     tournamentId: string;
-    captainId: string;
-    membersId: string[];
+    captainId: UserData;
+    membersId: UserData[];
 }
 
 interface Member {
@@ -38,7 +40,7 @@ interface CreateTeamProps {
 interface MatchData {
     id: string;
     nextMatchId: string;
-    teamIds: string;
+    teams: TeamData[];
 }
 
 interface TournamentData {
@@ -55,6 +57,7 @@ interface TournamentData {
     matches: MatchData[];
     organizers: UserData[];
     currentMembersCount: number;
+    members: UserData[];
 }
 
 interface Orgs {

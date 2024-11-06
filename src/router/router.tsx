@@ -10,6 +10,7 @@ import Layout from "../modules/layout/Layout";
 import Login from "../modules/login/Login";
 import ProfileModule from "../modules/profile/Profile-module";
 import Statistic from "../modules/statistic/Statistic";
+import TournamentParticipants from "../modules/tournament-participants/TournamentParticipants";
 
 export const router = createBrowserRouter([
     {
@@ -73,6 +74,11 @@ export const router = createBrowserRouter([
                         path: 'create-team',
                         element: <CreateTeamPage />,
                         errorElement: <CreateTeamPage />
+                    },
+                    {
+                        path: 'participants',
+                        element: <TournamentParticipants />,
+                        errorElement: <TournamentParticipants />
                     }
                 ]
             }

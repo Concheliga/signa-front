@@ -1,10 +1,12 @@
 import { makeAutoObservable } from "mobx";
 import { FormValues } from "../interfaces/interfaces";
 import Authorization from "../api/Authorization";
+import { TournamentData } from "../interfaces/interfaces";
 
 export default class Store {
     user = {} as FormValues;
     isAuthorized = false;
+    tournament = {} as TournamentData;
 
     constructor() {
         makeAutoObservable(this);
@@ -16,6 +18,11 @@ export default class Store {
 
     setUser(user: FormValues) {
         this.user = user;
+    }
+
+    setTournament(tournament: TournamentData){
+        this.tournament = tournament;
+        console.log(tournament);
     }
 
     async login(email: string, password: string) {

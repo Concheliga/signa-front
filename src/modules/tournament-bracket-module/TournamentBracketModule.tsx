@@ -1,22 +1,15 @@
 import style from "./css/tournament-bracket-module.module.css";
-import { useState, useEffect } from "react";
-import { fetchUserData } from "./api/api-functions";
+import { useState, useEffect, useContext } from "react";
 import { TreeGenerator } from 'tournament-bracket-tree';
 import 'tournament-bracket-tree/dist/index.css';
 import { buildTree } from "./helpers/buildTree";
 import { mapTournamentToNode } from "./helpers/mapTournamentToNode";
-import { MatchTeamData, Game, Tree } from "../../interfaces/interfaces";
-
-interface MatchData {
-    id: string;
-    nextMatchId: string;
-    teams: MatchTeamData[];
-}
+import { MatchData, Game, Tree } from "../../interfaces/interfaces";
+import { Context } from "../../main";
 
 const TournamentBracketModule: React.FC = () => {
     const [matchesData, setMatchesData] = useState<MatchData[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+    const { store } = useContext(Context);
     const [tree, setTree] = useState<Tree<Game>>(
         {
             data: {
@@ -30,7 +23,7 @@ const TournamentBracketModule: React.FC = () => {
         });
 
     useEffect(() => {
-        fetchUserData(setMatchesData, setLoading, setError);
+        setMatchesData(store.tournament.matches)
     }, []);
 
     useEffect(() => {
@@ -49,14 +42,6 @@ const TournamentBracketModule: React.FC = () => {
             });
         }
     }, [matchesData]);
-
-    if (loading) {
-        return <p>Загрузка данных...</p>;
-    }
-
-    if (error) {
-        return <p>{error}</p>;
-    }
 
     return (
         <>

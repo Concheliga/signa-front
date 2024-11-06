@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 100px;
+    gap: 50px;
 }
 
 .container {
@@ -12,6 +12,8 @@
     gap: 190px;
     width: 1240px;
     background-color: #EDF0FF;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .column {
@@ -40,6 +42,13 @@
     display: flex;
     background-color: #EDF0FF;
     gap: 20px;
+    align-items: center;
+}
+
+.award-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .arrow {

@@ -47,7 +47,7 @@ const Statistic: React.FC = () => {
             <div className={style.awards}>
                 <div className={style.award}>
                     <img src={trophy} alt="трофей" />
-                    <div>
+                    <div className={style['award-text']}>
                         <div>24</div>
                         <div>Сыграно матчей и турниров</div>
                     </div>
@@ -55,7 +55,7 @@ const Statistic: React.FC = () => {
                 </div>
                 <div className={style.award}>
                     <img src={medal} alt="медаль" />
-                    <div>
+                    <div className={style['award-text']}>
                         <div>3</div>
                         <div>Награды за призовые места</div>
                     </div>
