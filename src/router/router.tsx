@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import CreateTeamPage from "../pages/create-team-page/Create-team-page";
 import ProfilePage from "../pages/profile-page/Profile-page";
 import RegistrationPage from "../pages/Registration/Registration-page";
@@ -51,14 +51,14 @@ export const router = createBrowserRouter([
                 errorElement: <TournamentListPage />
             },
             {
-                path: 'tournament',//здесь должен быть id турнира
+                path: 'tournaments/tournament',//здесь должен быть id турнира
                 element: <TournamentPage />,
                 errorElement: <TournamentPage />,
                 children: [
                     {
                         path: '',
-                        element: <MainTournamentInfo />,
-                        errorElement: <MainTournamentInfo />
+                        element: <Navigate to={'/tournaments/tournament/info'} replace />,
+                        errorElement: <Navigate to={'/tournaments/tournament/info'} replace />
                     },
                     {
                         path: 'info',

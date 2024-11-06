@@ -8,7 +8,7 @@ const fetchUserData = async (
     setError: React.Dispatch<React.SetStateAction<string | null>>
 ) => {
     try {
-        const response = await axios.get<TournamentData[]>(`${baseURL}/tournament`);
+        const response = await axios.get<TournamentData[]>(`${baseURL}/tournaments`);
         
         setTournamentsData(response.data);
         setLoading(false);

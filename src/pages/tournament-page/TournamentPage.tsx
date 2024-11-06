@@ -35,10 +35,10 @@ const TournamentPage: React.FC = () => {
         <main className={style.main}>
             <h1 className={style['page-name']}>{tournamentData?.title || ''}</h1>
             <ul className={style.tabs}>
-                <li><NavLink to={`/tournament/info`}>Основная информация</NavLink></li>
-                <li><NavLink to={`/tournament/participants`}>Участники</NavLink></li>
-                <li><NavLink to={`/tournament/bracket`}>Турнирная сетка</NavLink></li>
-                <li><NavLink to={`/tournament/result`}>Результаты турнира</NavLink></li>
+                <li><NavLink to={`/tournaments/tournament/info`}>Основная информация</NavLink></li>
+                <li><NavLink to={`/tournaments/tournament/participants`}>Участники</NavLink></li>
+                <li><NavLink to={`/tournaments/tournament/bracket`}>Турнирная сетка</NavLink></li>
+                <li><NavLink to={`/tournaments/tournament/result`}>Результаты турнира</NavLink></li>
             </ul>
             <Outlet />
         </main>

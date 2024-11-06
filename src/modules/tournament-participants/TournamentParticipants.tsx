@@ -7,7 +7,7 @@ const TournamentParticipants: React.FC = () => {
 
     return (
         <>
-            <div className={style['teams-count']}>Количество участников <span>12/15</span></div>
+            <div className={style['teams-count']}>Количество участников: <span>{store.tournament.members.length}</span></div>
             <table className={style.table}>
                 <thead>
                     <tr>
