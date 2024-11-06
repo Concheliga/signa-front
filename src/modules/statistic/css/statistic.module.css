@@ -1,0 +1,59 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 190px;
+    width: 1240px;
+    background-color: #EDF0FF;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+.awards {
+    width: 1240px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.award {
+    width: 610px;
+    padding: 55px;
+    display: flex;
+    background-color: #EDF0FF;
+    gap: 20px;
+}
+
+.arrow {
+    margin-left: auto;
+}
+
+.streak {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 1240px;
+    background-color: #EDF0FF;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+

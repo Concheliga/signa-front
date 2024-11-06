@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { fetchUserData } from "./api/tournaments-api";
 import Tournaments from "./Components/Tournaments";
 import { TournamentData } from "../../interfaces/interfaces";
-import { Link } from "react-router-dom";
 
 const TournamentListModule: React.FC = () => {
     const [tournamentsData, setTournamentsData] = useState<TournamentData[] | null>(null);

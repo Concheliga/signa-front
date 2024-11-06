@@ -1,6 +1,5 @@
 import { api } from "./index-api";
 import { AxiosResponse } from "axios";
-import { AuthorizationResponse } from "../interfaces/interfaces";
 import { IUser } from "../interfaces/interfaces";
 
 export default class User {

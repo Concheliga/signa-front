@@ -7,6 +7,9 @@ import TournamentPage from "../pages/tournament-page/TournamentPage";
 import MainTournamentInfo from "../modules/main-tournament-info/MainTournamentInfo";
 import TournamentBracketModule from "../modules/tournament-bracket-module/TournamentBracketModule";
 import Layout from "../modules/layout/Layout";
+import Login from "../modules/login/Login";
+import ProfileModule from "../modules/profile/Profile-module";
+import Statistic from "../modules/statistic/Statistic";
 
 export const router = createBrowserRouter([
     {
@@ -15,9 +18,26 @@ export const router = createBrowserRouter([
         errorElement: <Layout />,
         children: [
             {
+                path: 'login',
+                element: <Login />,
+                errorElement: <Login />
+            },
+            {
                 path: 'profile',
                 element: <ProfilePage />,
-                errorElement: <ProfilePage />
+                errorElement: <ProfilePage />,
+                children: [
+                    {
+                        path: 'info',
+                        element: <ProfileModule />,
+                        errorElement: <ProfileModule />
+                    },
+                    {
+                        path: 'statistic',
+                        element: <Statistic />,
+                        errorElement: <Statistic />
+                    }
+                ]
             },
             {
                 path: 'registration',

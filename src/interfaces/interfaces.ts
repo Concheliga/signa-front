@@ -70,6 +70,8 @@ interface FormValues {
     link: string;
     password: string;
     email: string;
+    phoneNumber: string;
+    photoLink: string;
 }
 
 interface NamesProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -121,5 +123,5 @@ interface State {
 export type {
     TournamentData, SelectProps, UserData, MemberProps, TeamData, Member, CreateTeamProps,
     Orgs, FormValues, NamesProps, MatchData, MatchTeamData, Game, Tree, TournamentsDataProps,
-    AuthorizationResponse, IUser, State
+    AuthorizationResponse, State, IUser
 }

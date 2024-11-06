@@ -22,7 +22,9 @@ const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props })
         groupNumber: "",
         link: '',
         password: "",
-        email: ""
+        email: "",
+        photoLink: "",
+        phoneNumber: ""
     });
     const names: { name: string; value: string }[] = [
         { name: "firstName", value: "Имя:" },

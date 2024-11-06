@@ -1,11 +1,9 @@
 import { makeAutoObservable } from "mobx";
-import { AuthorizationResponse, IUser } from "../interfaces/interfaces";
+import { FormValues } from "../interfaces/interfaces";
 import Authorization from "../api/Authorization";
-import axios from "axios";
-import { baseURL } from "../constants/constants";
 
 export default class Store {
-    user = {} as IUser;
+    user = {} as FormValues;
     isAuthorized = false;
 
     constructor() {
@@ -16,7 +14,7 @@ export default class Store {
         this.isAuthorized = isAuthorized;
     }
 
-    setUser(user: IUser) {
+    setUser(user: FormValues) {
         this.user = user;
     }
 
@@ -24,47 +22,47 @@ export default class Store {
         try {
             const response = await Authorization.login(email, password);
             console.log(response);
-            localStorage.setItem('token', response.data.accessToken);
+            //localStorage.setItem('token', response.data.accessToken);
             this.setAuthorization(true);
-            this.setUser(response.data.user);
+            //this.setUser(user);
         } catch (e:any) {
             console.log(e.response?.data?.message);
         }
     }
 
-    async registration(email: string, password: string) {
+    async registration(user: FormValues) {
         try {
-            const response = await Authorization.registration(email, password);
+            const response = await Authorization.registration(user);
             console.log(response);
             localStorage.setItem('token', response.data.accessToken);
             this.setAuthorization(true);
-            this.setUser(response.data.user);
+            this.setUser(user);
         } catch (e:any) {
             console.log(e.response?.data?.message);
         }
     }
 
-    async logout() {
-        try {
-            const response = await Authorization.logout();
-            console.log(response);
-            localStorage.removeItem('token');
-            this.setAuthorization(false);
-            this.setUser({} as IUser);
-        } catch (e:any) {
-            console.log(e.response?.data?.message);
-        }
-    }
+    // async logout() {
+    //     try {
+    //         const response = await Authorization.logout();
+    //         console.log(response);
+    //         localStorage.removeItem('token');
+    //         this.setAuthorization(false);
+    //         this.setUser({} as FormValues);
+    //     } catch (e:any) {
+    //         console.log(e.response?.data?.message);
+    //     }
+    // }
 
-    async checkAuthorization() {
-        try {
-            const response = await axios.get<AuthorizationResponse>(`${baseURL}/refresh`, {withCredentials: true});
-            console.log(response);
-            localStorage.setItem('token', response.data.accessToken);
-            this.setAuthorization(true);
-            this.setUser(response.data.user);
-        } catch (e:any) {
-            console.log(e.response?.data?.message);
-        }
-    }
+    // async checkAuthorization() {
+    //     try {
+    //         const response = await axios.get<AuthorizationResponse>(`${baseURL}/refresh`, {withCredentials: true});
+    //         console.log(response);
+    //         localStorage.setItem('token', response.data.accessToken);
+    //         this.setAuthorization(true);
+    //         //this.setUser(response.data.user);
+    //     } catch (e:any) {
+    //         console.log(e.response?.data?.message);
+    //     }
+    // }
 }

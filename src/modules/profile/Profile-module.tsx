@@ -22,10 +22,9 @@ const ProfileModule: React.FC = () => {
     }
 
     return (
-        <main className={style.main}>
-            <h1 className={style["page-name"]}>Профиль участника</h1>
+        <>
             <div className={style.user}>
-                <img src={avatar} alt="Аватарка"/>
+                <img src={avatar} alt="Аватарка" />
                 <p className={style["user__full-name"]}>{`${userData?.firstName || ''} ${userData?.patronymic || ''} ${userData?.lastName || ''}`}</p>
             </div>
             <form className={style.form}>
@@ -58,7 +57,7 @@ const ProfileModule: React.FC = () => {
                     </li>
                 </ul>
             </form>
-        </main>
+        </>
     );
 };
 
