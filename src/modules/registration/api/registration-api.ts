@@ -1,17 +1,8 @@
 import axios from "axios";
 import { baseURL } from "../../../constants/constants";
+import { FormValues } from "../../../interfaces/interfaces";
 
-interface FormData {
-    firstName: string;
-    lastName: string;
-    patronymic: string;
-    gender: string;
-    groupNumber: string;
-    link: string;
-    password: string;
-}
-
-const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>, formData:FormData) => {
+const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>, formData:FormValues) => {
     e.preventDefault();
 
     try {

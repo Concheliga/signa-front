@@ -2,38 +2,39 @@ import homePageIcon from './img/home-page-icon.svg';
 import ProfileIcon from './img/profile-icon.svg';
 import StatisticIcon from './img/statistic-icon.svg';
 import TournamentsIcon from './img/tournaments-icon.svg';
-import "./css/left-sidebar.css"
+import styles from  "./css/left-sidebar.module.css";
+import { NavLink } from 'react-router-dom';
 
 const LeftSidebar: React.FC = () => {
     return (
-        <aside className="navigation-menu">
+        <aside className={styles['navigation-menu']}>
             <nav className="navigation">
-                <ul className="navigation-list">
-                    <li className="navigation-list__item">
-                        <a href='#'>
-                            <img className="navigation-list__item__img" src={homePageIcon} alt="Главная" />
-                            <p className="navigation-list__item__text">Главная</p>
-                        </a>
+                <ul>
+                    <li className={styles['navigation-list__item']}>
+                        <NavLink to='home'>
+                            <img src={homePageIcon} alt="Главная" />
+                            <p>Главная</p>
+                        </NavLink>
                     </li>
-                    <li className="navigation-list__item">
-                        <a href='#'>
-                            <img className="navigation-list__item__img" src={TournamentsIcon} alt="Турниры" />
-                            <p className="navigation-list__item__text">Турниры</p>
-                        </a>
+                    <li className={styles['navigation-list__item']}>
+                        <NavLink to='tournaments'>
+                            <img src={TournamentsIcon} alt="Турниры" />
+                            <p>Турниры</p>
+                        </NavLink>
                     </li>
-                    <li className="navigation-list__item">
-                        <a href='#'>
-                            <img className="navigation-list__item__img" src={StatisticIcon} alt="Статистика" />
-                            <p className="navigation-list__item__text">Статистика</p>
-                        </a>
+                    <li className={styles['navigation-list__item']}>
+                        <NavLink to='statistic'>
+                            <img src={StatisticIcon} alt="Статистика" />
+                            <p>Статистика</p>
+                        </NavLink>
                     </li>
-                    <li className="navigation-list__item">
-                        <a href='#'>
-                            <img className="navigation-list__item__img" src={ProfileIcon} alt="Мой профиль" />
-                            <p className="navigation-list__item__text">
+                    <li className={styles['navigation-list__item']}>
+                        <NavLink to='profile'>
+                            <img src={ProfileIcon} alt="Мой профиль" />
+                            <p>
                                 Мой<br /> профиль
                             </p>
-                        </a>
+                        </NavLink>
                     </li>
                 </ul>
             </nav>

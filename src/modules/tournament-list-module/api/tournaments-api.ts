@@ -1,14 +1,6 @@
 import axios from "axios";
 import { baseURL } from "../../../constants/constants";
-
-interface TournamentData {
-    title: string;
-    location: string;
-    sportType: string;
-    gender: string;
-    startedAt: string;
-    state: string;
-}
+import { TournamentData } from "../../../interfaces/interfaces";
 
 const fetchUserData = async (
     setTournamentsData: React.Dispatch<React.SetStateAction<TournamentData[] | null>>,
@@ -21,7 +13,7 @@ const fetchUserData = async (
         setTournamentsData(response.data);
         setLoading(false);
     } catch (err) {
-        setError('Ошибка при загрузке данных пользователя.');
+        setError('Ошибка при загрузке данных о турнирах.');
         setLoading(false);
     }
 };

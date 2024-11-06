@@ -1,8 +1,5 @@
 import { useState } from "react";
 import Select from "../../../components/Select";
-import Button from "../../../ui/Button";
-import Label from "../../../ui/Label";
-import Input from "../../../ui/Input";
 import { addErrorMessage } from "../../../utils/error-message";
 import {
     groupPattern, linkPattern, passwordPattern, linkErrorMessage, groupErrorMessage, 
@@ -12,19 +9,11 @@ import {
 import { onInputChange, onSelectChange } from "../utils/registration-utils";
 import { onFormSubmit } from "../api/registration-api";
 import Names from "./Names";
-
-interface FormData {
-    firstName: string;
-    lastName: string;
-    patronymic: string;
-    gender: string;
-    groupNumber: string;
-    link: string;
-    password: string;
-}
+import styles from "../registration-styles/registration.module.css";
+import { FormValues } from "../../../interfaces/interfaces";
 
 const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props }) => {
-    const [formData, setFormData] = useState<FormData>({
+    const [formData, setFormData] = useState<FormValues>({
         firstName: "",
         lastName: "",
         patronymic: "",
@@ -41,36 +30,36 @@ const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props })
 
     return (
         <form onSubmit={(e) => onFormSubmit(e, formData)} {...props}>
-            <Label htmlFor="email">Электронная почта:</Label>
-            <Input onChange={(e) => {
+            <label className={styles.label} htmlFor="email">Электронная почта:</label>
+            <input onChange={(e) => {
                 addErrorMessage(e, emailPattern, emailErrorMessage);
                 onInputChange(e, setFormData);
             }}
-                type="email" id="email" name="email" pattern={stringEmailPattern} required />
-            <Names names={names} setFormData={setFormData} type="text" className="names" />
-            <Label htmlFor="gender">Пол:</Label>
+                className = {styles.input} type="email" id="email" name="email" pattern={stringEmailPattern} required />
+            <Names names={names} setFormData={setFormData} type="text" className={styles.input} />
+            <label className={styles.label} htmlFor="gender">Пол:</label>
             <Select onChange={(e) => {
                 onSelectChange(e, setFormData);
-            }} options={[{ value: "male", label: "Мужской" }, { value: "female", label: "Женский" }]} id="gender" name="gender" required />
-            <Label htmlFor="groupNumber">Академическая группа:</Label>
-            <Input onChange={(e) => {
+            }} className={styles.select} options={[{ value: "male", label: "Мужской" }, { value: "female", label: "Женский" }]} id="gender" name="gender" required />
+            <label className={styles.label} htmlFor="groupNumber">Академическая группа:</label>
+            <input onChange={(e) => {
                 addErrorMessage(e, groupPattern, groupErrorMessage);
                 onInputChange(e, setFormData);
             }}
-                type="text" id="groupNumber" name="groupNumber" pattern={stringGroupPattern} required />
-            <Label htmlFor="link">Ссылка на ВК:</Label>
-            <Input onChange={(e) => {
+            className = {styles.input} type="text" id="groupNumber" name="groupNumber" pattern={stringGroupPattern} required />
+            <label className={styles.label} htmlFor="link">Ссылка на ВК:</label>
+            <input onChange={(e) => {
                 addErrorMessage(e, linkPattern, linkErrorMessage);
                 onInputChange(e, setFormData);
             }}
-                type="url" id="link" name="link" pattern={stringLinkPattern} required />
-            <Label htmlFor="password">Пароль:</Label>
-            <Input onChange={(e) => {
+            className = {styles.input} type="url" id="link" name="link" pattern={stringLinkPattern} required />
+            <label className={styles.label} htmlFor="password">Пароль:</label>
+            <input onChange={(e) => {
                 addErrorMessage(e, passwordPattern, passwordErrorMessage);
                 onInputChange(e, setFormData);
             }}
-                type="password" id="password" name="password" pattern={stringPasswordPattern} required />
-            <Button type="submit">Зарегистрироваться</Button>
+            className = {styles.input} type="password" id="password" name="password" pattern={stringPasswordPattern} required />
+            <button className={styles.button} type="submit">Зарегистрироваться</button>
         </form>
     );
 };

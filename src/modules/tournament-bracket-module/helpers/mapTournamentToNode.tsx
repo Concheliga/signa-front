@@ -1,9 +1,4 @@
-interface Game {
-    teamOne: string;
-    scoreTeamOne: number;
-    teamTwo: string;
-    scoreTeamTwo: number;
-}
+import { Game } from "../../../interfaces/interfaces";
 
 const mapTournamentToNode = (game: Game) => {
     return (

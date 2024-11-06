@@ -1,13 +1,11 @@
+import { router } from "./router/router";
 import "./ui/css/reset.css";
-import CreateTeamPage from "./pages/create-team-page/Create-team-page";
+import { RouterProvider } from "react-router-dom";
+
 
 function App() {
 
-  return (
-    <>
-      <CreateTeamPage/>
-    </>
-  )
+  return <RouterProvider router={router}/>
 }
 
 export default App

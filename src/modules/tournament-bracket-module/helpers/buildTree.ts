@@ -1,39 +1,10 @@
 import 'tournament-bracket-tree/dist/index.css';
-
-interface UserData {
-    firstName: string;
-    lastName: string;
-    patronymic: string;
-    gender: string;
-    groupNumber: string;
-    vkLink: string;
-}
-
-interface TeamData {
-    score: number,
-    id: string,
-    title: string;
-    captain: UserData;
-    members: UserData[];
-}
+import { MatchTeamData, Game, Tree } from '../../../interfaces/interfaces';
 
 interface MatchData {
     id: string;
     nextMatchId: string;
-    teams: TeamData[];
-}
-
-interface Game {
-    teamOne: string;
-    scoreTeamOne: number;
-    teamTwo: string;
-    scoreTeamTwo: number;
-}
-
-interface Tree<Game> {
-    data: Game;
-    left?: Tree<Game> | undefined;
-    right?: Tree<Game> | undefined;
+    teams: MatchTeamData[];
 }
 
 const buildTree = (matches: MatchData[]): Tree<Game> => {

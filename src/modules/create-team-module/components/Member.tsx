@@ -1,19 +1,7 @@
 import photo from "../img/photo.svg";
 import trash from "../img/trash.svg";
+import { MemberProps } from "../../../interfaces/interfaces";
 
-interface UserData {
-    firstName: string;
-    lastName: string;
-    patronymic: string;
-    gender: string;
-    groupNumber: string;
-}
-
-interface MemberProps {
-    userData: UserData | null;
-    onDelete: (id: number) => void;
-    id: number;
-}
 
 const Member: React.FC<MemberProps> = ({ userData, onDelete, id }) => (
     <li className="member">

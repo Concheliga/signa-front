@@ -1,33 +1,9 @@
-import "./css/create-team.css";
+import style from "./css/create-team.module.css";
 import { useState, useEffect } from "react";
 import { fetchUserData, postTeamData } from "./api/create-team-api";
 import photo from "./img/photo.svg";
 import trash from "./img/trash.svg";
-
-interface UserData {
-    firstName: string;
-    lastName: string;
-    patronymic: string;
-    gender: string;
-    groupNumber: string;
-}
-
-interface TeamData {
-    title: string;
-    tournamentId: string;
-    captainId: string;
-    membersId: string[];
-}
-
-interface Member {
-    id: number;
-    data: UserData;
-}
-
-interface CreateTeamProps extends React.FC {
-    tournamentId: string;
-    maxMembersCount: number;
-}
+import { TeamData, Member, CreateTeamProps, UserData } from "../../interfaces/interfaces";
 
 const CreateTeam: React.FC<CreateTeamProps> = ({ tournamentId, maxMembersCount }) => {
     tournamentId = 'fb7ade12-684a-4c36-b1a0-aeb2b5c30cd8';
@@ -68,41 +44,52 @@ const CreateTeam: React.FC<CreateTeamProps> = ({ tournamentId, maxMembersCount }
     };
 
     return (
-        <main className="main">
-            <div className="container">
-                <div className="header-container">
-                    <span className="team">Команда</span>
-                    <input onChange={e => setTeamName(e.target.value)} type="text" className="team-name" value={teamName}></input>
+        <main className={style.main}>
+            <div className={style.container}>
+                <div className={style["header-container"]}>
+                    <span className={style.team}>Команда</span>
+                    <input
+                        onChange={e => setTeamName(e.target.value)}
+                        type="text"
+                        className={style["team-name"]}
+                        value={teamName}
+                    ></input>
                 </div>
-                <div className="members-block">
-                    <div className="titles">
-                        <span className="id-title">#</span>
-                        <span className="name-title">Имя</span>
-                        <span className="group-title">Группа </span>
+                <div className={style["members-block"]}>
+                    <div className={style.titles}>
+                        <span className={style["id-title"]}>#</span>
+                        <span className={style["name-title"]}>Имя</span>
+                        <span className={style["group-title"]}>Группа </span>
                     </div>
-                    <button onClick={addMember} className="add-teammate">+ Добавить участника</button>
-                    <ul className="members">
+                    <button
+                        onClick={addMember}
+                        className={style["add-teammate"]}
+                    >+ Добавить участника</button>
+                    <ul className={style.members}>
                         {currentMembers.map((member, index) => (
-                            <li key={member.id} className="member">
-                                <span className="id">{index + 1}</span>
-                                <img src={photo} alt="photo" className="photo" />
-                                <span className="name">{`${member.data.lastName} ${member.data.firstName} ${member.data.patronymic}`}</span>
-                                <span className="group">{member.data.groupNumber}</span>
+                            <li key={member.id} className={style.member}>
+                                <span className={style.id}>{index + 1}</span>
+                                <img src={photo} alt="photo" />
+                                <span className={style.name}>
+                                    {`${member.data.lastName} ${member.data.firstName} ${member.data.patronymic}`}
+                                </span>
+                                <span>{member.data.groupNumber}</span>
                                 <img
                                     onClick={() => deleteMember(member.id)}
                                     src={trash}
                                     alt="trash"
-                                    className="trash"
+                                    className={style.trash}
                                 />
                             </li>
                         ))}
                     </ul>
-                    <div className="members-count">
-                        Всего участников: {currentMembersCount}<span className="max-members">/{maxMembersCount}</span>
+                    <div className={style["members-count"]}>
+                        Всего участников: {currentMembersCount}
+                        <span className={style["max-members"]}>/{maxMembersCount}</span>
                     </div>
                 </div>
-                <div className="buttons">
-                    <button className="cancel">Отменить</button>
+                <div className={style.buttons}>
+                    <button className={style.cancel}>Отменить</button>
                     <button onClick={e => {
                         e.preventDefault();
 
@@ -123,7 +110,7 @@ const CreateTeam: React.FC<CreateTeamProps> = ({ tournamentId, maxMembersCount }
                         }
 
                         postTeamData(team);
-                    }} className="save">Сохранить команду</button>
+                    }} className={style.save}>Сохранить команду</button>
                 </div>
             </div>
         </main>
