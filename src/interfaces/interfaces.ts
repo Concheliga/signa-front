@@ -23,8 +23,8 @@ interface TeamData {
     score: number;
     title: string;
     tournamentId: string;
-    captainId: UserData;
-    membersId: UserData[];
+    captain: UserData;
+    members: UserData[];
 }
 
 interface Member {
