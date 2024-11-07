@@ -10,7 +10,7 @@ const Tournaments: React.FC<TournamentsDataProps> = ({ tournamentsData }) => {
                 return (
                     <tr className={style.tr} key={id}>
                         <td className={style.td}>{tournamentData.sportType}</td>
-                        <td className={style.td}><Link to={`/tournaments/${tournamentData.id}`}>{tournamentData.title}</Link></td>
+                        <td className={style.td}><Link to={`/tournaments/${tournamentData.id}/info`}>{tournamentData.title}</Link></td>
                         <td className={style.td}>{dayjs(tournamentData.startedAt).format('DD.MM.YYYY')}</td>
                         <td className={style.td}>{tournamentData.location}</td>
                         <td className={style.td}>{tournamentData.gender}</td>

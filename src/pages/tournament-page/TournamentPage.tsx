@@ -12,7 +12,7 @@ const TournamentPage: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const {store} = useContext(Context);
     const {tournamentId} = useParams();
-
+    console.log(tournamentId)
     useEffect(() => {
         fetchUserData(setTournamentData, setLoading, setError, store, tournamentId);
     }, []);

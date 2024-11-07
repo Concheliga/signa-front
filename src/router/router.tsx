@@ -57,8 +57,8 @@ export const router = createBrowserRouter([
                 children: [
                     {
                         path: '',
-                        element: <Navigate to={'/tournaments/:tournamentId/info'} replace />,
-                        errorElement: <Navigate to={'/tournaments/:tournamentId/info'} replace />
+                        element: <Navigate to={'info'} replace />,
+                        errorElement: <Navigate to={'info'} replace />
                     },
                     {
                         path: 'info',
