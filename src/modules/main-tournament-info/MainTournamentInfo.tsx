@@ -1,5 +1,5 @@
 import style from "./css/main-tournament-info.module.css";
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import dayjs from "dayjs";
 import Organizers from "./Components/Organizers";
 import { TournamentData } from "../../interfaces/interfaces";
@@ -7,13 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../../main";
 
 const MainTournamentInfo: React.FC = () => {
-    const [tournamentData, setTournamentData] = useState<TournamentData | null>(null);
     const { store } = useContext(Context);
+    const tournamentData: TournamentData | null = store.tournament;
     const navigate = useNavigate();
-
-    useEffect(() => {
-        setTournamentData(store.tournament)
-    }, []);
 
     return (
         <>

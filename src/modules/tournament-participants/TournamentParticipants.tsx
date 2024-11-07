@@ -10,7 +10,7 @@ const TournamentParticipants: React.FC = () => {
         if (listType === 'participants') {
             return store.tournament.members.map((member, index) => {
                 return (
-                    <tr className={style.tr}>
+                    <tr className={style.tr} key={index}>
                         <td className={style.td}>{index + 1}</td>
                         <td className={style.td}>{`${member.patronymic} ${member.firstName[0]}.${member.lastName[0]}`}</td>
                         <td className={style.td}>{member.gender}</td>
@@ -21,7 +21,7 @@ const TournamentParticipants: React.FC = () => {
         } else {
             return store.tournament.teams.map((team, index) => {
                 return (
-                    <tr className={style.tr}>
+                    <tr className={style.tr} key={index}>
                         <td className={style.td}>{index + 1}</td>
                         <td className={style.td}>{team.title}</td>
                         <td className={style.td}>{team.captain.gender}</td>

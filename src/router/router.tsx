@@ -51,14 +51,14 @@ export const router = createBrowserRouter([
                 errorElement: <TournamentListPage />
             },
             {
-                path: 'tournaments/tournament',//здесь должен быть id турнира
+                path: 'tournaments/:tournamentId',//здесь должен быть id турнира
                 element: <TournamentPage />,
                 errorElement: <TournamentPage />,
                 children: [
                     {
                         path: '',
-                        element: <Navigate to={'/tournaments/tournament/info'} replace />,
-                        errorElement: <Navigate to={'/tournaments/tournament/info'} replace />
+                        element: <Navigate to={'/tournaments/:tournamentId/info'} replace />,
+                        errorElement: <Navigate to={'/tournaments/:tournamentId/info'} replace />
                     },
                     {
                         path: 'info',

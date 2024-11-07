@@ -103,8 +103,19 @@ interface Tree<Game> {
     right?: Tree<Game> | undefined;
 }
 
+interface TournamentFromTournaments {
+    id: string;
+    title: string;
+    location: string;
+    sportType: string;
+    gender: string;
+    startedAt: string;
+    endRegistrationAt: string;
+    state: string;
+}
+
 interface TournamentsDataProps {
-    tournamentsData: TournamentData[] | null;
+    tournamentsData : TournamentFromTournaments[] | null;
 }
 
 interface IUser {
@@ -126,5 +137,5 @@ interface State {
 export type {
     TournamentData, SelectProps, UserData, MemberProps, TeamData, Member, CreateTeamProps,
     Orgs, FormValues, NamesProps, MatchData, MatchTeamData, Game, Tree, TournamentsDataProps,
-    AuthorizationResponse, State, IUser
+    AuthorizationResponse, State, IUser, TournamentFromTournaments
 }

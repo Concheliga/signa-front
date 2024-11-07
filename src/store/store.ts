@@ -7,6 +7,7 @@ export default class Store {
     user = {} as FormValues;
     isAuthorized = false;
     tournament = {} as TournamentData;
+    tournamentId = '';
 
     constructor() {
         makeAutoObservable(this);
@@ -22,7 +23,10 @@ export default class Store {
 
     setTournament(tournament: TournamentData){
         this.tournament = tournament;
-        console.log(tournament);
+    }
+
+    setTournamentId(tournamentId: string){
+        this.tournamentId = tournamentId;
     }
 
     async login(email: string, password: string) {
