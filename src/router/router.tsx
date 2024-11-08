@@ -11,6 +11,7 @@ import Login from "../modules/login/Login";
 import ProfileModule from "../modules/profile/Profile-module";
 import Statistic from "../modules/statistic/Statistic";
 import TournamentParticipants from "../modules/tournament-participants/TournamentParticipants";
+import TournamentResults from "../modules/tournament-results/TournamentResults";
 
 export const router = createBrowserRouter([
     {
@@ -51,7 +52,7 @@ export const router = createBrowserRouter([
                 errorElement: <TournamentListPage />
             },
             {
-                path: 'tournaments/:tournamentId',//здесь должен быть id турнира
+                path: 'tournaments/:tournamentId',
                 element: <TournamentPage />,
                 errorElement: <TournamentPage />,
                 children: [
@@ -79,6 +80,11 @@ export const router = createBrowserRouter([
                         path: 'participants',
                         element: <TournamentParticipants />,
                         errorElement: <TournamentParticipants />
+                    },
+                    {
+                        path: 'results',
+                        element: <TournamentResults />,
+                        errorElement: <TournamentResults />
                     }
                 ]
             }

@@ -40,7 +40,7 @@ const TournamentParticipants: React.FC = () => {
                     <tr>
                         <th className={style.th}>№</th>
                         <th className={style.th}>
-                            <select onChange={(e) => setListType(e.target.value)}>
+                            <select className={style.select} onChange={(e) => setListType(e.target.value)}>
                                 <option value="participants">Участники</option>
                                 <option value="teams">Команды</option>
                             </select>

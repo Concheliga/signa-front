@@ -40,7 +40,7 @@ const TournamentPage: React.FC = () => {
                 <li><NavLink to={`/tournaments/${tournamentId}/info`}>Основная информация</NavLink></li>
                 <li><NavLink to={`/tournaments/${tournamentId}/participants`}>Участники</NavLink></li>
                 <li><NavLink to={`/tournaments/${tournamentId}/bracket`}>Турнирная сетка</NavLink></li>
-                <li><NavLink to={`/tournaments/${tournamentId}/result`}>Результаты турнира</NavLink></li>
+                <li><NavLink to={`/tournaments/${tournamentId}/results`}>Результаты турнира</NavLink></li>
             </ul>
             <Outlet />
         </main>
