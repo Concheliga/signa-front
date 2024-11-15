@@ -3,13 +3,15 @@ import { useContext } from "react";
 import dayjs from "dayjs";
 import Organizers from "./Components/Organizers";
 import { TournamentData } from "../../interfaces/interfaces";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../../main";
 
 const MainTournamentInfo: React.FC = () => {
     const { store } = useContext(Context);
     const tournamentData: TournamentData | null = store.tournament;
     const navigate = useNavigate();
+    const location = useLocation();
+    const url = new URL("./create-team", window.origin + location.pathname);
 
     return (
         <>
@@ -41,7 +43,7 @@ const MainTournamentInfo: React.FC = () => {
                 </ul>
             </form>
             <ul className={style.buttons}>
-                <li className={style.button}><button onClick={() => navigate('/tournament/create-team')}>Зарегистрироваться</button></li>
+                <li className={style.button}><button onClick={() => navigate(url.pathname)}>Зарегистрироваться</button></li>
                 <li className={style.button}><button>Ссылка на беседу ВК</button></li>
                 <li className={style.button}><button>Связаться с организатором</button></li>
                 <li className={style.button}><button>Регламент</button></li>

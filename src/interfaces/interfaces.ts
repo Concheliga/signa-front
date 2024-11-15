@@ -20,27 +20,29 @@ interface MemberProps {
 }
 
 interface TeamData {
-    score: number;
     title: string;
     tournamentId: string;
-    captain: UserData;
-    members: UserData[];
+    captainId: string;
+    membersId: string[];
+}
+
+interface SearchedUser {
+    id: string;
+    firstName: string;
+    lastName: string;
+    patronymic: string;
+    groupNumber: string;
 }
 
 interface Member {
     id: number;
-    data: UserData;
-}
-
-interface CreateTeamProps {
-    tournamentId: string;
-    maxMembersCount: number;
+    data: SearchedUser;
 }
 
 interface MatchData {
     id: string;
     nextMatchId: string;
-    teams: TeamData[];
+    teams: MatchTeamData[];
 }
 
 interface TournamentData {
@@ -53,7 +55,7 @@ interface TournamentData {
     maxTeamsCount: string;
     regulationLink: string;
     chatLink: string;
-    teams: TeamData[];
+    teams: MatchTeamData[];
     matches: MatchData[];
     organizers: UserData[];
     currentMembersCount: number;
@@ -135,7 +137,7 @@ interface State {
 }
 
 export type {
-    TournamentData, SelectProps, UserData, MemberProps, TeamData, Member, CreateTeamProps,
-    Orgs, FormValues, NamesProps, MatchData, MatchTeamData, Game, Tree, TournamentsDataProps,
-    AuthorizationResponse, State, IUser, TournamentFromTournaments
+    TournamentData, SelectProps, UserData, MemberProps, TeamData, Member, Orgs,
+    FormValues, NamesProps, MatchData, MatchTeamData, Game, Tree, TournamentsDataProps,
+    AuthorizationResponse, State, IUser, TournamentFromTournaments, SearchedUser
 }
