@@ -1,4 +1,3 @@
-import User from "../api/User";
 import Store from "../store/store";
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {

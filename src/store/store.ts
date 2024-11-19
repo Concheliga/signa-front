@@ -41,6 +41,7 @@ export default class Store {
             this.setAuthorization(true);
         } catch (e: any) {
             console.log(e.response?.data?.message);
+            return await Authorization.login(email, password);
         }
     }
 
@@ -66,6 +67,7 @@ export default class Store {
             this.setUser(user);
         } catch (e: any) {
             console.log(e.response?.data?.message);
+            return await Authorization.registration(user);
         }
     }
 
