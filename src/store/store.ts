@@ -5,6 +5,7 @@ import { TournamentData } from "../interfaces/interfaces";
 
 export default class Store {
     user = {} as FormValues;
+    userID = '';
     isAuthorized = false;
     tournament = {} as TournamentData;
     tournamentId = '';
@@ -21,22 +22,37 @@ export default class Store {
         this.user = user;
     }
 
-    setTournament(tournament: TournamentData){
+    setUserID(userID: string) {
+        this.userID = userID;
+    }
+
+    setTournament(tournament: TournamentData) {
         this.tournament = tournament;
     }
 
-    setTournamentId(tournamentId: string){
+    setTournamentId(tournamentId: string) {
         this.tournamentId = tournamentId;
     }
 
     async login(email: string, password: string) {
         try {
             const response = await Authorization.login(email, password);
-            console.log(response);
-            //localStorage.setItem('token', response.data.accessToken);
+            localStorage.setItem('token', response.data);
             this.setAuthorization(true);
-            //this.setUser(user);
-        } catch (e:any) {
+        } catch (e: any) {
+            console.log(e.response?.data?.message);
+        }
+    }
+
+    async getUser() {
+        try {
+            const userIDResponse = await Authorization.getUserID();
+            this.setUserID(userIDResponse.data);
+            const userResponse = await Authorization.getUser(userIDResponse.data);
+            this.setUser(userResponse.data);
+            localStorage.setItem('userID', userIDResponse.data);
+        }
+        catch (e: any) {
             console.log(e.response?.data?.message);
         }
     }
@@ -45,10 +61,10 @@ export default class Store {
         try {
             const response = await Authorization.registration(user);
             console.log(response);
-            localStorage.setItem('token', response.data.accessToken);
+            localStorage.setItem('token', response.data);
             this.setAuthorization(true);
             this.setUser(user);
-        } catch (e:any) {
+        } catch (e: any) {
             console.log(e.response?.data?.message);
         }
     }

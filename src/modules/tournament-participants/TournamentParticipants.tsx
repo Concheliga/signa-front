@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import style from "./css/tournament-participants.module.css";
 import { Context } from "../../main";
+import { genderMapping } from "../../utils/name-mapping";
 
 const TournamentParticipants: React.FC = () => {
     const { store } = useContext(Context);
@@ -13,7 +14,7 @@ const TournamentParticipants: React.FC = () => {
                     <tr className={style.tr} key={index}>
                         <td className={style.td}>{index + 1}</td>
                         <td className={style.td}>{`${member.patronymic} ${member.firstName[0]}.${member.lastName[0]}`}</td>
-                        <td className={style.td}>{member.gender}</td>
+                        <td className={style.td}>{genderMapping(member.gender)}</td>
                         <td className={style.td}>{member.groupNumber}</td>
                     </tr>
                 )
@@ -24,7 +25,7 @@ const TournamentParticipants: React.FC = () => {
                     <tr className={style.tr} key={index}>
                         <td className={style.td}>{index + 1}</td>
                         <td className={style.td}>{team.title}</td>
-                        <td className={style.td}>{team.captain.gender}</td>
+                        <td className={style.td}>{genderMapping(team.captain.gender)}</td>
                         <td className={style.td}>{team.captain.groupNumber}</td>
                     </tr>
                 )

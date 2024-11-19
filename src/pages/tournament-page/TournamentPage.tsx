@@ -5,6 +5,7 @@ import style from "./css/tournament-page.module.css";
 import { NavLink, Outlet } from "react-router-dom";
 import { Context } from "../../main";
 import { useParams } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 
 const TournamentPage: React.FC = () => {
     const [tournamentData, setTournamentData] = useState<TournamentData | null>(null);
@@ -47,4 +48,4 @@ const TournamentPage: React.FC = () => {
     );
 };
 
-export default TournamentPage;
+export default observer(TournamentPage);

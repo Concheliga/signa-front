@@ -3,6 +3,7 @@ import style from "./css/profile-module.module.css";
 import { useState, useEffect } from "react";
 import { fetchUserData } from "./api/profile-api";
 import { UserData } from "../../interfaces/interfaces";
+import { genderMapping } from "../../utils/name-mapping";
 
 const ProfileModule: React.FC = () => {
     const [userData, setUserData] = useState<UserData | null>(null);
@@ -45,7 +46,7 @@ const ProfileModule: React.FC = () => {
                 <ul className={style["right-fields"]}>
                     <li className={style.field}>
                         <label className={style.label} htmlFor="gender">Пол</label>
-                        <input className={style.field__input} type="text" name="gender" id="gender" value={userData?.gender || ''} disabled />
+                        <input className={style.field__input} type="text" name="gender" id="gender" value={genderMapping(userData?.gender) || ''} disabled />
                     </li>
                     <li className={style.field}>
                         <label className={style.label} htmlFor="group">Группа</label>

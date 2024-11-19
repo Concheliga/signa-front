@@ -5,6 +5,7 @@ import Organizers from "./Components/Organizers";
 import { TournamentData } from "../../interfaces/interfaces";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../../main";
+import { genderMapping } from "../../utils/name-mapping";
 
 const MainTournamentInfo: React.FC = () => {
     const { store } = useContext(Context);
@@ -27,7 +28,7 @@ const MainTournamentInfo: React.FC = () => {
                     </li>
                     <li className={style.field}>
                         <label className={style.label} htmlFor="past-name">Пол</label>
-                        <input className={style.field__input} type="text" name="past-name" id="past-name" value={tournamentData?.gender || ''} disabled />
+                        <input className={style.field__input} type="text" name="past-name" id="past-name" value={genderMapping(tournamentData?.gender) || ''} disabled />
                     </li>
                 </ul>
                 <ul className={style["right-fields"]}>

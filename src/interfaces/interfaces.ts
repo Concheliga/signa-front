@@ -77,6 +77,7 @@ interface FormValues {
     email: string;
     phoneNumber: string;
     photoLink: string;
+    vkLink: string;
 }
 
 interface NamesProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -126,12 +127,6 @@ interface IUser {
     id: string;
 }
 
-interface AuthorizationResponse {
-    accessToken: string;
-    refreshToken: string;
-    user: IUser;
-}
-
 interface State {
     store: Store;
 }
@@ -139,5 +134,5 @@ interface State {
 export type {
     TournamentData, SelectProps, UserData, MemberProps, TeamData, Member, Orgs,
     FormValues, NamesProps, MatchData, MatchTeamData, Game, Tree, TournamentsDataProps,
-    AuthorizationResponse, State, IUser, TournamentFromTournaments, SearchedUser
+    State, IUser, TournamentFromTournaments, SearchedUser
 }

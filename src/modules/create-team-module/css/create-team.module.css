@@ -153,12 +153,16 @@
     font-size: 14px;
 }
 
+.search-list {
+    padding: 16px 16px;
+}
+
 .search {
     display: flex;
     align-items: center;
-    padding: 16px 16px;
     gap: 10px;
-    width: 274px;
+    width: fit-content;
+    min-width: 274px;
     height: 48px;
     background: rgba(0, 0, 0, 0.03);
     border-radius: 8px;
@@ -170,4 +174,14 @@
     line-height: 15px;
     color: #000000;
     opacity: 0.4;
+}
+
+.list {
+    width: fit-content;
+    padding: 5px;
+}
+
+.list:hover {
+    background-color: #EDF0FF;
+    cursor: pointer;
 }

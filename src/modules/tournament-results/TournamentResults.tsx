@@ -20,28 +20,28 @@ const TournamentResults: React.FC = () => {
                     <td className={style.td}><img src={goldMedal} /></td>
                     <td className={style.td}>1</td>
                     <td className={style.td}>Килин М.С</td>
-                    <td className={style.td}>Мужской</td>
+                    <td className={style.td}>Муж</td>
                     <td className={style.td}>РТФ</td>
                 </tr>
                 <tr className={style.tr}>
                     <td className={style.td}><img src={silverMedal} /></td>
                     <td className={style.td}>2</td>
                     <td className={style.td}>Килин М.С</td>
-                    <td className={style.td}>Мужской</td>
+                    <td className={style.td}>Муж</td>
                     <td className={style.td}>РТФ</td>
                 </tr>
                 <tr className={style.tr}>
                     <td className={style.td}><img src={bronzeMedal} /></td>
                     <td className={style.td}>3</td>
                     <td className={style.td}>Килин М.С</td>
-                    <td className={style.td}>Мужской</td>
+                    <td className={style.td}>Муж</td>
                     <td className={style.td}>РТФ</td>
                 </tr>
                 <tr className={style.tr}>
                     <td className={style.td}></td>
                     <td className={style.td}>4</td>
                     <td className={style.td}>Килин М.С</td>
-                    <td className={style.td}>Мужской</td>
+                    <td className={style.td}>Муж</td>
                     <td className={style.td}>РТФ</td>
                 </tr>
             </tbody>

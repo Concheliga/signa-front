@@ -3,12 +3,11 @@ import { SearchedUser, TeamData } from "../../../interfaces/interfaces";
 import { api } from "../../../api/index-api";
 
 const findUser = async (
-    setUserData: React.Dispatch<React.SetStateAction<SearchedUser | null>>,
+    setUsers: React.Dispatch<React.SetStateAction<SearchedUser[]>>,
     searchMemberName: string
 ) => {
-    const response = await api.get<SearchedUser>(`/search/prefix=${searchMemberName}`);
-    console.log(response.data)
-    setUserData(response.data);
+    const response = await api.get<SearchedUser[]>(`/search?prefix=${searchMemberName}`);
+    setUsers(response.data);
 };
 
 const postTeamData = async (teamData: TeamData | null) => {

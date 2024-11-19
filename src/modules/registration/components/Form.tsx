@@ -12,6 +12,7 @@ import Names from "./Names";
 import styles from "../registration-styles/registration.module.css";
 import { FormValues } from "../../../interfaces/interfaces";
 import { Context } from "../../../main";
+import { useNavigate } from "react-router-dom";
 
 const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props }) => {
     const [formData, setFormData] = useState<FormValues>({
@@ -24,7 +25,8 @@ const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props })
         password: "",
         email: "",
         photoLink: "",
-        phoneNumber: ""
+        phoneNumber: "",
+        vkLink: ''
     });
     const names: { name: string; value: string }[] = [
         { name: "firstName", value: "Имя:" },
@@ -32,9 +34,10 @@ const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props })
         { name: "patronymic", value: "Отчество:" }
     ];
     const {store} = useContext(Context);
+    const navigate = useNavigate();
 
     return (
-        <form onSubmit={(e) => onFormSubmit(e, formData, store)} {...props}>
+        <form onSubmit={(e) => onFormSubmit(e, formData, store, navigate)} {...props}>
             <label className={styles.label} htmlFor="email">Электронная почта:</label>
             <input onChange={(e) => {
                 addErrorMessage(e, emailPattern, emailErrorMessage);
@@ -57,7 +60,7 @@ const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props })
                 addErrorMessage(e, linkPattern, linkErrorMessage);
                 onInputChange(e, setFormData);
             }}
-            className = {styles.input} type="url" id="link" name="link" pattern={stringLinkPattern} required />
+            className = {styles.input} type="url" id="vkLink" name="vkLink" pattern={stringLinkPattern} required />
             <label className={styles.label} htmlFor="password">Пароль:</label>
             <input onChange={(e) => {
                 addErrorMessage(e, passwordPattern, passwordErrorMessage);
