@@ -1,11 +1,5 @@
 import 'tournament-bracket-tree/dist/index.css';
-import { MatchTeamData, Game, Tree } from '../../../interfaces/interfaces';
-
-interface MatchData {
-    id: string;
-    nextMatchId: string;
-    teams: MatchTeamData[];
-}
+import { MatchData, Game, Tree } from '../../../interfaces/interfaces';
 
 const buildTree = (matches: MatchData[]): Tree<Game> => {
     let counter = 1;

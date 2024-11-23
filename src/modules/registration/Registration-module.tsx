@@ -1,5 +1,6 @@
 import styles from "./registration-styles/registration.module.css";
 import Form from "./components/Form.tsx";
+import { observer } from "mobx-react-lite";
 
 const RegistrationModule: React.FC = () => {
     return (
@@ -13,4 +14,4 @@ const RegistrationModule: React.FC = () => {
     )
 };
 
-export default RegistrationModule;
+export default observer(RegistrationModule);

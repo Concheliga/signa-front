@@ -3,6 +3,7 @@ import style from "./css/profile-module.module.css";
 import { useState, useEffect } from "react";
 import { fetchUserData } from "./api/profile-api";
 import { UserData } from "../../interfaces/interfaces";
+import { genderMapping } from "../../utils/name-mapping";
 
 const ProfileModule: React.FC = () => {
     const [userData, setUserData] = useState<UserData | null>(null);
@@ -22,10 +23,9 @@ const ProfileModule: React.FC = () => {
     }
 
     return (
-        <main className={style.main}>
-            <h1 className={style["page-name"]}>Профиль участника</h1>
+        <>
             <div className={style.user}>
-                <img src={avatar} alt="Аватарка"/>
+                <img src={avatar} alt="Аватарка" />
                 <p className={style["user__full-name"]}>{`${userData?.firstName || ''} ${userData?.patronymic || ''} ${userData?.lastName || ''}`}</p>
             </div>
             <form className={style.form}>
@@ -46,7 +46,7 @@ const ProfileModule: React.FC = () => {
                 <ul className={style["right-fields"]}>
                     <li className={style.field}>
                         <label className={style.label} htmlFor="gender">Пол</label>
-                        <input className={style.field__input} type="text" name="gender" id="gender" value={userData?.gender || ''} disabled />
+                        <input className={style.field__input} type="text" name="gender" id="gender" value={genderMapping(userData?.gender) || ''} disabled />
                     </li>
                     <li className={style.field}>
                         <label className={style.label} htmlFor="group">Группа</label>
@@ -58,7 +58,7 @@ const ProfileModule: React.FC = () => {
                     </li>
                 </ul>
             </form>
-        </main>
+        </>
     );
 };
 

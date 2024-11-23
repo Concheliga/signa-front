@@ -1,33 +1,36 @@
 import style from "./css/create-team.module.css";
-import { useState, useEffect } from "react";
-import { fetchUserData, postTeamData } from "./api/create-team-api";
+import { useState, useEffect, useContext } from "react";
+import { findUser, postTeamData } from "./api/create-team-api";
 import photo from "./img/photo.svg";
 import trash from "./img/trash.svg";
-import { TeamData, Member, CreateTeamProps, UserData } from "../../interfaces/interfaces";
+import { TeamData, Member, SearchedUser } from "../../interfaces/interfaces";
+import { useLocation } from "react-router-dom";
+import search from "./img/search.svg";
+import { Context } from "../../main";
 
-const CreateTeam: React.FC<CreateTeamProps> = ({ tournamentId, maxMembersCount }) => {
-    tournamentId = 'fb7ade12-684a-4c36-b1a0-aeb2b5c30cd8';
+const CreateTeam: React.FC = () => {
+    const {store} = useContext(Context);
+    const location = useLocation();
+    const tournamentId = location.pathname.substring(13, location.pathname.length - 12);
     const [currentMembersCount, setCurrentMembersCount] = useState<number>(0);
-    maxMembersCount = 8;
-    const [teamName, setTeamName] = useState('Введите название');
-    const [userData, setUserData] = useState<UserData | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+    let maxMembersCount = 8;
+    const [teamName, setTeamName] = useState<string>('');
+    const [userData, setUserData] = useState<SearchedUser | null>(null);
+    const [users, setUsers] = useState<SearchedUser[]>([]);
     const [currentMembers, setCurrentMembers] = useState<Member[]>([]);
+    const [searchMemberName, setSearchMemberName] = useState<string>('')
 
     useEffect(() => {
-        fetchUserData(setUserData, setLoading, setError);
-    }, []);
+        if (searchMemberName != '') {
+            findUser(setUsers, searchMemberName);
+        }
+    }, [searchMemberName]);
 
-    if (loading) {
-        return <p>Загрузка данных...</p>;
-    }
+    useEffect(() => {
+        setTimeout(() => addMember({...store.user, id: store.userID}), 200);
+    }, [])
 
-    if (error) {
-        return <p>{error}</p>;
-    }
-
-    const addMember = () => {
+    const addMember = (userData: SearchedUser | null) => {
         if (userData && currentMembers.length < maxMembersCount) {
             const newMember: Member = {
                 id: Date.now(),
@@ -43,17 +46,44 @@ const CreateTeam: React.FC<CreateTeamProps> = ({ tournamentId, maxMembersCount }
         setCurrentMembersCount(currentMembersCount - 1);
     };
 
+    const onFindedUserClick = (
+        setUserData: React.Dispatch<React.SetStateAction<SearchedUser | null>>,
+        user: SearchedUser
+    ) => {
+        setUserData(user);
+        addMember(user);
+    }
+
     return (
         <main className={style.main}>
             <div className={style.container}>
                 <div className={style["header-container"]}>
                     <span className={style.team}>Команда</span>
                     <input
+                        placeholder="Введите название"
                         onChange={e => setTeamName(e.target.value)}
                         type="text"
                         className={style["team-name"]}
-                        value={teamName}
-                    ></input>
+                        value={teamName} />
+                </div>
+                <div className={style['search-list']}>
+                    <div className={style.search}>
+                        <img src={search} alt="поиск" width="16px" />
+                        <input
+                            placeholder="Поиск"
+                            className={style['search-text']}
+                            value={searchMemberName}
+                            onChange={e => setSearchMemberName(e.target.value)} />
+                    </div>
+                    <ul>
+                        {users.slice(0, 5 < users.length ? 5 : users.length).map((user, index) => {
+                            return (
+                                <li onClick={() => onFindedUserClick(setUserData, user)} className={style.list} key={index}>
+                                    {`${user?.lastName} ${user?.firstName} ${user?.patronymic}`}
+                                </li>
+                            )
+                        })}
+                    </ul>
                 </div>
                 <div className={style["members-block"]}>
                     <div className={style.titles}>
@@ -62,7 +92,7 @@ const CreateTeam: React.FC<CreateTeamProps> = ({ tournamentId, maxMembersCount }
                         <span className={style["group-title"]}>Группа </span>
                     </div>
                     <button
-                        onClick={addMember}
+                        onClick={() => addMember(userData)}
                         className={style["add-teammate"]}
                     >+ Добавить участника</button>
                     <ul className={style.members}>
@@ -74,12 +104,12 @@ const CreateTeam: React.FC<CreateTeamProps> = ({ tournamentId, maxMembersCount }
                                     {`${member.data.lastName} ${member.data.firstName} ${member.data.patronymic}`}
                                 </span>
                                 <span>{member.data.groupNumber}</span>
-                                <img
+                                {index && <img
                                     onClick={() => deleteMember(member.id)}
                                     src={trash}
                                     alt="trash"
                                     className={style.trash}
-                                />
+                                />}
                             </li>
                         ))}
                     </ul>
@@ -96,17 +126,8 @@ const CreateTeam: React.FC<CreateTeamProps> = ({ tournamentId, maxMembersCount }
                         const team: TeamData = {
                             title: teamName,
                             tournamentId: tournamentId,
-                            captainId: '5c691513-3fa1-4f07-b37c-b3a86cbeecca',
-                            membersId: [
-                                '5c691513-3fa1-4f07-b37c-b3a86cbeecca',
-                                '5c691513-3fa1-4f07-b37c-b3a86cbeecca',
-                                '5c691513-3fa1-4f07-b37c-b3a86cbeecca',
-                                '5c691513-3fa1-4f07-b37c-b3a86cbeecca',
-                                '5c691513-3fa1-4f07-b37c-b3a86cbeecca',
-                                '5c691513-3fa1-4f07-b37c-b3a86cbeecca',
-                                '5c691513-3fa1-4f07-b37c-b3a86cbeecca',
-                                '5c691513-3fa1-4f07-b37c-b3a86cbeecca'
-                            ]
+                            captainId: currentMembers[0].data.id,
+                            membersId: currentMembers.map((member) => member.data.id)
                         }
 
                         postTeamData(team);

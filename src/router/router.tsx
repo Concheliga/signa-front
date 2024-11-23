@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import CreateTeamPage from "../pages/create-team-page/Create-team-page";
 import ProfilePage from "../pages/profile-page/Profile-page";
 import RegistrationPage from "../pages/Registration/Registration-page";
@@ -7,6 +7,11 @@ import TournamentPage from "../pages/tournament-page/TournamentPage";
 import MainTournamentInfo from "../modules/main-tournament-info/MainTournamentInfo";
 import TournamentBracketModule from "../modules/tournament-bracket-module/TournamentBracketModule";
 import Layout from "../modules/layout/Layout";
+import Login from "../modules/login/Login";
+import ProfileModule from "../modules/profile/Profile-module";
+import Statistic from "../modules/statistic/Statistic";
+import TournamentParticipants from "../modules/tournament-participants/TournamentParticipants";
+import TournamentResults from "../modules/tournament-results/TournamentResults";
 
 export const router = createBrowserRouter([
     {
@@ -15,9 +20,26 @@ export const router = createBrowserRouter([
         errorElement: <Layout />,
         children: [
             {
+                path: 'login',
+                element: <Login />,
+                errorElement: <Login />
+            },
+            {
                 path: 'profile',
                 element: <ProfilePage />,
-                errorElement: <ProfilePage />
+                errorElement: <ProfilePage />,
+                children: [
+                    {
+                        path: 'info',
+                        element: <ProfileModule />,
+                        errorElement: <ProfileModule />
+                    },
+                    {
+                        path: 'statistic',
+                        element: <Statistic />,
+                        errorElement: <Statistic />
+                    }
+                ]
             },
             {
                 path: 'registration',
@@ -30,14 +52,14 @@ export const router = createBrowserRouter([
                 errorElement: <TournamentListPage />
             },
             {
-                path: 'tournament',//здесь должен быть id турнира
+                path: 'tournaments/:tournamentId',
                 element: <TournamentPage />,
                 errorElement: <TournamentPage />,
                 children: [
                     {
                         path: '',
-                        element: <MainTournamentInfo />,
-                        errorElement: <MainTournamentInfo />
+                        element: <Navigate to={'info'} replace />,
+                        errorElement: <Navigate to={'info'} replace />
                     },
                     {
                         path: 'info',
@@ -53,6 +75,16 @@ export const router = createBrowserRouter([
                         path: 'create-team',
                         element: <CreateTeamPage />,
                         errorElement: <CreateTeamPage />
+                    },
+                    {
+                        path: 'participants',
+                        element: <TournamentParticipants />,
+                        errorElement: <TournamentParticipants />
+                    },
+                    {
+                        path: 'results',
+                        element: <TournamentResults />,
+                        errorElement: <TournamentResults />
                     }
                 ]
             }

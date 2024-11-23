@@ -1,3 +1,3 @@
-const baseURL = 'https://localhost:7127';
+const baseURL = 'http://localhost:5043';
 
 export {baseURL};

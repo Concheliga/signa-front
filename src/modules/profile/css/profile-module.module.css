@@ -1,16 +1,3 @@
-.main{
-    width: 100%;
-    max-width: 2000px;
-    height: calc(100vh - 250px);
-    padding-top: 16px;
-    background-color: #FFFFFF;
-}
-
-.page-name{
-    text-align: center;
-    font-size: 32px;
-}
-
 .user{
     display: flex;
     align-items: center;

@@ -1,0 +1,18 @@
+.main{
+    width: 100%;
+    max-width: 2000px;
+    padding-top: 16px;
+    background-color: #FFFFFF;
+}
+
+.page-name {
+    text-align: center;
+    font-size: 32px;
+}
+
+.tabs {
+    margin: 70px auto;
+    display: flex;
+    justify-content: center;
+    gap: 160px;
+}

@@ -23,13 +23,13 @@ const LeftSidebar: React.FC = () => {
                         </NavLink>
                     </li>
                     <li className={styles['navigation-list__item']}>
-                        <NavLink to='statistic'>
+                        <NavLink to='profile/statistic'>
                             <img src={StatisticIcon} alt="Статистика" />
                             <p>Статистика</p>
                         </NavLink>
                     </li>
                     <li className={styles['navigation-list__item']}>
-                        <NavLink to='profile'>
+                        <NavLink to='profile/info'>
                             <img src={ProfileIcon} alt="Мой профиль" />
                             <p>
                                 Мой<br /> профиль

@@ -1,13 +1,18 @@
-import axios from "axios";
-import { baseURL } from "../../../constants/constants";
+import { NavigateFunction } from "react-router-dom";
 import { FormValues } from "../../../interfaces/interfaces";
+import Store from "../../../store/store";
 
-const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>, formData:FormValues) => {
+const onFormSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+    formData:FormValues,
+    store: Store,
+    navigate: NavigateFunction
+    ) => {
     e.preventDefault();
 
     try {
-        const response = await axios.post(`${baseURL}/user`, formData);
-        console.log("Ответ сервера:", response);
+        store.registration(formData);
+        navigate('..');
     } catch (error) {
         console.error("Ошибка при отправке формы:", error);
         alert("Произошла ошибка при отправке формы.");

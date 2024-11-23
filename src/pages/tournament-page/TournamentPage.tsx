@@ -1,17 +1,21 @@
 import { fetchUserData } from "./api/tournament-page-api";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { TournamentData } from "../../interfaces/interfaces";
 import style from "./css/tournament-page.module.css";
 import { NavLink, Outlet } from "react-router-dom";
-
+import { Context } from "../../main";
+import { useParams } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 
 const TournamentPage: React.FC = () => {
     const [tournamentData, setTournamentData] = useState<TournamentData | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-
+    const {store} = useContext(Context);
+    const {tournamentId} = useParams();
+    
     useEffect(() => {
-        fetchUserData(setTournamentData, setLoading, setError);
+        fetchUserData(setTournamentData, setLoading, setError, store, tournamentId);
     }, []);
 
     if (loading) {
@@ -34,14 +38,14 @@ const TournamentPage: React.FC = () => {
         <main className={style.main}>
             <h1 className={style['page-name']}>{tournamentData?.title || ''}</h1>
             <ul className={style.tabs}>
-                <li><NavLink to={`/tournament/info`}>Основная информация</NavLink></li>
-                <li><NavLink to={`/tournament/members`}>Участники</NavLink></li>
-                <li><NavLink to={`/tournament/bracket`}>Турнирная сетка</NavLink></li>
-                <li><NavLink to={`/tournament/result`}>Результаты турнира</NavLink></li>
+                <li><NavLink to={`/tournaments/${tournamentId}/info`}>Основная информация</NavLink></li>
+                <li><NavLink to={`/tournaments/${tournamentId}/participants`}>Участники</NavLink></li>
+                <li><NavLink to={`/tournaments/${tournamentId}/bracket`}>Турнирная сетка</NavLink></li>
+                <li><NavLink to={`/tournaments/${tournamentId}/results`}>Результаты турнира</NavLink></li>
             </ul>
             <Outlet />
         </main>
     );
 };
 
-export default TournamentPage;
+export default observer(TournamentPage);

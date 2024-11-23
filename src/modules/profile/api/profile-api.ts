@@ -1,6 +1,7 @@
 import axios from "axios";
 import { baseURL } from "../../../constants/constants";
 import { UserData } from "../../../interfaces/interfaces";
+import { api } from "../../../api/index-api";
 
 const fetchUserData = async (
     setUserData: React.Dispatch<React.SetStateAction<UserData | null>>,
@@ -9,7 +10,9 @@ const fetchUserData = async (
     ) => {
     try {
         //после user/ должен быть id usera
-        const response = await axios.get<UserData>(`${baseURL}/user/5c691513-3fa1-4f07-b37c-b3a86cbeecca`);
+        const idResponse = await api.get<UserData>(`/get-user-id`);
+        const response = await axios.get<UserData>(`${baseURL}/${idResponse.data}`);
+        
         setUserData(response.data);
         setLoading(false);
     } catch (err) {

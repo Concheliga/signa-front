@@ -1,3 +1,5 @@
+import Store from "../store/store";
+
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
     options: { value: string; label: string }[];
 }
@@ -23,20 +25,23 @@ interface TeamData {
     membersId: string[];
 }
 
-interface Member {
-    id: number;
-    data: UserData;
+interface SearchedUser {
+    id: string;
+    firstName: string;
+    lastName: string;
+    patronymic: string;
+    groupNumber: string;
 }
 
-interface CreateTeamProps {
-    tournamentId: string;
-    maxMembersCount: number;
+interface Member {
+    id: number;
+    data: SearchedUser;
 }
 
 interface MatchData {
     id: string;
     nextMatchId: string;
-    teamIds: string;
+    teams: MatchTeamData[];
 }
 
 interface TournamentData {
@@ -49,10 +54,11 @@ interface TournamentData {
     maxTeamsCount: string;
     regulationLink: string;
     chatLink: string;
-    teams: TeamData[];
+    teams: MatchTeamData[];
     matches: MatchData[];
     organizers: UserData[];
     currentMembersCount: number;
+    members: UserData[];
 }
 
 interface Orgs {
@@ -67,6 +73,10 @@ interface FormValues {
     groupNumber: string;
     link: string;
     password: string;
+    email: string;
+    phoneNumber: string;
+    photoLink: string;
+    vkLink: string;
 }
 
 interface NamesProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -95,11 +105,33 @@ interface Tree<Game> {
     right?: Tree<Game> | undefined;
 }
 
+interface TournamentFromTournaments {
+    id: string;
+    title: string;
+    location: string;
+    sportType: string;
+    gender: string;
+    startedAt: string;
+    endRegistrationAt: string;
+    state: string;
+}
+
 interface TournamentsDataProps {
-    tournamentsData: TournamentData[] | null;
+    tournamentsData : TournamentFromTournaments[] | null;
+}
+
+interface IUser {
+    email: string;
+    isActivated: boolean;
+    id: string;
+}
+
+interface State {
+    store: Store;
 }
 
 export type {
-    TournamentData, SelectProps, UserData, MemberProps, TeamData, Member, CreateTeamProps,
-    Orgs, FormValues, NamesProps, MatchData, MatchTeamData, Game, Tree, TournamentsDataProps
+    TournamentData, SelectProps, UserData, MemberProps, TeamData, Member, Orgs,
+    FormValues, NamesProps, MatchData, MatchTeamData, Game, Tree, TournamentsDataProps,
+    State, IUser, TournamentFromTournaments, SearchedUser
 }

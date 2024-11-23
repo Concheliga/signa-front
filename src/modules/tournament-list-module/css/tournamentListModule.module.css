@@ -30,6 +30,8 @@
 
 .table {
     width: 100%;
+    border: none;
+    border-spacing: 0;
 }
 
 .th, .td {
@@ -58,4 +60,16 @@
     background-color: #232323;
     color: #FFFFFF;
     padding: 15px 23px;
+}
+
+.tr-body:hover {
+    cursor: pointer;
+}
+
+.tr-body:nth-child(even) {
+    background-color: #EDF0FF;
+}
+
+.tr-body:nth-child(odd) {
+    background-color: #F9FAFF;
 }

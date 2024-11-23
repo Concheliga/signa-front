@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
             <ul className={styles.footer__list}>
                 <li className={styles.footer__list__element}><Link to="home">Главная</Link></li>
                 <li className={styles.footer__list__element}><Link to="tournaments">Турниры</Link></li>
-                <li className={styles.footer__list__element}><Link to="statistic">Статистика</Link></li>
+                <li className={styles.footer__list__element}><Link to="profile/statistic">Статистика</Link></li>
                 <li className={styles.footer__list__element}><Link to="help">Написать в поддержку</Link></li>
             </ul>
         </footer>

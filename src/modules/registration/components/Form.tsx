@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Select from "../../../components/Select";
 import { addErrorMessage } from "../../../utils/error-message";
 import {
@@ -11,6 +11,8 @@ import { onFormSubmit } from "../api/registration-api";
 import Names from "./Names";
 import styles from "../registration-styles/registration.module.css";
 import { FormValues } from "../../../interfaces/interfaces";
+import { Context } from "../../../main";
+import { useNavigate } from "react-router-dom";
 
 const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props }) => {
     const [formData, setFormData] = useState<FormValues>({
@@ -21,15 +23,21 @@ const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props })
         groupNumber: "",
         link: '',
         password: "",
+        email: "",
+        photoLink: "",
+        phoneNumber: "",
+        vkLink: ''
     });
     const names: { name: string; value: string }[] = [
         { name: "firstName", value: "Имя:" },
         { name: "lastName", value: "Фамилия:" },
         { name: "patronymic", value: "Отчество:" }
     ];
+    const {store} = useContext(Context);
+    const navigate = useNavigate();
 
     return (
-        <form onSubmit={(e) => onFormSubmit(e, formData)} {...props}>
+        <form onSubmit={(e) => onFormSubmit(e, formData, store, navigate)} {...props}>
             <label className={styles.label} htmlFor="email">Электронная почта:</label>
             <input onChange={(e) => {
                 addErrorMessage(e, emailPattern, emailErrorMessage);
@@ -52,7 +60,7 @@ const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props })
                 addErrorMessage(e, linkPattern, linkErrorMessage);
                 onInputChange(e, setFormData);
             }}
-            className = {styles.input} type="url" id="link" name="link" pattern={stringLinkPattern} required />
+            className = {styles.input} type="url" id="vkLink" name="vkLink" pattern={stringLinkPattern} required />
             <label className={styles.label} htmlFor="password">Пароль:</label>
             <input onChange={(e) => {
                 addErrorMessage(e, passwordPattern, passwordErrorMessage);
