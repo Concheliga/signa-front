@@ -1,19 +1,17 @@
 import searchIcon from "./img/search-icon.svg";
 import style from "./css/tournamentListModule.module.css";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { fetchUserData } from "./api/tournaments-api";
 import Tournaments from "./Components/Tournaments";
 import { TournamentFromTournaments } from "../../interfaces/interfaces";
-import { Context } from "../../main";
 
 const TournamentListModule: React.FC = () => {
     const [tournamentsData, setTournamentsData] = useState<TournamentFromTournaments[] | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const {store} = useContext(Context);
 
     useEffect(() => {
-        fetchUserData(setTournamentsData, setLoading, setError, store);
+        fetchUserData(setTournamentsData, setLoading, setError);
     }, []);
 
     if (loading) {

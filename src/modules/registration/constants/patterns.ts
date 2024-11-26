@@ -1,5 +1,5 @@
 const namePattern: RegExp = /^[А-Яа-яЁё]+$/;
-const groupPattern: RegExp = /^[А-Яа-я]{2}-\d{6}$/;
+const groupPattern: RegExp = /^[А-Я]{2}-\d{6}$/;
 const linkPattern: RegExp = /^https:\/\/vk\.com\/.*/;
 const passwordPattern: RegExp = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}/;
 const emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]/;

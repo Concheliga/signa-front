@@ -21,10 +21,8 @@ const Form: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({ ...props })
         patronymic: "",
         gender: "male",
         groupNumber: "",
-        link: '',
         password: "",
         email: "",
-        photoLink: "",
         phoneNumber: "",
         vkLink: ''
     });
