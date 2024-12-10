@@ -27,7 +27,7 @@ const CreateTeam: React.FC = () => {
     }, [searchMemberName]);
 
     useEffect(() => {
-        setTimeout(() => addMember({...store.user, id: store.userID}), 200);
+        setTimeout(() => addMember({...store.user, id: store.userID}), 400);
     }, [])
 
     const addMember = (userData: SearchedUser | null) => {

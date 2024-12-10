@@ -54,7 +54,10 @@ const ProfileModule: React.FC = () => {
                     </li>
                     <li className={style.field}>
                         <label className={style.label} htmlFor="link">Ссылка на ВК</label>
-                        <input className={style.field__input} type="url" name="link" id="link" value="ссылка" disabled />
+                        <input className={style.field__input} type="url" name="link" id={style.link} value={userData?.vkLink || ''} onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = userData?.vkLink || window.location.href;
+                        }} />
                     </li>
                 </ul>
             </form>

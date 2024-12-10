@@ -10,6 +10,7 @@ interface UserData {
     patronymic: string;
     gender: string;
     groupNumber: string;
+    vkLink: string;
 }
 
 interface MemberProps {

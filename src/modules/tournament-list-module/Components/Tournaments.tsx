@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { TournamentsDataProps } from "../../../interfaces/interfaces";
 import style from "../css/tournamentListModule.module.css";
 import { useNavigate } from "react-router-dom";
-import { genderMapping } from "../../../utils/name-mapping";
+import { genderMapping, regStateMapping } from "../../../utils/name-mapping";
 
 const Tournaments: React.FC<TournamentsDataProps> = ({ tournamentsData }) => {
     const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Tournaments: React.FC<TournamentsDataProps> = ({ tournamentsData }) => {
                         <td className={style.td}>{dayjs(tournamentData.startedAt).format('DD.MM.YYYY')}</td>
                         <td className={style.td}>{tournamentData.location}</td>
                         <td className={style.td}>{genderMapping(tournamentData.gender)}</td>
-                        <td className={style.td}>{tournamentData.state}</td>
+                        <td className={style.td}>{regStateMapping(tournamentData.state)}</td>
                         {
                             tournamentData.state === 'Идет регистрация' ?
                                 <td className={style.td}>

@@ -12,6 +12,7 @@ import ProfileModule from "../modules/profile/Profile-module";
 import Statistic from "../modules/statistic/Statistic";
 import TournamentParticipants from "../modules/tournament-participants/TournamentParticipants";
 import TournamentResults from "../modules/tournament-results/TournamentResults";
+import Home from "../modules/home/Home";
 
 export const router = createBrowserRouter([
     {
@@ -19,6 +20,11 @@ export const router = createBrowserRouter([
         element: <Layout />,
         errorElement: <Layout />,
         children: [
+            {
+                path: 'home',
+                element: <Home />,
+                errorElement: <Home />
+            },
             {
                 path: 'login',
                 element: <Login />,
