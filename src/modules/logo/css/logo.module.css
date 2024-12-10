@@ -1,12 +1,26 @@
-.logo>a{
+.logo{
+    display: flex;
+    justify-content:space-between;
+    margin-right: 100px;
+    align-items: center;
+}
+
+.logo a {
     display: flex;
     margin-left: 22px;
 }
 
-.logo__text{
+.logo__text {
     width: 120px;
     margin-top: 15px;
     text-align: center;
     font-size: 32px;
     font-weight: 600;
+}
+
+.login__text {
+    width: 150px;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 6px;
 }

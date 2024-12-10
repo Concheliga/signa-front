@@ -10,6 +10,7 @@ interface UserData {
     patronymic: string;
     gender: string;
     groupNumber: string;
+    vkLink: string;
 }
 
 interface MemberProps {
@@ -71,11 +72,9 @@ interface FormValues {
     patronymic: string;
     gender: string;
     groupNumber: string;
-    link: string;
     password: string;
     email: string;
     phoneNumber: string;
-    photoLink: string;
     vkLink: string;
 }
 

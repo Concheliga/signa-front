@@ -39,3 +39,7 @@
     padding: 10px;
     margin-left: 22px;
 }
+
+.field__input#link:hover {
+    cursor: pointer;
+}

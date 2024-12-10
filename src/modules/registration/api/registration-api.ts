@@ -11,7 +11,7 @@ const onFormSubmit = async (
     e.preventDefault();
 
     try {
-        store.registration(formData);
+        await store.registration(formData);
         navigate('..');
     } catch (error) {
         console.error("Ошибка при отправке формы:", error);
