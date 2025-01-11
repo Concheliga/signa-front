@@ -1,0 +1,128 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.section {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.h2 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 32px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.form-group>input {
+    text-align: center;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.trash {
+    margin-left: auto;
+    margin-right: 32px;
+}
+
+.trash:hover,
+.photo:hover,
+.name:hover {
+    cursor: pointer;
+}
+
+.input,
+.select,
+.textarea,
+.button {
+    width: 90%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.counter {
+    width: 50px;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.radio-group label {
+    font-weight: normal;
+}
+
+.calendar,
+.organizer-list {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    height: 400px;
+    overflow-y: auto;
+}
+
+.tournament-date {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.tournament-date>.date {
+    width: 40%;
+}
+
+.create-tournament-button {
+    display: block;
+    width: auto;
+    margin: 10px auto;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.create-tournament-button:hover {
+    background-color: #444;
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+}
+
+.organizer span {
+    flex: 1;
+}
+
+.remove-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: auto;
+    width: fit-content;
+}
+
+.create-tournament-button {
+    grid-column-start: 2;
+    grid-row-start: 2;
+}
