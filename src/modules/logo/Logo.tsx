@@ -13,6 +13,11 @@ const Logo: React.FC = () => {
                     <p className={styles.logo__text}>СПОРТ УРФУ</p>
                 </Link>
             </div>
+            <div className={styles.auth}>
+                <Link to="login"><div className="login">Вход</div></Link>
+                <Link to="registration"><div className="registration">Регистрация</div></Link>
+            </div>
+
         </header>
     );
 };
