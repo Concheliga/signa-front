@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Tournament</title>
+    <link rel="stylesheet" href="../css/create-tournament.css">
+</head>
+
+<body>
+    <h2>Создание турнира</h2>
+    <div class="container">
+        <div class="section">
+            <div class="form-group">
+                <label for="tournament-name">Название турнира</label>
+                <input type="text" id="tournament-name" placeholder="Турнир по волейболу">
+            </div>
+
+            <div class="form-group">
+                <label for="sport-type">Вид спорта</label>
+                <select id="sport-type">
+                    <option>Волейбол</option>
+                    <option>Баскетбол</option>
+                    <option>Футбол</option>
+                    <option>Другое</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Максимальное количество участников</label>
+                <input class="counter" type="number" id="max-participants" value="12">
+                <div class="radio-group">
+                    <label><input type="radio" name="participant-gender" value="men" checked> Мужчины</label>
+                    <label><input type="radio" name="participant-gender" value="mixed"> Смешанный</label>
+                    <label><input type="radio" name="participant-gender" value="women"> Женщины</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="min-participants">Минимальное количество участников</label>
+                <input class="counter" type="number" id="min-participants" value="12">
+            </div>
+
+            <div class="form-group">
+                <label for="max-teams">Максимальное количество команд</label>
+                <input class="counter" type="number" id="max-teams" value="12">
+            </div>
+
+            <div class="form-group">
+                <label for="regulations">Регламент</label>
+                <input type="file" id="regulations">
+            </div>
+
+            <div class="form-group">
+                <label for="chat-link">Ссылка на чат</label>
+                <input type="url" id="chat-link" placeholder="Ссылка">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="form-group">
+                <label for="location">Место проведения</label>
+                <input type="text" id="location" placeholder="Стадион">
+            </div>
+
+            <div class="form-group">
+                <label>Дата и время проведения</label>
+                <div class="tournament-date">
+                    <input class="date" type="date">
+                    <div>-</div>
+                    <input class="date" type="date">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="registration-date">Дата конца регистрации на турнир</label>
+                <input type="date" id="registration-date">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="form-group">
+                <label>Организаторы</label>
+                <div class="organizer-list">
+                    <div class="organizer">
+                        <div class="name">
+                            <span>Алексеев Алексей Алексеевич</span>
+                            <button class="remove-button">X</button>
+                        </div>
+
+                        <input type="text" id="organizator-description" placeholder="Описание">
+                    </div>
+                    <div class="organizer">
+                        <div class="name">
+                            <span>Иванов Иван Иванович</span>
+                            <button class="remove-button">X</button>
+                        </div>
+
+                        <input type="text" id="organizator-description" placeholder="Описание">
+                    </div>
+                </div>
+                <button class="add-button">Добавить организатора</button>
+            </div>
+        </div>
+        <button class="create-tournament-button">Создать турнир</button>
+    </div>
+</body>
+
+</html>

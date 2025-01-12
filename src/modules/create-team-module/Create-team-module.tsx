@@ -18,7 +18,7 @@ const CreateTeam: React.FC = () => {
     const [userData, setUserData] = useState<SearchedUser | null>(null);
     const [users, setUsers] = useState<SearchedUser[]>([]);
     const [currentMembers, setCurrentMembers] = useState<Member[]>([]);
-    const [searchMemberName, setSearchMemberName] = useState<string>('')
+    const [searchMemberName, setSearchMemberName] = useState<string>('');
 
     useEffect(() => {
         if (searchMemberName != '') {

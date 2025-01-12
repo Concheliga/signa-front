@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import { fetchUserData } from "./api/tournaments-api";
 import Tournaments from "./Components/Tournaments";
 import { TournamentFromTournaments } from "../../interfaces/interfaces";
+import { useNavigate } from "react-router-dom";
 
 const TournamentListModule: React.FC = () => {
     const [tournamentsData, setTournamentsData] = useState<TournamentFromTournaments[] | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchUserData(setTournamentsData, setLoading, setError);
@@ -25,6 +27,10 @@ const TournamentListModule: React.FC = () => {
     return (
         <main className={style.main}>
             <h1 className={style["page-name"]}>Список всех турниров</h1>
+            <button
+            onClick={() => navigate(`/tournaments/create`)}>
+                Создать турнир
+                </button>
             <form className={style["tournament-form"]} id="tournament-form">
                 <input type="text" className={style["tournament-form__input"]} id="tournament-form__input" placeholder="Искать"
                     required />
