@@ -11,7 +11,6 @@ const CreateTournament: React.FC = () => {
     const [users, setUsers] = useState<SearchedUser[]>([]);
     const [currentMembersCount, setCurrentMembersCount] = useState<number>(0);
     const [currentMembers, setCurrentMembers] = useState<Member[]>([]);
-    const [userData, setUserData] = useState<SearchedUser | null>(null);
     const [formData, setFormData] = useState<PostTournamentData>({
         // title: "уитузстуйзс",
         // location: "йумйумсйус",
@@ -30,7 +29,7 @@ const CreateTournament: React.FC = () => {
         // chatLink: ""
         title: "",
         location: "",
-        sportType: "",
+        sportType: "волейбол",
         teamsMembersMaxNumber: 0,
         teamsMembersMinNumber: 0,
         gender: "mixed",
@@ -68,10 +67,8 @@ const CreateTournament: React.FC = () => {
     };
 
     const onFindedUserClick = (
-        setUserData: React.Dispatch<React.SetStateAction<SearchedUser | null>>,
         user: SearchedUser
     ) => {
-        setUserData(user);
         addMember(user);
     }
 
@@ -92,10 +89,10 @@ const CreateTournament: React.FC = () => {
                         <select onChange={(e) => {
                             onSelectChange(e, setFormData);
                         }} name="sportType" className={style.select} id="sport-type">
-                            <option>Волейбол</option>
-                            <option>Баскетбол</option>
-                            <option>Футбол</option>
-                            <option>Другое</option>
+                            <option>волейбол</option>
+                            <option>баскетбол</option>
+                            <option>футбол</option>
+                            <option>другое</option>
                         </select>
                     </div>
 
@@ -218,7 +215,7 @@ const CreateTournament: React.FC = () => {
                             <ul>
                                 {users.slice(0, 5 < users.length ? 5 : users.length).map((user, index) => {
                                     return (
-                                        <li onClick={() => onFindedUserClick(setUserData, user)} className={style.list} key={index}>
+                                        <li onClick={() => onFindedUserClick(user)} className={style.list} key={index}>
                                             {`${user?.lastName} ${user?.firstName} ${user?.patronymic}`}
                                         </li>
                                     )
