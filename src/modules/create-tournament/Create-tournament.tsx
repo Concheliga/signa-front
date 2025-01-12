@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import style from "./css/create-tournament.module.css";
 import search from "./img/search.svg";
-import { Member, SearchedUser } from "../../interfaces/interfaces";
-import { findUser } from "./api/create-tournament-api";
+import { Member, SearchedUser, PostTournamentData } from "../../interfaces/interfaces";
+import { findUser, onFormSubmit } from "./api/create-tournament-api";
 import trash from "./img/trash.svg";
+import { onInputChange, onSelectChange } from "./utils/utils";
 
 const CreateTournament: React.FC = () => {
     const [searchMemberName, setSearchMemberName] = useState<string>('');
@@ -11,6 +12,38 @@ const CreateTournament: React.FC = () => {
     const [currentMembersCount, setCurrentMembersCount] = useState<number>(0);
     const [currentMembers, setCurrentMembers] = useState<Member[]>([]);
     const [userData, setUserData] = useState<SearchedUser | null>(null);
+    const [formData, setFormData] = useState<PostTournamentData>({
+        // title: "уитузстуйзс",
+        // location: "йумйумсйус",
+        // sportType: "йсйусс",
+        // teamsMembersMaxNumber: 8,
+        // teamsMembersMinNumber: 6,
+        // gender: "male",
+        // minFemaleCount: 2,
+        // minMaleCount: 4,
+        // maxTeamsCount: 16,
+        // startedAt: "2025-11-28",
+        // endRegistrationAt: "2024-11-27",
+        // state: "registration",
+        // regulationLink: "string",
+        // withGroupStage: true,
+        // chatLink: ""
+        title: "",
+        location: "",
+        sportType: "",
+        teamsMembersMaxNumber: 0,
+        teamsMembersMinNumber: 0,
+        gender: "mixed",
+        minFemaleCount: 0,
+        minMaleCount: 0,
+        maxTeamsCount: 0,
+        startedAt: "2025-11-28",
+        endRegistrationAt: "2024-11-27",
+        state: "registration",
+        regulationLink: "string",
+        withGroupStage: true,
+        chatLink: ""
+    });
 
     useEffect(() => {
         if (searchMemberName != '') {
@@ -49,12 +82,16 @@ const CreateTournament: React.FC = () => {
                 <div className={style.section}>
                     <div className={style['form-group']}>
                         <label htmlFor="tournament-name">Название турнира</label>
-                        <input className={style.input} type="text" id="tournament-name" placeholder="Турнир по волейболу" />
+                        <input onChange={(e) => {
+                            onInputChange(e, setFormData);
+                        }} name="title" className={style.input} type="text" id="tournament-name" placeholder="Турнир по волейболу" />
                     </div>
 
                     <div className={style['form-group']}>
                         <label htmlFor="sport-type">Вид спорта</label>
-                        <select className={style.select} id="sport-type">
+                        <select onChange={(e) => {
+                            onSelectChange(e, setFormData);
+                        }} name="sportType" className={style.select} id="sport-type">
                             <option>Волейбол</option>
                             <option>Баскетбол</option>
                             <option>Футбол</option>
@@ -64,22 +101,48 @@ const CreateTournament: React.FC = () => {
 
                     <div className={style['form-group']}>
                         <label>Максимальное количество участников</label><br />
-                        <input className={`${style.counter} ${style.input}`} type="number" id="max-participants" value="12" />
+                        <input onChange={(e) => {
+                            onInputChange(e, setFormData);
+                        }} name="teamsMembersMaxNumber" className={`${style.counter} ${style.input}`} type="number" id="max-participants" />
                         <div className={style['radio-group']}>
-                            <label><input type="radio" name="participant-gender" value="men" /> Мужчины</label>
-                            <label><input type="radio" name="participant-gender" value="mixed" /> Смешанный</label>
-                            <label><input type="radio" name="participant-gender" value="women" /> Женщины</label>
+                            <label><input onChange={(e) => {
+                                onInputChange(e, setFormData);
+                            }} type="radio" name="gender" value="male" /> Мужчины</label>
+                            <label><input onChange={(e) => {
+                                onInputChange(e, setFormData);
+                            }} type="radio" name="gender" value="mixed" /> Смешанный</label>
+                            <label><input onChange={(e) => {
+                                onInputChange(e, setFormData);
+                            }} type="radio" name="gender" value="female" /> Женщины</label>
                         </div>
                     </div>
 
                     <div className={style['form-group']}>
                         <label htmlFor="min-participants">Минимальное количество участников</label><br />
-                        <input className={`${style.counter} ${style.input}`} type="number" id="min-participants" value="12" />
+                        <input onChange={(e) => {
+                            onInputChange(e, setFormData);
+                        }} name="teamsMembersMinNumber" className={`${style.counter} ${style.input}`} type="number" id="min-participants" />
                     </div>
 
                     <div className={style['form-group']}>
                         <label htmlFor="max-teams">Максимальное количество команд</label><br />
-                        <input className={`${style.counter} ${style.input}`} type="number" id="max-teams" value="12" />
+                        <input onChange={(e) => {
+                            onInputChange(e, setFormData);
+                        }} name="maxTeamsCount" className={`${style.counter} ${style.input}`} type="number" id="max-teams" />
+                    </div>
+
+                    <div className={style['form-group']}>
+                        <label htmlFor="min-participants">Минимальное количество мужчин в команде</label><br />
+                        <input onChange={(e) => {
+                            onInputChange(e, setFormData);
+                        }} name="minMaleCount" className={`${style.counter} ${style.input}`} type="number" id="min-participants" />
+                    </div>
+
+                    <div className={style['form-group']}>
+                        <label htmlFor="min-participants">Минимальное количество женщин в команде</label><br />
+                        <input onChange={(e) => {
+                            onInputChange(e, setFormData);
+                        }} name="minFemaleCount" className={`${style.counter} ${style.input}`} type="number" id="min-participants" />
                     </div>
 
                     <div className={style['form-group']}>
@@ -89,20 +152,24 @@ const CreateTournament: React.FC = () => {
 
                     <div className={style['form-group']}>
                         <label htmlFor="chat-link">Ссылка на чат</label>
-                        <input className={style.input} type="url" id="chat-link" placeholder="Ссылка" />
+                        <input onChange={(e) => {
+                            onInputChange(e, setFormData);
+                        }} name="chatLink" className={style.input} type="url" id="chat-link" placeholder="Ссылка" />
                     </div>
                 </div>
 
                 <div className={style.section}>
                     <div className={style['form-group']}>
                         <label htmlFor="location">Место проведения</label>
-                        <input className={style.input} type="text" id="location" placeholder="Стадион" />
+                        <input onChange={(e) => {
+                            onInputChange(e, setFormData);
+                        }} name="location" className={style.input} type="text" id="location" placeholder="Стадион" />
                     </div>
 
                     <div className={style['form-group']}>
                         <label>Дата и время проведения</label>
                         <div className={style['tournament-date']}>
-                            <input className={`${style.date} ${style.input}`} type="date" />
+                            <input name="startedAt" className={`${style.date} ${style.input}`} type="date" />
                             <div>-</div>
                             <input className={`${style.date} ${style.input}`} type="date" />
                         </div>
@@ -110,7 +177,9 @@ const CreateTournament: React.FC = () => {
 
                     <div className={style['form-group']}>
                         <label htmlFor="registration-date">Дата конца регистрации на турнир</label>
-                        <input className={style.input} type="date" id="registration-date" />
+                        <input onChange={(e) => {
+                            onInputChange(e, setFormData);
+                        }} name="endRegistrationAt" className={style.input} type="date" id="registration-date" />
                     </div>
                 </div>
 
@@ -118,24 +187,24 @@ const CreateTournament: React.FC = () => {
                     <div className={style['form-group']}>
                         <label>Организаторы</label>
                         <div className={style['organizer-list']}>
-                        <ul className={style.members}>
-                            {currentMembers.map((member) => (
-                                <li key={member.id} className={style.organizer}>
-                                    <div className={style.name}>
-                                        <span>
-                                            {`${member.data.lastName} ${member.data.firstName} ${member.data.patronymic}`}
-                                        </span>
-                                        <img
-                                            onClick={() => deleteMember(member.id)}
-                                            src={trash}
-                                            alt="trash"
-                                            className={style.trash}
-                                        />
-                                    </div>
-                                    <input className={style.input} type="text" id="organizator-description" placeholder="Описание" />
-                                </li>
-                            ))}
-                        </ul>
+                            <ul className={style.members}>
+                                {currentMembers.map((member) => (
+                                    <li key={member.id} className={style.organizer}>
+                                        <div className={style.name}>
+                                            <span>
+                                                {`${member.data.lastName} ${member.data.firstName} ${member.data.patronymic}`}
+                                            </span>
+                                            <img
+                                                onClick={() => deleteMember(member.id)}
+                                                src={trash}
+                                                alt="trash"
+                                                className={style.trash}
+                                            />
+                                        </div>
+                                        <input className={style.input} type="text" id="organizator-description" placeholder="Описание" />
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                         <div className={style['search-list']}>
                             <div className={style.search}>
@@ -158,7 +227,12 @@ const CreateTournament: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <button className={`${style['create-tournament-button']} ${style.button}`}>Создать турнир</button>
+                <button
+                    onClick={(e) => onFormSubmit(e, formData)}
+                    className={`${style['create-tournament-button']} ${style.button}`}
+                >
+                    Создать турнир
+                </button>
             </div>
         </main>
     );

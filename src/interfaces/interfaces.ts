@@ -45,6 +45,24 @@ interface MatchData {
     teams: MatchTeamData[];
 }
 
+interface PostTournamentData {
+    title: string;
+    location: string;
+    sportType: string;
+    teamsMembersMaxNumber: number;
+    teamsMembersMinNumber: number;
+    gender: string;
+    minFemaleCount: number;
+    minMaleCount: number;
+    maxTeamsCount: number;
+    startedAt: string;
+    endRegistrationAt: string;
+    state: string;
+    regulationLink: string;
+    withGroupStage: boolean;
+    chatLink: string;
+}
+
 interface TournamentData {
     title: string;
     location: string;
@@ -116,7 +134,7 @@ interface TournamentFromTournaments {
 }
 
 interface TournamentsDataProps {
-    tournamentsData : TournamentFromTournaments[] | null;
+    tournamentsData: TournamentFromTournaments[] | null;
 }
 
 interface IUser {
@@ -132,5 +150,5 @@ interface State {
 export type {
     TournamentData, SelectProps, UserData, MemberProps, TeamData, Member, Orgs,
     FormValues, NamesProps, MatchData, MatchTeamData, Game, Tree, TournamentsDataProps,
-    State, IUser, TournamentFromTournaments, SearchedUser
+    State, IUser, TournamentFromTournaments, SearchedUser, PostTournamentData
 }
