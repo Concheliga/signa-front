@@ -6,6 +6,9 @@ const genderMapping = (inputGender: string | undefined) => {
         case 'female':
             return 'Жен';
             break;
+        case 'mixed':
+            return 'Смеш';
+            break;
         default:
             return '';
             break;

@@ -1,25 +1,24 @@
 import { api } from "./index-api";
-import { AxiosResponse } from "axios";
 import { FormValues } from "../interfaces/interfaces";
 
 export default class Authorization {
-    static async login(email: string, password: string): Promise<AxiosResponse<string>> {
-        return api.post<string>('/login', { email, password });
+    static async login(email: string, password: string) {
+        return api.post('/login', { email, password });
     }
 
-    static async registration(user: FormValues): Promise<AxiosResponse<string>> {
-        return api.post<string>('/register', user);
+    static async registration(user: FormValues) {
+        return api.post('/register', user);
     }
 
     static async logout(): Promise<void> {
         return api.post('/logout');
     }
 
-    static async getUserID(): Promise<AxiosResponse<string>> {
-        return api.get<string>('/get-user-id');
+    static async getUserID() {
+        return api.get('/get-user-id');
     }
 
-    static async getUser(userID: string): Promise<AxiosResponse<FormValues>> {
+    static async getUser(userID: string) {
         return api.get<FormValues>(`/${userID}`);
     }
 }

@@ -14,6 +14,15 @@ const MainTournamentInfo: React.FC = () => {
     const location = useLocation();
     const url = new URL("./create-team", window.origin + location.pathname);
 
+    const onRegiterClick = (isAuthorized: boolean, url: URL) => {
+        console.log(isAuthorized);
+        if (!isAuthorized) {
+            alert("Для того чтобы зарегистрировать команду вы должны войти в свою учетную запись");
+        } else {
+            navigate(url.pathname);
+        } 
+    }
+
     return (
         <>
             <form className={style["tournament-info-form"]}>
@@ -44,7 +53,7 @@ const MainTournamentInfo: React.FC = () => {
                 </ul>
             </form>
             <ul className={style.buttons}>
-                <li className={style.button}><button onClick={() => navigate(url.pathname)}>Зарегистрироваться</button></li>
+                <li className={style.button}><button onClick={() => onRegiterClick(store.isAuthorized, url)}>Зарегистрироваться</button></li>
                 <li className={style.button}><button>Ссылка на беседу ВК</button></li>
                 <li className={style.button}><button>Связаться с организатором</button></li>
                 <li className={style.button}><button>Регламент</button></li>

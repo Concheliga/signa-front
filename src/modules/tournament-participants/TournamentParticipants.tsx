@@ -82,7 +82,10 @@ const TournamentParticipants: React.FC = () => {
                     {renderList(listType)}
                 </tbody>
             </table>
-            <button onClick={handleDownload}>Скачать список участников</button>
+            <button
+            className={style.button}
+            onClick={handleDownload}
+            >Скачать список участников</button>
         </>
     );
 };
