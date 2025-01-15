@@ -3,16 +3,17 @@ import style from "./css/tournament-participants.module.css";
 import { Context } from "../../main";
 import { genderMapping } from "../../utils/name-mapping";
 import { api } from "../../api/index-api";
+import { baseURL } from "../../constants/constants";
+import { useParams } from "react-router-dom";
 
 const TournamentParticipants: React.FC = () => {
     const { store } = useContext(Context);
     const [listType, setListType] = useState<string>('participants');
+    const {tournamentId} = useParams();
 
     const handleDownload = async () => {
-        const fileUrl = 'http://localhost:5000/download/user/73f75f02-6eab-4658-b8d7-98afea9053c7';
-    
         try {
-          const response = await api.get(fileUrl, {
+          const response = await api.get(`${baseURL}/download/user/${tournamentId}`, {
             responseType: 'blob'
           });
     
