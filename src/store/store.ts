@@ -53,7 +53,6 @@ export default class Store {
         try {
             const response = await Authorization.login(email, password);
             localStorage.setItem('token', response.data.value);
-            document.cookie = `token=${response.data.value}; path=/`;
             this.setAuthorization(true);
             this.getUser();
         } catch (e: any) {
@@ -78,7 +77,6 @@ export default class Store {
             const response = await Authorization.registration(user);
             console.log(response);
             localStorage.setItem('token', response.data.value);
-            document.cookie = `token=${response.data.value}`;
             this.setAuthorization(true);
             this.setUser(user);
         } catch (e: any) {
