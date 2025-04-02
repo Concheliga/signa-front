@@ -5,6 +5,8 @@ import { Member, SearchedUser, PostTournamentData } from "../../interfaces/inter
 import { findUser, onFormSubmit } from "./api/create-tournament-api";
 import trash from "./img/trash.svg";
 import { onInputChange, onSelectChange } from "./utils/utils";
+import { addErrorMessage } from "../../utils/error-message";
+import { allLinkError, allLinkPattern, filesError, filesPattern, maxSymbolsError, maxSymbolsPattern, positiveNumberError, positiveNumberPattern } from "../registration/constants/patterns";
 
 const CreateTournament: React.FC = () => {
     const [searchMemberName, setSearchMemberName] = useState<string>('');
@@ -80,6 +82,7 @@ const CreateTournament: React.FC = () => {
                     <div className={style['form-group']}>
                         <label htmlFor="tournament-name">Название турнира</label>
                         <input onChange={(e) => {
+                            addErrorMessage(e, maxSymbolsPattern, maxSymbolsError);
                             onInputChange(e, setFormData);
                         }} name="title" className={style.input} type="text" id="tournament-name" placeholder="Турнир по волейболу" />
                     </div>
@@ -99,6 +102,7 @@ const CreateTournament: React.FC = () => {
                     <div className={style['form-group']}>
                         <label>Максимальное количество участников</label><br />
                         <input onChange={(e) => {
+                            addErrorMessage(e, positiveNumberPattern, positiveNumberError);
                             onInputChange(e, setFormData);
                         }} name="teamsMembersMaxNumber" className={`${style.counter} ${style.input}`} type="number" id="max-participants" />
                         <div className={style['radio-group']}>
@@ -144,12 +148,15 @@ const CreateTournament: React.FC = () => {
 
                     <div className={style['form-group']}>
                         <label htmlFor="regulations">Регламент</label>
-                        <input className={style.input} type="file" id="regulations" />
+                        <input onChange={(e) => {
+                            addErrorMessage(e, filesPattern, filesError);
+                        }} className={style.input} type="file" id="regulations" />
                     </div>
 
                     <div className={style['form-group']}>
                         <label htmlFor="chat-link">Ссылка на чат</label>
                         <input onChange={(e) => {
+                            addErrorMessage(e, allLinkPattern, allLinkError);
                             onInputChange(e, setFormData);
                         }} name="chatLink" className={style.input} type="url" id="chat-link" placeholder="Ссылка" />
                     </div>
@@ -159,6 +166,7 @@ const CreateTournament: React.FC = () => {
                     <div className={style['form-group']}>
                         <label htmlFor="location">Место проведения</label>
                         <input onChange={(e) => {
+                            addErrorMessage(e, maxSymbolsPattern, maxSymbolsError);
                             onInputChange(e, setFormData);
                         }} name="location" className={style.input} type="text" id="location" placeholder="Стадион" />
                     </div>
