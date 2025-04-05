@@ -12,10 +12,24 @@ export default class Store {
 
     constructor() {
         makeAutoObservable(this);
+
+        const token = localStorage.getItem('token');
+        const userID = localStorage.getItem('userID');
+
+        if (token) {
+            this.setAuthorization(true);
+            this.userID = userID || '';
+            this.getUser();
+        }
     }
 
     setAuthorization(isAuthorized: boolean) {
         this.isAuthorized = isAuthorized;
+
+        if (!isAuthorized) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('userID');
+        }
     }
 
     setUser(user: FormValues) {
@@ -24,6 +38,7 @@ export default class Store {
 
     setUserID(userID: string) {
         this.userID = userID;
+        localStorage.setItem('userID', userID);
     }
 
     setTournament(tournament: TournamentData) {
@@ -37,8 +52,9 @@ export default class Store {
     async login(email: string, password: string) {
         try {
             const response = await Authorization.login(email, password);
-            localStorage.setItem('token', response.data);
+            localStorage.setItem('token', response.data.value);
             this.setAuthorization(true);
+            this.getUser();
         } catch (e: any) {
             console.log(e.response?.data?.message);
             return await Authorization.login(email, password);
@@ -51,9 +67,7 @@ export default class Store {
             this.setUserID(userIDResponse.data);
             const userResponse = await Authorization.getUser(userIDResponse.data);
             this.setUser(userResponse.data);
-            localStorage.setItem('userID', userIDResponse.data);
-        }
-        catch (e: any) {
+        } catch (e: any) {
             console.log(e.response?.data?.message);
         }
     }
@@ -62,7 +76,7 @@ export default class Store {
         try {
             const response = await Authorization.registration(user);
             console.log(response);
-            localStorage.setItem('token', response.data);
+            localStorage.setItem('token', response.data.value);
             this.setAuthorization(true);
             this.setUser(user);
         } catch (e: any) {
@@ -70,6 +84,7 @@ export default class Store {
             return await Authorization.registration(user);
         }
     }
+}
 
     // async logout() {
     //     try {
@@ -94,4 +109,3 @@ export default class Store {
     //         console.log(e.response?.data?.message);
     //     }
     // }
-}

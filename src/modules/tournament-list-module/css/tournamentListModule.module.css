@@ -72,3 +72,10 @@
 .tr-body:nth-child(odd) {
     background-color: #F9FAFF;
 }
+
+.create-button{
+    color: #FFFFFF;
+    background-color: #232323;
+    border-radius: 50px;
+    padding: 15px 50px;
+}

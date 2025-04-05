@@ -11,7 +11,6 @@ const fetchUserData = async (
     tournamentId: string | undefined
     ) => {
     try {
-        //после tournament/ должен быть id tournamenta
         const response = await axios.get<TournamentData>(`${baseURL}/tournaments/${tournamentId}`);
         
         store.setTournament(response.data);

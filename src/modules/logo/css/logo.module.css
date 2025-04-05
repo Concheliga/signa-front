@@ -29,3 +29,10 @@
     display: flex;
     gap: 20px;
 }
+
+.button{
+    color: #FFFFFF;
+    background-color: #232323;
+    border-radius: 50px;
+    padding: 15px 50px;
+}

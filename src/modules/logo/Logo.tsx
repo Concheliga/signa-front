@@ -14,8 +14,8 @@ const Logo: React.FC = () => {
                 </Link>
             </div>
             <div className={styles.auth}>
-                <Link to="login"><div className="login">Вход</div></Link>
-                <Link to="registration"><div className="registration">Регистрация</div></Link>
+                <Link to="login"><div className={styles.button}>Вход</div></Link>
+                <Link to="registration"><div className={styles.button}>Регистрация</div></Link>
             </div>
 
         </header>

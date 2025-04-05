@@ -2,10 +2,35 @@ import { useContext, useState } from "react";
 import style from "./css/tournament-participants.module.css";
 import { Context } from "../../main";
 import { genderMapping } from "../../utils/name-mapping";
+import { api } from "../../api/index-api";
+import { baseURL } from "../../constants/constants";
+import { useParams } from "react-router-dom";
 
 const TournamentParticipants: React.FC = () => {
     const { store } = useContext(Context);
     const [listType, setListType] = useState<string>('participants');
+    const {tournamentId} = useParams();
+
+    const handleDownload = async () => {
+        try {
+          const response = await api.get(`${baseURL}/download/user/${tournamentId}`, {
+            responseType: 'blob'
+          });
+    
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement('a');
+          link.href = url;
+    
+          link.download = 'file.docx';
+          document.body.appendChild(link);
+          link.click();
+    
+          link.remove();
+          window.URL.revokeObjectURL(url);
+        } catch (error) {
+          console.error('Error downloading the file:', error);
+        }
+      };
 
     const renderList = (listType: string) => {
         if (listType === 'participants') {
@@ -58,6 +83,10 @@ const TournamentParticipants: React.FC = () => {
                     {renderList(listType)}
                 </tbody>
             </table>
+            <button
+            className={style.button}
+            onClick={handleDownload}
+            >Скачать список участников</button>
         </>
     );
 };

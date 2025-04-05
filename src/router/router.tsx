@@ -14,8 +14,14 @@ import TournamentParticipants from "../modules/tournament-participants/Tournamen
 import TournamentResults from "../modules/tournament-results/TournamentResults";
 import Home from "../modules/home/Home";
 import CreateTournament from "../modules/create-tournament/Create-tournament";
+import SportsEventsPage from '../pages/main-page/MainPage';
 
 export const router = createBrowserRouter([
+    {
+        path: '/main',
+        element: <SportsEventsPage />,
+        errorElement: <SportsEventsPage />
+    },
     {
         path: '/',
         element: <Layout />,

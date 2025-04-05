@@ -1,0 +1,192 @@
+.currentEventsBanner {
+  position: relative;
+  margin: 0 64px 64px;
+  background: #4A82F2;
+  border-radius: 16px;
+  padding: 32px;
+  overflow: hidden;
+}
+
+.bannerCircles {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.bannerCircle {
+  position: absolute;
+  background: #FFFFFF;
+  opacity: 0.1;
+  border-radius: 50%;
+}
+
+.circle1 {
+  width: 310px;
+  height: 310px;
+  left: -111px;
+  top: -106px;
+}
+
+.circle2 {
+  width: 174px;
+  height: 174px;
+  left: -43px;
+  top: -38px;
+}
+
+.circle3 {
+  width: 56px;
+  height: 56px;
+  left: 16px;
+  top: 21px;
+}
+
+.bannerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.bannerTitle {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.bannerTitleIcon {
+  width: 24px;
+  height: 24px;
+  background: #FFFFFF;
+  border-radius: 50%;
+}
+
+.bannerTitleText {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.bannerDescription {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.bannerDescriptionTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+
+.bannerDescriptionText {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+}
+
+.currentEventsSlider {
+  position: relative;
+}
+
+.sliderControls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.sliderControl {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.currentEventsList {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+}
+
+.currentEventCard {
+  width: 439px;
+  height: 226px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.eventSport {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sportTag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  height: 37px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.sportVolleyball {
+  background: #E7F3FD;
+}
+
+.sportTennis {
+  background: #D9FCEB;
+}
+
+.sportBasketball {
+  background: #FCF2D9;
+}
+
+.sportFootball {
+  background: #FDE7FD;
+}
+
+.teamType {
+  border: 1px solid #E8E9ED;
+}
+
+.eventName {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+}
+
+.eventStage {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.stageFinal {
+  color: #229E4C;
+}
+
+.stageQuarterfinal {
+  color: #ED9F08;
+}
+
+.eventMore {
+  display: flex;
+  justify-content: flex-end;
+}

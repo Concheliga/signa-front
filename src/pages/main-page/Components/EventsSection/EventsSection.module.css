@@ -1,0 +1,55 @@
+.section {
+    margin: 0 64px 64px;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.sectionTitle {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    color: #202227;
+    margin: 0;
+}
+
+.sectionDivider {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #E8E9ED;
+    border: none;
+}
+
+.showAll {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: #1054DE;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0;
+}
+
+.showAll span {
+    white-space: nowrap;
+}
+
+.showAll svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eventsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(316px, 1fr));
+    gap: 16px;
+}

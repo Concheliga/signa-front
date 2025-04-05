@@ -28,6 +28,7 @@ const TournamentListModule: React.FC = () => {
         <main className={style.main}>
             <h1 className={style["page-name"]}>Список всех турниров</h1>
             <button
+            className={style["create-button"]}
             onClick={() => navigate(`/tournaments/create`)}>
                 Создать турнир
                 </button>
