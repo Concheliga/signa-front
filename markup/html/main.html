@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спорт УрФУ</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: #FFFFFF;
+            color: #202227;
+            line-height: 130%;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 0 64px;
+            height: 77px;
+            border-bottom: 1px solid #E8E9ED;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            margin-right: 32px;
+        }
+
+        .search-input {
+            width: 426px;
+            height: 46px;
+            padding: 14px 24px;
+            background: #F1F2F4;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notification-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .profile-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
+            width: 217px;
+            height: 46px;
+            background: #F1F2F4;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        main {
+            padding: 0 64px;
+        }
+
+        .section {
+            margin-bottom: 64px;
+        }
+
+        .current-events-banner {
+            position: relative;
+            height: 506px;
+            background: #4A82F2;
+            border-radius: 16px;
+            padding: 32px;
+            overflow: hidden;
+        }
+
+        .banner-circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .banner-circle {
+            position: absolute;
+            background: #FFFFFF;
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .circle-1 {
+            width: 310px;
+            height: 310px;
+            left: -111px;
+            top: -106px;
+        }
+
+        .circle-2 {
+            width: 174px;
+            height: 174px;
+            left: -43px;
+            top: -38px;
+        }
+
+        .circle-3 {
+            width: 56px;
+            height: 56px;
+            left: 16px;
+            top: 21px;
+        }
+
+        .banner-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .banner-title {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .banner-title-icon {
+            width: 24px;
+            height: 24px;
+            background: #FFFFFF;
+            border-radius: 50%;
+        }
+
+        .banner-title-text {
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 120%;
+            letter-spacing: -0.02em;
+            color: #FFFFFF;
+        }
+
+        .banner-description {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .banner-description-title {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 120%;
+            letter-spacing: -0.01em;
+            color: #FFFFFF;
+            margin-bottom: 16px;
+        }
+
+        .banner-description-text {
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 120%;
+            letter-spacing: -0.01em;
+            color: #FFFFFF;
+        }
+
+        .current-events-slider {
+            position: relative;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .slider-control {
+            width: 32px;
+            height: 32px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .current-events-list {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding-bottom: 16px;
+        }
+
+        .current-event-card {
+            width: 439px;
+            height: 226px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .event-sport {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .sport-tag {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 16px;
+            height: 37px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .sport-volleyball {
+            background: #E7F3FD;
+        }
+
+        .sport-tennis {
+            background: #D9FCEB;
+        }
+
+        .sport-basketball {
+            background: #FCF2D9;
+        }
+
+        .sport-football {
+            background: #FDE7FD;
+        }
+
+        .team-type {
+            border: 1px solid #E8E9ED;
+        }
+
+        .event-name {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 120%;
+            letter-spacing: -0.01em;
+        }
+
+        .event-stage {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .stage-final {
+            color: #229E4C;
+        }
+
+        .stage-quarterfinal {
+            color: #ED9F08;
+        }
+
+        .event-more {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .filters-section {
+            height: 451px;
+            border: 1px solid #E8E9ED;
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .filters-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .filters-title {
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 120%;
+            letter-spacing: -0.02em;
+        }
+
+        .hide-filters {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: #1054DE;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .filters-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .filter-group {
+            width: 176px;
+        }
+
+        .filter-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 1px solid #1054DE;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .checkbox.checked::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 4px;
+            top: 4px;
+            background: #1054DE;
+            border-radius: 4px;
+        }
+
+        .filter-label {
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        .date-filter {
+            width: 267px;
+        }
+
+        .date-input {
+            width: 100%;
+            height: 46px;
+            padding: 14px 24px;
+            background: #F1F2F4;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .filter-btn {
+            padding: 14px 24px;
+            height: 46px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .reset-btn {
+            background: #F1F2F4;
+            border: none;
+        }
+
+        .apply-btn {
+            background: #1054DE;
+            color: #FFFFFF;
+            border: none;
+        }
+
+        .events-section {
+            margin-bottom: 64px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 120%;
+            letter-spacing: -0.02em;
+        }
+
+        .section-divider {
+            flex-grow: 1;
+            height: 0;
+            border-top: 1px solid #E8E9ED;
+        }
+
+        .show-all {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: #1054DE;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .events-grid {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .event-card {
+            width: 316px;
+            height: 394px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .event-info {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .event-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .event-date {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .date-label {
+            opacity: 0.3;
+        }
+
+        .event-details {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .event-places {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .places-warning {
+            color: #FA4D30;
+            font-weight: 600;
+        }
+
+        .places-available {
+            color: #4A82F2;
+        }
+
+        .event-btn {
+            width: 100%;
+            height: 46px;
+            padding: 14px 24px;
+            background: #F1F2F4;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .results-btn {
+            background: transparent;
+            border: 1px solid #1054DE;
+            color: #1054DE;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 64px;
+            height: 96px;
+            border-top: 1px solid #E8E9ED;
+        }
+
+        .copyright {
+            font-weight: 400;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="ЛогоПнг.png" alt="Спорт УрФУ" width="78" height="41">
+            <span class="logo-text">СПОРТ УРФУ</span>
+        </div>
+        <div class="search">
+            <input type="text" class="search-input" placeholder="Поиск мероприятий">
+        </div>
+        <div class="user-actions">
+            <button class="notification-btn">
+            </button>
+            <button class="profile-btn">
+                <span>Мой профиль</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="section current-events-banner">
+            <div class="banner-circles">
+                <div class="banner-circle circle-1"></div>
+                <div class="banner-circle circle-2"></div>
+                <div class="banner-circle circle-3"></div>
+            </div>
+            <div class="banner-header">
+                <div class="banner-title">
+                    <div class="banner-title-icon"></div>
+                    <h1 class="banner-title-text">Следи за ходом соревнований!</h1>
+                </div>
+            </div>
+            <div class="banner-description">
+                <h2 class="banner-description-title">Прямо сейчас проводится 7 мероприятий</h2>
+                <p class="banner-description-text">Ты можешь ознакомиться с командами и турнирной сеткой на странице соревнования</p>
+            </div>
+            <div class="current-events-slider">
+                <div class="slider-controls">
+                    <button class="slider-control">
+                    </button>
+                    <button class="slider-control">
+                    </button>
+                </div>
+                <div class="current-events-list">
+                    <div class="current-event-card">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-volleyball">Волейбол</span>
+                            <span class="sport-tag team-type">Смешанная команда</span>
+                        </div>
+                        <div class="event-meta">
+                            <h3 class="event-name">Чемпионат по волейболу между институтами</h3>
+                            <p class="event-stage stage-final">Финал</p>
+                        </div>
+                        <div class="event-more">
+                        </div>
+                    </div>
+                    <div class="current-event-card">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-volleyball">Волейбол</span>
+                            <span class="sport-tag team-type">Смешанная команда</span>
+                        </div>
+                        <div class="event-meta">
+                            <h3 class="event-name">Чемпионат по волейболу между институтами</h3>
+                            <p class="event-stage stage-quarterfinal">Четверть-финал</p>
+                        </div>
+                        <div class="event-more">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section filters-section">
+            <div class="filters-header">
+                <h2 class="filters-title">Найти подходящие мероприятия</h2>
+                <button class="hide-filters">
+                    <span>Скрыть фильтры</span>
+                </button>
+            </div>
+            <div class="filters-content">
+                <div class="filter-group">
+                    <h3 class="filter-title">Статус мероприятия</h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <div class="checkbox checked"></div>
+                            <span class="filter-label">Проходит сейчас</span>
+                        </label>
+                        <label class="filter-option">
+                            <div class="checkbox"></div>
+                            <span class="filter-label">Идет регистрация</span>
+                        </label>
+                        <label class="filter-option">
+                            <div class="checkbox"></div>
+                            <span class="filter-label">Предстоящие</span>
+                        </label>
+                        <label class="filter-option">
+                            <div class="checkbox"></div>
+                            <span class="filter-label">Уже завершилось</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-title">Вид спорта</h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <div class="checkbox checked"></div>
+                            <span class="filter-label">Волейбол</span>
+                        </label>
+                        <label class="filter-option">
+                            <div class="checkbox"></div>
+                            <span class="filter-label">Теннис</span>
+                        </label>
+                        <label class="filter-option">
+                            <div class="checkbox"></div>
+                            <span class="filter-label">Футбол</span>
+                        </label>
+                        <label class="filter-option">
+                            <div class="checkbox"></div>
+                            <span class="filter-label">Баскетбол</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-title">Пол команды</h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <div class="checkbox"></div>
+                            <span class="filter-label">Мужчины</span>
+                        </label>
+                        <label class="filter-option">
+                            <div class="checkbox"></div>
+                            <span class="filter-label">Женщины</span>
+                        </label>
+                        <label class="filter-option">
+                            <div class="checkbox"></div>
+                            <span class="filter-label">Смешанная команда</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="date-filter">
+                    <h3 class="filter-title">Дата проведения</h3>
+                    <input type="text" class="date-input" placeholder="14.03.2025 – 10.04.2025">
+                    <div class="filter-actions">
+                        <button class="filter-btn reset-btn">Сбросить</button>
+                        <button class="filter-btn apply-btn">Применить фильтр</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section events-section">
+            <div class="section-header">
+                <h2 class="section-title">Идет регистрация</h2>
+                <div class="section-divider"></div>
+                <button class="show-all">
+                    <span>Показать все</span>
+                </button>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-volleyball">Волейбол</span>
+                            <span class="sport-tag team-type">Смешанная команда</span>
+                        </div>
+                        <h3 class="event-name">Лучшая подача в УрФУ среди женщин</h3>
+                        <div class="event-date">
+                            <span class="date-label">Дата проведения</span>
+                            <span>2 – 3 ноября</span>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-places places-warning">
+                                <span>До конца регистрации 2 дня</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="event-btn">Зарегистрироваться</button>
+                </div>
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-tennis">Теннис</span>
+                            <span class="sport-tag team-type">Мужчины</span>
+                        </div>
+                        <h3 class="event-name">Турнир по теннису среди первокурсников</h3>
+                        <div class="event-date">
+                            <span class="date-label">Дата проведения</span>
+                            <span>2 – 3 ноября</span>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-places places-available">
+                                <span>Осталось 18 мест</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="event-btn">Зарегистрироваться</button>
+                </div>
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-tennis">Теннис</span>
+                            <span class="sport-tag team-type">Женщины</span>
+                        </div>
+                        <h3 class="event-name">Турнир по теннису среди первокурсников</h3>
+                        <div class="event-date">
+                            <span class="date-label">Дата проведения</span>
+                            <span>2 – 3 ноября</span>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-places places-available">
+                                <span>Осталось 36 мест</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="event-btn">Зарегистрироваться</button>
+                </div>
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-football">Футбол</span>
+                            <span class="sport-tag team-type">Смешанная команда</span>
+                        </div>
+                        <h3 class="event-name">Межинститутские соревнования по футболу</h3>
+                        <div class="event-date">
+                            <span class="date-label">Дата проведения</span>
+                            <span>2 – 3 ноября</span>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-places places-available">
+                                <span>Осталось 12 мест</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="event-btn">Зарегистрироваться</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section events-section">
+            <div class="section-header">
+                <h2 class="section-title">Будущие события</h2>
+                <div class="section-divider"></div>
+                <button class="show-all">
+                    <span>Показать все</span>
+                </button>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-basketball">Баскетбол</span>
+                            <span class="sport-tag team-type">Женщины</span>
+                        </div>
+                        <h3 class="event-name">Лучшая подача в УрФУ среди женщин</h3>
+                        <div class="event-date">
+                            <span class="date-label">Дата проведения</span>
+                            <span>2 – 3 ноября</span>
+                        </div>
+                    </div>
+                    <button class="event-btn">Узнать больше</button>
+                </div>
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-tennis">Теннис</span>
+                            <span class="sport-tag team-type">Мужчины</span>
+                        </div>
+                        <h3 class="event-name">Турнир по теннису среди первокурсников</h3>
+                        <div class="event-date">
+                            <span class="date-label">Дата проведения</span>
+                            <span>2 – 3 ноября</span>
+                        </div>
+                    </div>
+                    <button class="event-btn">Узнать больше</button>
+                </div>
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-tennis">Теннис</span>
+                            <span class="sport-tag team-type">Женщины</span>
+                        </div>
+                        <h3 class="event-name">Турнир по теннису среди первокурсников</h3>
+                        <div class="event-date">
+                            <span class="date-label">Дата проведения</span>
+                            <span>2 – 3 ноября</span>
+                        </div>
+                    </div>
+                    <button class="event-btn">Узнать больше</button>
+                </div>
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-football">Футбол</span>
+                        </div>
+                        <h3 class="event-name">Межинститутские соревнования по футболу</h3>
+                        <div class="event-date">
+                            <span class="date-label">Дата проведения</span>
+                            <span>2 – 3 ноября</span>
+                        </div>
+                    </div>
+                    <button class="event-btn">Узнать больше</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section events-section">
+            <div class="section-header">
+                <h2 class="section-title">Завершены</h2>
+                <div class="section-divider"></div>
+                <button class="show-all">
+                    <span>Показать все</span>
+                </button>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-basketball">Баскетбол</span>
+                            <span class="sport-tag team-type">Женщины</span>
+                        </div>
+                        <h3 class="event-name">Лучшая подача в УрФУ среди женщин</h3>
+                        <div class="event-date">
+                            <span class="date-label">Завершён</span>
+                            <span>5 ноября</span>
+                        </div>
+                    </div>
+                    <button class="event-btn results-btn">Посмотреть результаты</button>
+                </div>
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-tennis">Теннис</span>
+                            <span class="sport-tag team-type">Мужчины</span>
+                        </div>
+                        <h3 class="event-name">Турнир по теннису среди первокурсников</h3>
+                        <div class="event-date">
+                            <span class="date-label">Завершён</span>
+                            <span>5 ноября</span>
+                        </div>
+                    </div>
+                    <button class="event-btn results-btn">Посмотреть результаты</button>
+                </div>
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-tennis">Теннис</span>
+                            <span class="sport-tag team-type">Женщины</span>
+                        </div>
+                        <h3 class="event-name">Турнир по теннису среди первокурсников</h3>
+                        <div class="event-date">
+                            <span class="date-label">Завершён</span>
+                            <span>5 ноября</span>
+                        </div>
+                    </div>
+                    <button class="event-btn results-btn">Посмотреть результаты</button>
+                </div>
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-sport">
+                            <span class="sport-tag sport-football">Футбол</span>
+                            <span class="sport-tag team-type">Мужчины</span>
+                        </div>
+                        <h3 class="event-name">Межинститутские соревнования по футболу</h3>
+                        <div class="event-date">
+                            <span class="date-label">Завершён</span>
+                            <span>5 ноября</span>
+                        </div>
+                    </div>
+                    <button class="event-btn results-btn">Посмотреть результаты</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logo">
+            <img src="ЛогоПнг.png" alt="Спорт УрФУ" width="55" height="29">
+            <span class="logo-text">СПОРТ УРФУ</span>
+        </div>
+        <p class="copyright">Сервис разработан в рамках Проектного практикума, 2025</p>
+    </footer>
+</body>
+</html>

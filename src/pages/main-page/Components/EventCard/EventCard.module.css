@@ -1,0 +1,127 @@
+.card {
+    width: 316px;
+    height: 394px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.eventInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.eventSport {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.sportTag {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    height: 37px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.sportVolleyball {
+    background: #E7F3FD;
+}
+
+.sportTennis {
+    background: #D9FCEB;
+}
+
+.sportBasketball {
+    background: #FCF2D9;
+}
+
+.sportFootball {
+    background: #FDE7FD;
+}
+
+.teamType {
+    border: 1px solid #E8E9ED;
+    background: transparent !important;
+}
+
+.eventName {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.eventMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.eventDate {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.dateLabel {
+    opacity: 0.3;
+}
+
+.eventDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.eventPlaces {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.warning {
+    color: #FA4D30;
+    font-weight: 600;
+}
+
+.available {
+    color: #4A82F2;
+}
+
+.eventBtn {
+    width: 100%;
+    height: 46px;
+    padding: 14px 24px;
+    background: #F1F2F4;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.eventBtn:hover {
+    background: #E8E9ED;
+}
+
+.resultsBtn {
+    background: transparent;
+    border: 1px solid #1054DE !important;
+    color: #1054DE;
+}
+
+.resultsBtn:hover {
+    background: rgba(16, 84, 222, 0.05);
+}
