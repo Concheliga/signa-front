@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './Header.module.css';
-import ChatTeardropDots from '../../img/ChatTeardropDots.svg';
-import PersonSimpleThrow from '../../img/PersonSimpleThrow.svg';
-import logo from '../../img/logo.svg';
+import ChatTeardropDots from './img/ChatTeardropDots.svg';
+import PersonSimpleThrow from './img/PersonSimpleThrow.svg';
+import logo from './img/logo.svg';
+import searchIcon from './img/searchIcon.svg';
 
 const Header: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const Header: React.FC = () => {
         <span className={styles.logoText}>СПОРТ УРФУ</span>
       </div>
       <div className={styles.search}>
+        <img src={searchIcon} />
         <input 
           type="text" 
           className={styles.searchInput} 
@@ -20,11 +22,11 @@ const Header: React.FC = () => {
       </div>
       <div className={styles.userActions}>
         <button className={styles.notificationBtn}>
-        <img src={ChatTeardropDots}></img>
+        <img src={ChatTeardropDots} />
         </button>
         <button className={styles.profileBtn}>
           <span>Мой профиль</span>
-          <img src={PersonSimpleThrow}></img>
+          <img src={PersonSimpleThrow} />
         </button>
       </div>
     </header>

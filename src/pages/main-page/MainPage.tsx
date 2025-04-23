@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import Header from './Components/Header/Header';
 import CurrentEventCard from './Components/CurrentEventCard/CurrentEventCard';
 import FiltersSection from './Components/FiltersSection/FiltersSection';
 import EventsSection from './Components/EventsSection/EventsSection';
-import Footer from './Components/Footer/Footer';
 import { Filters, SportEvent } from './types/events';
 import styles from './css/main.module.css';
 import whiteLeftArrow from './img/whiteLeftArrow.svg';
@@ -63,10 +61,7 @@ const SportsEventsPage: React.FC = () => {
 
   return (
     <div className={styles.page}>
-      <Header />
-      
       <main className={styles.main}>
-        {/* Баннер текущих событий */}
         <section className={styles.currentEventsBanner}>
           <div className={styles.bannerCircles}>
             <div className={`${styles.bannerCircle} ${styles.circle1}`}></div>
@@ -134,8 +129,6 @@ const SportsEventsPage: React.FC = () => {
           isResults={true}
         />
       </main>
-
-      <Footer />
     </div>
   );
 };
