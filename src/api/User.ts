@@ -1,9 +1,21 @@
 import { api } from "./index-api";
-import { AxiosResponse } from "axios";
-import { IUser } from "../interfaces/interfaces";
 
 export default class User {
-    static fetchUsers(): Promise<AxiosResponse<IUser[]>> {
-        return api.get<IUser[]>('/users');
+    static userURL = '/user';
+
+    static async getUser(userId: string) {
+        return api.get(`${this.userURL}/get/${userId}`);
+    }
+
+    static async search() {
+        return api.get(`${this.userURL}/search`);
+    }
+
+    static async update(userId: string) {
+        return api.patch(`${this.userURL}/${userId}/update`);
+    }
+
+    static async delete(userId: string) {
+        return api.delete(`${this.userURL}/${userId}/delete`);
     }
 }

@@ -1,17 +1,17 @@
-import styles from  "./css/footer.module.css";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styles from './Footer.module.css';
+import logo from './img/logo.svg';
 
 const Footer: React.FC = () => {
-    return (
-        <footer className={styles.footer}>
-            <ul className={styles.footer__list}>
-                <li className={styles.footer__list__element}><Link to="home">Главная</Link></li>
-                <li className={styles.footer__list__element}><Link to="tournaments">Турниры</Link></li>
-                <li className={styles.footer__list__element}><Link to="profile/statistic">Статистика</Link></li>
-                <li className={styles.footer__list__element}><Link to="help">Написать в поддержку</Link></li>
-            </ul>
-        </footer>
-    );
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.logo}>
+        <img src={logo} alt="Спорт УрФУ" width={55} height={29} />
+        <span className={styles.logoText}>СПОРТ УРФУ</span>
+      </div>
+      <p className={styles.copyright}>Сервис разработан в рамках Проектного практикума, 2025</p>
+    </footer>
+  );
 };
 
 export default Footer;

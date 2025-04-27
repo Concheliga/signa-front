@@ -1,17 +1,12 @@
-import Logo from "../logo/Logo";
-import Footer from "../footer/Footer";
-import LeftSidebar from "../left-sidebar/Left-sidebar";
+import Footer from "../Footer/Footer";
 import { Outlet } from "react-router-dom";
+import Header from "../Header/Header";
 
 const Layout: React.FC = () => {
     return (
         <div className="body">
-            <Logo />
-            <div className="nav-main-container">
-                <LeftSidebar />
+            <Header />
                 <Outlet />
-                <div className="helper" />
-            </div>
             <Footer />
         </div>
 

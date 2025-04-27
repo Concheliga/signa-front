@@ -170,3 +170,11 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: #FFFFFF;
+    color: #202227;
+    line-height: 130%;
+  }
+  

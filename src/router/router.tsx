@@ -12,16 +12,10 @@ import ProfileModule from "../modules/profile/Profile-module";
 import Statistic from "../modules/statistic/Statistic";
 import TournamentParticipants from "../modules/tournament-participants/TournamentParticipants";
 import TournamentResults from "../modules/tournament-results/TournamentResults";
-import Home from "../modules/home/Home";
 import CreateTournament from "../modules/create-tournament/Create-tournament";
 import SportsEventsPage from '../pages/main-page/MainPage';
 
 export const router = createBrowserRouter([
-    {
-        path: '/main',
-        element: <SportsEventsPage />,
-        errorElement: <SportsEventsPage />
-    },
     {
         path: '/',
         element: <Layout />,
@@ -29,8 +23,8 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: 'home',
-                element: <Home />,
-                errorElement: <Home />
+                element: <SportsEventsPage />,
+                errorElement: <SportsEventsPage />
             },
             {
                 path: 'login',
